@@ -131,5 +131,5 @@ feature_types <- feature_types01[order, ]
 
 readr::write_csv(feature_types, file = "data-raw/feature_types.csv")
 usethis::use_data(feature_types, overwrite = TRUE, compress = "xz")
-
+usethis::use_data(feature_types, internal = TRUE, overwrite = TRUE)
 

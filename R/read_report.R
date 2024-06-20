@@ -6,6 +6,7 @@
 #' @param report_type Report type.
 #'
 #' @examples
+#' if (FALSE) {
 #' base_url <- "https://www.informatics.jax.org/downloads/reports"
 #'
 #' # Import the Mouse Genetic Markers (including withdrawn marker symbols) Report
@@ -16,6 +17,7 @@
 #'
 #' # Import the MGI Marker Coordinates' Report
 #' read_report(file.path(base_url, "MGI_MRK_Coord.rpt"), "MGI_MRK_Coord")
+#' }
 #'
 #' @returns A [tibble][tibble::tibble-package] with the report data in tidy
 #'   format.
@@ -103,27 +105,27 @@ read_mrk_list_rpt <- function(file) {
     col_types = col_types
   ) |>
     dplyr::mutate(
-      marker_id = marker_id_col(marker_id),
-      cM_pos = cM_pos_col(cM_pos),
-      chr = chr_col(chr),
-      strand = strand_col(strand),
-      status = status_col(status),
-      feature_type = feature_type_col(feature_type),
-      synonyms = synonyms_col(synonyms)
+      marker_id = marker_id_col(.data$marker_id),
+      cM_pos = cM_pos_col(.data$cM_pos),
+      chr = chr_col(.data$chr),
+      strand = strand_col(.data$strand),
+      status = status_col(.data$status),
+      feature_type = feature_type_col(.data$feature_type),
+      synonyms = synonyms_col(.data$synonyms)
     ) |>
     dplyr::relocate(
-      marker_id,
-      marker_symbol,
-      marker_name,
-      marker_type,
-      status,
-      cM_pos,
-      chr,
-      start,
-      end,
-      strand,
-      feature_type,
-      synonyms
+      .data$marker_id,
+      .data$marker_symbol,
+      .data$marker_name,
+      .data$marker_type,
+      .data$status,
+      .data$cM_pos,
+      .data$chr,
+      .data$start,
+      .data$end,
+      .data$strand,
+      .data$feature_type,
+      .data$synonyms
     )
 }
 
@@ -153,24 +155,24 @@ read_mrk_coord_rpt <- function(file) {
     col_types = col_types
   ) |>
     dplyr::mutate(
-      marker_id = marker_id_col(marker_id),
-      genome_assembly = genome_assembly_col(genome_assembly),
-      chr = chr_col(chr),
-      strand = strand_col(strand),
-      feature_type = feature_type_col(feature_type)
+      marker_id = marker_id_col(.data$marker_id),
+      genome_assembly = genome_assembly_col(.data$genome_assembly),
+      chr = chr_col(.data$chr),
+      strand = strand_col(.data$strand),
+      feature_type = feature_type_col(.data$feature_type)
     ) |>
     dplyr::relocate(
-      marker_id,
-      marker_type,
-      marker_symbol,
-      marker_name,
-      genome_assembly,
-      chr,
-      start,
-      end,
-      strand,
-      feature_type,
-      provider_collection,
-      provider_display
+      .data$marker_id,
+      .data$marker_type,
+      .data$marker_symbol,
+      .data$marker_name,
+      .data$genome_assembly,
+      .data$chr,
+      .data$start,
+      .data$end,
+      .data$strand,
+      .data$feature_type,
+      .data$provider_collection,
+      .data$provider_display
     )
 }

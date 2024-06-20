@@ -4,7 +4,7 @@ Version: 0.0.1
 Authors@R: c(
     person("Ramiro", "Magno", , "rmagno@pattern.institute", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-5226-3441")),
-    person("Isabel", "Duarte", , "iduarte@pattern.institute", role = c("aut", "cre"),
+    person("Isabel", "Duarte", , "iduarte@pattern.institute", role = "aut",
            comment = c(ORCID = "0000-0003-0060-2936")),
     person("Pattern Institute", role = c("cph", "fnd"))
   )
@@ -20,5 +20,6 @@ Depends:
 LazyData: true
 Imports: 
     dplyr,
+    rlang,
     tibble,
     vroom

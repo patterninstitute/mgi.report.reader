@@ -22,6 +22,7 @@ format.
 \code{\link[=read_report]{read_report()}} reads in an MGI report.
 }
 \examples{
+if (FALSE) {
 base_url <- "https://www.informatics.jax.org/downloads/reports"
 
 # Import the Mouse Genetic Markers (including withdrawn marker symbols) Report
@@ -32,5 +33,6 @@ read_report(file.path(base_url, "MRK_List2.rpt"), "MRK_List2")
 
 # Import the MGI Marker Coordinates' Report
 read_report(file.path(base_url, "MGI_MRK_Coord.rpt"), "MGI_MRK_Coord")
+}
 
 }

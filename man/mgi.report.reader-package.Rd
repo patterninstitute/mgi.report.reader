@@ -11,6 +11,11 @@ Provides a set of functions designed to facilitate the reading, parsing, and ana
 \author{
 \strong{Maintainer}: Ramiro Magno \email{rmagno@pattern.institute} (\href{https://orcid.org/0000-0001-5226-3441}{ORCID})
 
+Authors:
+\itemize{
+  \item Isabel Duarte \email{iduarte@pattern.institute} (\href{https://orcid.org/0000-0003-0060-2936}{ORCID})
+}
+
 Other contributors:
 \itemize{
   \item Pattern Institute [copyright holder, funder]
