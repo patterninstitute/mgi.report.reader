@@ -1,0 +1,72 @@
+feature_type,so_id,definition
+gene,SO:0000704,"A region (or regions) that include all of the sequence elements necessary to encode a functional transcript. A gene may include regulatory regions, transcribed regions, and/or other functional sequence regions."
+protein coding gene,SO:0001217,A gene that produces at least one transcript that is translated into a protein.
+gene segment,SO:3000000,A gene component region which acts as a recombinational unit of a gene whose functional form is generated through somatic recombination.
+unclassified gene,NA,A region of the genome associated with transcript and/or prediction evidence but where feature classification is imprecise.
+heritable phenotypic marker,SO:0001500,A biological region characterized as a single heritable trait in a phenotype screen. The heritable phenotype may be mapped to a chromosome but generally has not been characterized to a specific gene locus.
+other feature types,NA,"MGI markers that are not classified as gene including pseudogenes, QTL, transgenes, gene clusters, cytogenetic markers, & unclassified genome features."
+QTL,SO:0000771,A quantitative trait locus (QTL) is a polymorphic locus which contains alleles that differentially affect the expression of a continuously distributed phenotypic trait. Usually it is a marker described by statistical association to quantitative variation in the particular phenotypic trait that is thought to be controlled by the cumulative action of alleles at multiple loci.
+transgene,SO:0000902,A gene that has been transferred naturally or by any of a number of genetic engineering techniques from one organism to another.
+non-coding RNA gene,SO:0001263,A gene that produces an RNA transcript that functions as the gene product.
+lncRNA gene,SO:0001877,A gene that encodes a non-coding RNA over 200 nucleotides in length.
+antisense lncRNA gene,SO:0002182,A gene that encodes a non-coding RNA transcribed from the opposite DNA strand compared with other transcripts and overlap in part with sense RNA.
+lincRNA gene,SO:0001641,A gene that encodes large intervening non-coding RNA.
+sense intronic lncRNA gene,SO:0002184,A gene that encodes a sense intronic long non-coding RNA.
+sense overlapping lncRNA gene,SO:0002183,A gene that encodes a sense overlap long non-coding RNA.
+bidirectional promoter lncRNA gene,SO:0002185,"A non-coding locus that originates from within the promoter region of a protein-coding gene, with transcription proceeding in the opposite direction on the other strand."
+rRNA gene,SO:0001637,A gene that encodes ribosomal RNA.
+tRNA gene,SO:0001272,A gene that encodes Transfer RNA.
+snRNA gene,SO:0001268,A gene that encodes a Small Nuclear RNA.
+snoRNA gene,SO:0001267,A gene that encodes for Small Nucleolar RNA.
+miRNA gene,SO:0001265,A gene that encodes for microRNA.
+scRNA gene,SO:0001266,A gene that encodes for Small Cytoplasmic RNA.
+SRP RNA gene,SO:0000590,A gene that encodes the signal recognition particle RNA.
+RNase P RNA gene,SO:0001639,"A gene that encodes RNase P RNA, the RNA component of Ribonuclease P (RNase P)."
+RNase MRP RNA gene,SO:0001640,A gene that encodes RNase MRP RNA.
+telomerase RNA gene,SO:0001643,"A non-coding RNA gene, the RNA product of which is a component of telomerase."
+unclassified non-coding RNA gene,NA,A non-coding RNA gene not classified with established ncRNA functional subcategories.
+ribozyme gene,SO:0002181,A gene that encodes an RNA with catalytic activity.
+complex/cluster/region,NA,A group of linked markers characterized by related sequence and/or function where the precise location or identity of the individual components is obscure.
+cytogenetic marker,NA,A structure within a chromosome or a chromosomal rearrangement that is visible by microscopic examination.
+chromosomal deletion,SO:1000029,An incomplete chromosome.
+insertion,SO:0000667,The sequence of one or more nucleotides added between two adjacent nucleotides in the sequence.
+chromosomal inversion,SO:1000030,An interchromosomal mutation where a region of the chromosome is inverted with respect to wild type.
+Robertsonian fusion,SO:1000043,A non reciprocal translocation whereby the participating chromosomes break at their centromeres and the long arms fuse to form a single chromosome with a single centromere.
+reciprocal chromosomal translocation,SO:1000048,A chromosomal translocation with two breaks; two chromosome segments have simply been exchanged.
+chromosomal translocation,SO:1000044,An interchromosomal mutation. Rearrangements that alter the pairing of telomeres are classified as translocations.
+chromosomal duplication,SO:1000037,An extra chromosome.
+chromosomal transposition,SO:0000453,"A chromosome structure variant whereby a region of a chromosome has been transferred to another position. Among interchromosomal rearrangements, the term transposition is reserved for that class in which the telomeres of the chromosomes involved are coupled (that is to say, form the two ends of a single DNA molecule) as in wild-type."
+unclassified cytogenetic marker,NA,A cytogenetic marker not classifiable within current cytogenetic subcategories.
+BAC/YAC end,NA,A region of sequence from the end of a BAC or YAC clone used as a reagent in mapping and genome assembly.
+BAC end,SO:0000999,A region of sequence from the end of a BAC clone that may provide a highly specific marker.
+YAC end,SO:0001498,A region of sequence from the end of a YAC clone that may provide a highly specific marker.
+PAC end,SO:0001480,A region of sequence from the end of a PAC clone that may provide a highly specific marker.
+other genome feature,NA,"A region of the genome associated with biological interest (includes regulatory regions, conserved regions and related sequences, repetitive sequences, and viral integrations)."
+retrotransposon,SO:0000180,A transposable element that is incorporated into a chromosome by a mechanism that requires reverse transcriptase.
+telomere,SO:0000624,"A specific structure at the end of a linear chromosome, required for the integrity and maintenance of the end."
+minisatellite,SO:0000643,A repeat region containing tandemly repeated sequences having a unit length of 10 to 40 bp.
+unclassified other genome feature,NA,A genome feature that cannot be classified in any currently recognized genome category.
+endogenous retroviral region,SO:0000903,A region derived from viral infection of germ cells that has been stably integrated into the host genome and is passed on from generation to generation.
+mutation defined region,NA,"A genomic region, containing multiple genes/genome features, within which a mutation event resulted in complex genomic changes affecting multiple features (e.g. not a simple regional deletion)."
+CpG island,SO:0000307,Regions of a few hundred to a few thousand bases in vertebrate genomes that are relatively GC and CpG rich; they are typically unmethylated and often found near the 5' ends of genes.
+promoter,SO:0000167,A regulatory region composed of the TSS(s) and binding sites for TF complexes of the basal transcription machinery.
+promoter flanking region,SO:0001952,Transcription factor binding regions that flank the promotor.
+TSS region,SO:0001240,The region of a gene from the 5' most TSS (transcription start site) to the 3' TSS.
+enhancer,SO:0000165,"A cis-acting sequence that increases the utilization of (some) eukaryotic promoters, and can function in either orientation and in any location (upstream or downstream) relative to the promoter."
+CTCF binding site,SO:0001974,"A transcription factor binding site with consensus sequence CCGCGNGGNGGCAG, bound by CCCTF-binding factor."
+transcription factor binding site,SO:0000235,A DNA site where a transcription factor binds.
+open chromatin region,SO:0001747,"Regions of spaced out histones, making them accessible to protein interactions."
+DNA segment,NA,"A region of the genome associated with experimental interest, often used as a reagent for genetic mapping. Includes RFLP and other hybridization probes, sequence-tagged sites (STS), and regions defined by PCR primer pairs such as microsatellite markers)."
+pseudogenic region,SO:0000462,A non-functional descendant of a functional entity.
+pseudogene,SO:0000336,"A sequence that closely resembles a known functional gene, at another locus within the genome, that is non-functional a consequence of (usually several) mutations that prevent either its transcription or translation (or both).  In general, pseudogenes result from either reverse transcription of a transcript of their normal paralog, in which case the pseudogene typically lacks introns and includes a poly(A) tail, or from recombination, in which case the pseudogene is typically a tandem duplication of its normal paralog."
+pseudogenic gene segment,SO:0001741,A recombinational unit of a gene which when incorporated by somatic recombination in the final gene transcript results in a nonfunctional product.
+polymorphic pseudogene,SO:0001841,Pseudogene owing to a SNP/DIP but in other individuals/haplotypes/strains the gene is translated.
+imprinting control region,SO:0002191,A regulatory region that controls epigenetic imprinting and affects the expression of target genes in an allele- or parent-of-origin-specific manner. Associated regulatory elements may include differentially methylated regions and non-coding RNAs.
+intronic regulatory region,SO:0001492,A regulatory region that is part of an intron.
+silencer,SO:0000625,"A regulatory region which upon binding of transcription factors, suppress the transcription of the gene or genes they control."
+locus control region,SO:0000037,"A DNA region that includes DNAse hypersensitive sites located near a gene that confers the high-level, position-independent, and copy number-dependent expression to that gene."
+insulator,SO:0000627,A regulatory region that 1) when located between a CRM and a gene's promoter prevents the CRM from modulating that genes expression and 2) acts as a chromatin boundary element or barrier that can block the encroachment of condensed chromatin from an adjacent region.
+response element,SO:0002205,"A regulatory element that acts in response to a stimulus, usually via transcription factor binding."
+origin of replication,SO:0000296,"A region of nucleic acid from which replication initiates; includes sequences that are recognized by replication proteins, the site from which the first separation of complementary strands occurs, and specific replication start sites."
+transcriptional cis regulatory region,SO:0001055,A regulatory_region that modulates the transcription of a gene or genes.
+TSS cluster,SO:0001915,A region defined by a cluster of experimentally determined transcription starting sites.
