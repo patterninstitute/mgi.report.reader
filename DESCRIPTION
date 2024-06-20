@@ -1,0 +1,15 @@
+Package: mgi.report.reader
+Title: MGI Report Readers
+Version: 0.0.1
+Authors@R: c(
+    person("Ramiro", "Magno", , "rmagno@pattern.institute", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-5226-3441")),
+    person("Pattern Institute", role = c("cph", "fnd"))
+  )
+Description: Provides a set of functions designed to facilitate the reading,
+    parsing, and analysis of MGI (Mouse Genome Informatics) report files:
+    <https://www.informatics.jax.org/downloads/reports/index.html>.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
