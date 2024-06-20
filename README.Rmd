@@ -33,6 +33,25 @@ You can install the development version of `{mgi.report.reader}` like so:
 pak::pak("patterninstitute/mgi.report.reader")
 ```
 
+## Example
+
+```{r}
+library(mgi.report.reader)
+
+base_url <- "https://www.informatics.jax.org/downloads/reports"
+
+# Import the Mouse Genetic Markers (including withdrawn marker symbols) Report
+read_report(file.path(base_url, "MRK_List1.rpt"), "MRK_List1")
+
+# Import Mouse Genetic Markers (excluding withdrawn marker symbols) Report
+read_report(file.path(base_url, "MRK_List2.rpt"), "MRK_List2")
+
+# Import the MGI Marker Coordinates' Report
+read_report(file.path(base_url, "MGI_MRK_Coord.rpt"), "MGI_MRK_Coord")
+
+```
+
+
 ## Disclaimer
 
 The `{mgi.report.reader}` package is provided "as is" without any guarantees or

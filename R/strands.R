@@ -1,0 +1,3 @@
+strands <- function() {
+  c("+", "-")
+}
