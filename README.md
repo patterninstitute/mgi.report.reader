@@ -33,10 +33,6 @@ base_url <- "https://www.informatics.jax.org/downloads/reports"
 
 # Import the Mouse Genetic Markers (including withdrawn marker symbols) Report
 read_report(file.path(base_url, "MRK_List1.rpt"), "MRK_List1")
-#> Warning: One or more parsing issues, call `problems()` on your data frame for details,
-#> e.g.:
-#>   dat <- vroom(...)
-#>   problems(dat)
 #> # A tibble: 753,059 × 12
 #>    marker_id   marker_symbol marker_name marker_type status cM_pos chr     start
 #>    <chr>       <chr>         <chr>       <fct>       <fct>   <dbl> <fct>   <int>
@@ -59,10 +55,6 @@ read_report(file.path(base_url, "MRK_List1.rpt"), "MRK_List1")
 
 # Import Mouse Genetic Markers (excluding withdrawn marker symbols) Report
 read_report(file.path(base_url, "MRK_List2.rpt"), "MRK_List2")
-#> Warning: One or more parsing issues, call `problems()` on your data frame for details,
-#> e.g.:
-#>   dat <- vroom(...)
-#>   problems(dat)
 #> # A tibble: 682,490 × 12
 #>    marker_id   marker_symbol marker_name marker_type status cM_pos chr     start
 #>    <chr>       <chr>         <chr>       <fct>       <fct>   <dbl> <fct>   <int>
