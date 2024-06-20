@@ -23,3 +23,5 @@ Imports:
     rlang,
     tibble,
     vroom
+URL: https://www.pattern.institute/mgi.report.reader, https://github.com/patterninstitute/mgi.report.reader
+BugReports: https://www.pattern.institute/mgi.report.reader/issues

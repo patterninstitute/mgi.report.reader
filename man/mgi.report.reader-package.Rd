@@ -8,6 +8,15 @@
 \description{
 Provides a set of functions designed to facilitate the reading, parsing, and analysis of MGI (Mouse Genome Informatics) report files: \url{https://www.informatics.jax.org/downloads/reports/index.html}.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://www.pattern.institute/mgi.report.reader}
+  \item \url{https://github.com/patterninstitute/mgi.report.reader}
+  \item Report bugs at \url{https://www.pattern.institute/mgi.report.reader/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Ramiro Magno \email{rmagno@pattern.institute} (\href{https://orcid.org/0000-0001-5226-3441}{ORCID})
 
