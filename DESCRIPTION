@@ -6,6 +6,16 @@ Authors@R: c(
            comment = c(ORCID = "0000-0001-5226-3441")),
     person("Isabel", "Duarte", , "iduarte@pattern.institute", role = "aut",
            comment = c(ORCID = "0000-0003-0060-2936")),
+    person(given = "Ismail", family = "Gbadamosi",
+      email = "i.gbadamosi@nencki.edu.pl",
+      role = "aut",
+      comment = c(ORCID = "0000-0002-1932-7519")),  
+    person(given = "Ali", family = "Jawaid",
+      email = "a.jawaid@nencki.edu.pl",
+      role = "aut",
+      comment = c(ORCID = "0000-0002-1932-7519")), 
+    person("Nencki Institute of Experimental Biology", role = c("cph", "fnd")),
+    person("University of Algarve", role = c("cph", "fnd")),
     person("Pattern Institute", role = c("cph", "fnd"))
   )
 Description: Provides a set of functions designed to facilitate the reading,
