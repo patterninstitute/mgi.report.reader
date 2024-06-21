@@ -23,7 +23,11 @@
 #'   format.
 #'
 #' @export
-read_report <- function(report_file, report_type = c("MRK_List1", "MRK_List2", "MGI_MRK_Coord")) {
+read_report <- function(report_file,
+                        report_type = c("MRK_List1",
+                                        "MRK_List2",
+                                        "MGI_MRK_Coord",
+                                        "MGI_Gene_Model_Coord")) {
 
   report_type <- match.arg(report_type)
   read <- list(MRK_List1 = read_mrk_list_rpt,
@@ -106,6 +110,7 @@ read_mrk_list_rpt <- function(file) {
   ) |>
     dplyr::mutate(
       marker_id = marker_id_col(.data$marker_id),
+      marker_type = marker_type_col(.data$marker_type),
       cM_pos = cM_pos_col(.data$cM_pos),
       chr = chr_col(.data$chr),
       strand = strand_col(.data$strand),
@@ -156,6 +161,7 @@ read_mrk_coord_rpt <- function(file) {
   ) |>
     dplyr::mutate(
       marker_id = marker_id_col(.data$marker_id),
+      marker_type = marker_type_col(.data$marker_type),
       genome_assembly = genome_assembly_col(.data$genome_assembly),
       chr = chr_col(.data$chr),
       strand = strand_col(.data$strand),
@@ -174,5 +180,60 @@ read_mrk_coord_rpt <- function(file) {
       .data$feature_type,
       .data$provider_collection,
       .data$provider_display
+    )
+}
+
+read_gene_model_coord_rpt <- function(file) {
+  col_names <-
+    c(
+      "marker_id",
+      "marker_type",
+      "marker_symbol",
+      "marker_name",
+      "genome_assembly",
+      "entrez_id",
+      "entrez_chr",
+      "entrez_start",
+      "entrez_end",
+      "entrez_strand",
+      "ensembl_id",
+      "ensembl_chr",
+      "ensembl_start",
+      "ensembl_end",
+      "ensembl_strand"
+    )
+
+  col_types <- "ccccciciiccciic"
+  # Import data
+  read_tsv(
+    file = file,
+    col_names = col_names,
+    col_types = col_types
+  ) |>
+    dplyr::mutate(
+      marker_id = marker_id_col(.data$marker_id),
+      marker_type = marker_type_col(.data$marker_type),
+      genome_assembly = genome_assembly_col(.data$genome_assembly),
+      entrez_chr = chr_col(.data$entrez_chr),
+      ensembl_chr = chr_col(.data$ensembl_chr),
+      entrez_strand = strand_col(.data$entrez_strand),
+      ensembl_strand = strand_col(.data$ensembl_strand)
+    ) |>
+    dplyr::relocate(
+      .data$marker_id,
+      .data$marker_type,
+      .data$marker_symbol,
+      .data$marker_name,
+      .data$genome_assembly,
+      .data$entrez_id,
+      .data$entrez_chr,
+      .data$entrez_start,
+      .data$entrez_end,
+      .data$entrez_strand,
+      .data$ensembl_id,
+      .data$ensembl_chr,
+      .data$ensembl_start,
+      .data$ensembl_end,
+      .data$ensembl_strand
     )
 }

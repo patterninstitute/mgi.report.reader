@@ -6,7 +6,7 @@
 \usage{
 read_report(
   report_file,
-  report_type = c("MRK_List1", "MRK_List2", "MGI_MRK_Coord")
+  report_type = c("MRK_List1", "MRK_List2", "MGI_MRK_Coord", "MGI_Gene_Model_Coord")
 )
 }
 \arguments{

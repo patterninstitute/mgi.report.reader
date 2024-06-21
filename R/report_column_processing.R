@@ -32,3 +32,7 @@ genome_assembly_col <- function(genome_assembly) {
 feature_type_col <- function(feature_type) {
   factor(feature_type, levels = feature_types$feature_type)
 }
+
+marker_type_col <- function(marker_type) {
+  factor(marker_type, levels = marker_types())
+}
