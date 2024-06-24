@@ -10,10 +10,16 @@ status](https://www.r-pkg.org/badges/version/mgi.report.reader)](https://CRAN.R-
 [![R-CMD-check](https://github.com/patterninstitute/mgi.report.reader/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/patterninstitute/mgi.report.reader/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-`{mgi.report.reader}` provides a set of functions designed to facilitate
-the reading, parsing, and analysis of [MGI (Mouse Genome
-Informatics)](https://www.informatics.jax.org) [report
-files](https://www.informatics.jax.org/downloads/reports/index.html).
+`{mgi.report.reader}` provides readers for easy and consistent importing
+of MGI (Mouse Genome Informatics) report files:
+<https://www.informatics.jax.org/downloads/reports/index.html>.
+
+Essentially, what this package provides is a single function
+`read_report()` to import MGI reports. We try to use a consistent naming
+scheme for variables across reports, use appropriate variable types,
+e.g. factors for variables with small enumerations, convert disparate
+missing values to `NA`, and other time-consuming tidying steps, so that
+you don’t have to.
 
 ## Installation
 
@@ -29,9 +35,11 @@ To read an MGI report into R use `read_report()`:
 library(mgi.report.reader)
 
 base_url <- "https://www.informatics.jax.org/downloads/reports"
+marker_list1_rpt <- file.path(base_url, "MRK_List1.rpt")
+coordinates_rpt <- file.path(base_url, "MGI_MRK_Coord.rpt")
 
 # Import the Mouse Genetic Markers (including withdrawn marker symbols) Report
-read_report(file.path(base_url, "MRK_List1.rpt"), "MRK_List1", n_max = 10L)
+read_report(marker_list1_rpt, "MRK_List1", n_max = 10L)
 #> # A tibble: 10 × 12
 #>    marker_id   marker_symbol marker_name marker_type status cM_pos chr     start
 #>    <chr>       <chr>         <chr>       <fct>       <fct>   <dbl> <fct>   <int>
@@ -51,7 +59,7 @@ read_report(file.path(base_url, "MRK_List1.rpt"), "MRK_List1", n_max = 10L)
 
 ``` r
 # Import the MGI Marker Coordinates' Report
-read_report(file.path(base_url, "MGI_MRK_Coord.rpt"), "MGI_MRK_Coord", n_max = 10L)
+read_report(coordinates_rpt, "MGI_MRK_Coord", n_max = 10L)
 #> # A tibble: 10 × 12
 #>    marker_id marker_type marker_symbol marker_name  genome_assembly chr    start
 #>    <chr>     <fct>       <chr>         <chr>        <fct>           <fct>  <int>
@@ -66,7 +74,7 @@ read_report(file.path(base_url, "MGI_MRK_Coord.rpt"), "MGI_MRK_Coord", n_max = 1
 #>  9 MGI:87940 Gene        Grk2          G protein-c… GRCm39          19    4.34e6
 #> 10 MGI:87886 Gene        Chrna2        cholinergic… GRCm39          14    6.64e7
 #> # ℹ 5 more variables: end <int>, strand <fct>, feature_type <fct>,
-#> #   provider_collection <fct>, provider_display <fct>
+#> #   provider <fct>, provider_display <fct>
 ```
 
 ## Code of Conduct
@@ -86,3 +94,15 @@ misinterpretations. Users are advised to test the package thoroughly
 before relying on it in critical applications. The authors disclaim all
 liability for any damage or loss resulting from the use of this package.
 Use of the `{mgi.report.reader}` package is at the user’s own risk.
+
+## Citing this package
+
+- Firstly, if you use this package please do not forget to start by
+  citing the Mouse Genome Informatics (MGI) and Jackson Laboratory (JAX)
+  as they are the original providers of the data here made accessible
+  with these readers. For details on how to cite MGI resources, please
+  refer to:
+  <https://www.informatics.jax.org/mgihome/other/citation.shtml>.
+
+- To cite us, see
+  <https://www.pattern.institute/mgi.report.reader/authors.html#citation>.
