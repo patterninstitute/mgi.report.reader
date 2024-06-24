@@ -14,7 +14,7 @@ chr_col <- function(chr) {
 }
 
 cM_pos_col <- function(cM_pos) {
-  as.double(dplyr::if_else(cM_pos %in% c("syntenic", "N/A"), NA_character_, cM_pos))
+  as.double(dplyr::if_else(cM_pos %in% c("syntenic", "N/A", "-1.0"), NA_character_, cM_pos))
 }
 
 status_col <- function(status) {
@@ -49,4 +49,35 @@ cell_line_col <- function(cell_line) {
   cell_line <- strsplit(cell_line, " ", fixed = TRUE)
   # Convert single NA values to empty character vectors in the list-column.
   dplyr::if_else(sapply(cell_line, \(x) length(x) == 1L && is.na(x)), list(character()), cell_line)
+}
+
+special_feature_type_col <- function(feature_type) {
+
+  # In cases like:
+  # "lncRNA gene|lncRNA gene|lncRNA gene"
+  # keep only one instance. This assumes the values pipe-separated are repeated,
+  # this is the case in MRK_ENSEMBL.rpt.
+  feature_type <- sub("\\|.+", "", feature_type)
+
+  factor(feature_type, levels = feature_types$feature_type)
+}
+
+biotype_col <- function(biotype) {
+  biotype <- strsplit(biotype, "|", fixed = TRUE)
+  # Convert single NA values to empty character vectors in the list-column.
+  dplyr::if_else(sapply(biotype, \(x) length(x) == 1L && is.na(x)), list(character()), biotype) |>
+    sapply(\(x) unique(x))
+}
+
+
+ensembl_trp_id_col <- function(ensembl_trp_id) {
+  ensembl_trp_id <- strsplit(ensembl_trp_id, " ", fixed = TRUE)
+  # Convert single NA values to empty character vectors in the list-column.
+  dplyr::if_else(sapply(ensembl_trp_id, \(x) length(x) == 1L && is.na(x)), list(character()), ensembl_trp_id)
+}
+
+ensembl_prt_id_col <- function(ensembl_prt_id) {
+  ensembl_prt_id <- strsplit(ensembl_prt_id, " ", fixed = TRUE)
+  # Convert single NA values to empty character vectors in the list-column.
+  dplyr::if_else(sapply(ensembl_prt_id, \(x) length(x) == 1L && is.na(x)), list(character()), ensembl_prt_id)
 }

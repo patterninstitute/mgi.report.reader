@@ -7,7 +7,8 @@
 read_report(
   report_file,
   report_type = c("MRK_List1", "MRK_List2", "MGI_MRK_Coord", "MGI_Gene_Model_Coord",
-    "MGI_GTGUP", "MRK_Sequence", "MRK_SwissProt_TrEMBL", "MRK_SwissProt", "MRK_GeneTrap"),
+    "MGI_GTGUP", "MRK_Sequence", "MRK_SwissProt_TrEMBL", "MRK_SwissProt", "MRK_GeneTrap",
+    "MRK_ENSEMBL"),
   n_max = Inf
 )
 }
@@ -52,5 +53,8 @@ read_report(file.path(base_url, "MRK_List1.rpt"), "MRK_List1", n_max = n)
 
 # MGI Marker associations to Gene Trap IDs
 # read_report(file.path(base_url, "MRK_GeneTrap.rpt"), "MRK_GeneTrap")
+
+# MGI Marker associations to Ensembl sequence information
+# read_report(file.path(base_url, "MRK_ENSEMBL.rpt"), "MRK_ENSEMBL")
 
 }

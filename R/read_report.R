@@ -34,6 +34,9 @@
 #' # MGI Marker associations to Gene Trap IDs
 #' # read_report(file.path(base_url, "MRK_GeneTrap.rpt"), "MRK_GeneTrap")
 #'
+#' # MGI Marker associations to Ensembl sequence information
+#' # read_report(file.path(base_url, "MRK_ENSEMBL.rpt"), "MRK_ENSEMBL")
+#'
 #' @returns A [tibble][tibble::tibble-package] with the report data in tidy
 #'   format.
 #'
@@ -47,7 +50,8 @@ read_report <- function(report_file,
                                         "MRK_Sequence",
                                         "MRK_SwissProt_TrEMBL",
                                         "MRK_SwissProt",
-                                        "MRK_GeneTrap"),
+                                        "MRK_GeneTrap",
+                                        "MRK_ENSEMBL"),
                         n_max = Inf) {
 
   report_type <- match.arg(report_type)
@@ -58,7 +62,8 @@ read_report <- function(report_file,
                MRK_Sequence = read_mrk_sequence_rpt,
                MRK_SwissProt_TrEMBL = read_mrk_swissprot_tr_embl_rpt,
                MRK_SwissProt = read_mrk_swissprot_rpt,
-               MRK_GeneTrap = read_mrk_genetrap_rpt)
+               MRK_GeneTrap = read_mrk_genetrap_rpt,
+               MRK_ENSEMBL = read_mrk_ensembl_rpt)
 
   read[[report_type]](file = report_file, n_max = n_max)
 }
@@ -78,6 +83,45 @@ read_tsv <- function(file,
     n_max = n_max,
     na = na
   )
+
+}
+
+# A sort of drop-in replacement of `read_tsv()` which is backed up by
+# `vroom::vroom()`, while `read_tsv2()` is backed up `data.table::fread()`which
+# has the useful `fill` parameter for when we have missing columns.
+read_tsv2 <- function(file,
+                     col_names,
+                     col_types = "c",
+                     skip = 1L,
+                     n_max = Inf,
+                     na = c("null", "NULL", "N/A", "")) {
+
+  col_types_mapping <- c(
+    `c` = "character",
+    `i` = "integer",
+    `n` = "numeric",
+    `d` = "numeric",
+    `l` = "logical",
+    `f` = "factor",
+    `D` = "Date",
+    `-` = "NULL"
+  )
+
+  col_types <- unlist(strsplit(col_types, split = ""))
+  col_classes <- unname(col_types_mapping[col_types])
+
+  data.table::fread(
+    input = file,
+    sep = "\t",
+    col.names	= col_names,
+    colClasses = col_classes,
+    # header = TRUE,
+    nrows = n_max,
+    na.strings	= na,
+    fill = TRUE,
+    showProgress = FALSE
+  ) |>
+    tibble::as_tibble()
 
 }
 
@@ -488,5 +532,57 @@ read_mrk_genetrap_rpt <- function(file, n_max = Inf) {
       .data$cM_pos,
       .data$chr,
       .data$cell_line
+    )
+}
+
+read_mrk_ensembl_rpt <- function(file, n_max = Inf) {
+  col_names <-
+    c(
+      "marker_id",
+      "marker_symbol",
+      "marker_name",
+      "cM_pos",
+      "chr",
+      "ensembl_id",
+      "ensembl_trp_id",
+      "ensembl_prt_id",
+      "feature_type",
+      "start",
+      "end",
+      "strand",
+      "biotype"
+    )
+
+  col_types <- "ccccccccciicc"
+  # Import data
+  read_tsv2(
+    file = file,
+    col_names = col_names,
+    col_types = col_types,
+    n_max = n_max
+  ) |>
+    dplyr::mutate(
+      cM_pos = cM_pos_col(.data$cM_pos),
+      chr = chr_col(.data$chr),
+      strand = strand_col(.data$strand),
+      feature_type = special_feature_type_col(.data$feature_type),
+      biotype = biotype_col(.data$biotype),
+      ensembl_trp_id = ensembl_trp_id_col(.data$ensembl_trp_id),
+      ensembl_prt_id = ensembl_trp_id_col(.data$ensembl_prt_id)
+    ) |>
+    dplyr::relocate(
+      .data$marker_id,
+      .data$marker_symbol,
+      .data$marker_name,
+      .data$cM_pos,
+      .data$chr,
+      .data$start,
+      .data$end,
+      .data$strand,
+      .data$ensembl_id,
+      .data$ensembl_trp_id,
+      .data$ensembl_prt_id,
+      .data$feature_type,
+      .data$biotype
     )
 }
