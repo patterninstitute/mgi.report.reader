@@ -74,6 +74,7 @@
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
+<p>To read an MGI report into R use <code><a href="reference/read_report.html">read_report()</a></code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://www.pattern.institute/mgi.report.reader">mgi.report.reader</a></span><span class="op">)</span></span>
 <span></span>
@@ -97,24 +98,6 @@
 <span><span class="co">#&gt; # ℹ 4 more variables: end &lt;int&gt;, strand &lt;fct&gt;, feature_type &lt;fct&gt;,</span></span>
 <span><span class="co">#&gt; #   synonyms &lt;list&gt;</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Import Mouse Genetic Markers (excluding withdrawn marker symbols) Report</span></span>
-<span><span class="fu"><a href="reference/read_report.html">read_report</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">base_url</span>, <span class="st">"MRK_List2.rpt"</span><span class="op">)</span>, <span class="st">"MRK_List2"</span>, n_max <span class="op">=</span> <span class="fl">10L</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 10 × 12</span></span>
-<span><span class="co">#&gt;    marker_id   marker_symbol marker_name marker_type status cM_pos chr     start</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt;         &lt;chr&gt;       &lt;fct&gt;       &lt;fct&gt;   &lt;dbl&gt; &lt;fct&gt;   &lt;int&gt;</span></span>
-<span><span class="co">#&gt;  1 MGI:1341858 03B03F        DNA segmen… BAC/YAC end O        NA   5     NA     </span></span>
-<span><span class="co">#&gt;  2 MGI:1341869 03B03R        DNA segmen… BAC/YAC end O        NA   5     NA     </span></span>
-<span><span class="co">#&gt;  3 MGI:1337005 03.MMHAP34FR… DNA segmen… DNA Segment O        NA   11    NA     </span></span>
-<span><span class="co">#&gt;  4 MGI:1918911 0610005C13Rik RIKEN cDNA… Gene        O        29.4 7      4.52e7</span></span>
-<span><span class="co">#&gt;  5 MGI:1923503 0610006L08Rik RIKEN cDNA… Gene        O        NA   7      7.45e7</span></span>
-<span><span class="co">#&gt;  6 MGI:1925547 0610008J02Rik RIKEN cDNA… Gene        O        NA   &lt;NA&gt;  NA     </span></span>
-<span><span class="co">#&gt;  7 MGI:3698435 0610009E02Rik RIKEN cDNA… Gene        O        18.9 2      2.63e7</span></span>
-<span><span class="co">#&gt;  8 MGI:1918921 0610009F21Rik RIKEN cDNA… Gene        O        NA   16     9.17e7</span></span>
-<span><span class="co">#&gt;  9 MGI:1918931 0610009K14Rik RIKEN cDNA… Gene        O        NA   4      1.36e7</span></span>
-<span><span class="co">#&gt; 10 MGI:1914088 0610009L18Rik RIKEN cDNA… Gene        O        84.1 11     1.20e8</span></span>
-<span><span class="co">#&gt; # ℹ 4 more variables: end &lt;int&gt;, strand &lt;fct&gt;, feature_type &lt;fct&gt;,</span></span>
-<span><span class="co">#&gt; #   synonyms &lt;list&gt;</span></span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Import the MGI Marker Coordinates' Report</span></span>
 <span><span class="fu"><a href="reference/read_report.html">read_report</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">base_url</span>, <span class="st">"MGI_MRK_Coord.rpt"</span><span class="op">)</span>, <span class="st">"MGI_MRK_Coord"</span>, n_max <span class="op">=</span> <span class="fl">10L</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 10 × 12</span></span>
@@ -132,43 +115,6 @@
 <span><span class="co">#&gt; 10 MGI:87886 Gene        Chrna2        cholinergic… GRCm39          14    6.64e7</span></span>
 <span><span class="co">#&gt; # ℹ 5 more variables: end &lt;int&gt;, strand &lt;fct&gt;, feature_type &lt;fct&gt;,</span></span>
 <span><span class="co">#&gt; #   provider_collection &lt;fct&gt;, provider_display &lt;fct&gt;</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Import the MGI Sequence Coordinates (in GFF format)</span></span>
-<span><span class="fu"><a href="reference/read_report.html">read_report</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">base_url</span>, <span class="st">"MGI_GTGUP.gff"</span><span class="op">)</span>, <span class="st">"MGI_GTGUP"</span>, n_max <span class="op">=</span> <span class="fl">10L</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 10 × 9</span></span>
-<span><span class="co">#&gt;    marker_id marker_symbol marker_type chr    start    end strand feature_source</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt;         &lt;fct&gt;       &lt;fct&gt;  &lt;int&gt;  &lt;int&gt; &lt;fct&gt;  &lt;fct&gt;         </span></span>
-<span><span class="co">#&gt;  1 MGI:6903… Rr15647       Other Geno… 1     3.05e6 3.05e6 &lt;NA&gt;   MGI           </span></span>
-<span><span class="co">#&gt;  2 MGI:6914… Rr26566       Other Geno… 1     3.05e6 3.05e6 &lt;NA&gt;   MGI           </span></span>
-<span><span class="co">#&gt;  3 MGI:6914… Rr26567       Other Geno… 1     3.05e6 3.05e6 &lt;NA&gt;   MGI           </span></span>
-<span><span class="co">#&gt;  4 MGI:6903… Rr15649       Other Geno… 1     3.06e6 3.06e6 &lt;NA&gt;   MGI           </span></span>
-<span><span class="co">#&gt;  5 MGI:6914… Rr26568       Other Geno… 1     3.06e6 3.06e6 &lt;NA&gt;   MGI           </span></span>
-<span><span class="co">#&gt;  6 MGI:6914… Rr26571       Other Geno… 1     3.06e6 3.06e6 &lt;NA&gt;   MGI           </span></span>
-<span><span class="co">#&gt;  7 MGI:6903… Rr15664       Other Geno… 1     3.08e6 3.08e6 &lt;NA&gt;   MGI           </span></span>
-<span><span class="co">#&gt;  8 MGI:6914… Rr26579       Other Geno… 1     3.10e6 3.10e6 &lt;NA&gt;   MGI           </span></span>
-<span><span class="co">#&gt;  9 MGI:6924… Rr36329       Other Geno… 1     3.12e6 3.12e6 &lt;NA&gt;   MGI           </span></span>
-<span><span class="co">#&gt; 10 MGI:6924… Rr36333       Other Geno… 1     3.13e6 3.13e6 &lt;NA&gt;   MGI           </span></span>
-<span><span class="co">#&gt; # ℹ 1 more variable: feature_type &lt;fct&gt;</span></span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Import the MGI Marker associations to Sequence (GenBank, RefSeq,Ensembl) information</span></span>
-<span><span class="fu"><a href="reference/read_report.html">read_report</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">base_url</span>, <span class="st">"MRK_Sequence.rpt"</span><span class="op">)</span>, <span class="st">"MRK_Sequence"</span>, n_max <span class="op">=</span> <span class="fl">10L</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 10 × 19</span></span>
-<span><span class="co">#&gt;    marker_id   marker_symbol marker_name marker_type status cM_pos chr     start</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt;         &lt;chr&gt;       &lt;fct&gt;       &lt;fct&gt;   &lt;dbl&gt; &lt;fct&gt;   &lt;int&gt;</span></span>
-<span><span class="co">#&gt;  1 MGI:1341858 03B03F        DNA segmen… BAC/YAC end O        NA   5     NA     </span></span>
-<span><span class="co">#&gt;  2 MGI:1341869 03B03R        DNA segmen… BAC/YAC end O        NA   5     NA     </span></span>
-<span><span class="co">#&gt;  3 MGI:1918911 0610005C13Rik RIKEN cDNA… Gene        O        29.4 7      4.52e7</span></span>
-<span><span class="co">#&gt;  4 MGI:1923503 0610006L08Rik RIKEN cDNA… Gene        O        NA   7      7.45e7</span></span>
-<span><span class="co">#&gt;  5 MGI:1925547 0610008J02Rik RIKEN cDNA… Gene        O        NA   &lt;NA&gt;  NA     </span></span>
-<span><span class="co">#&gt;  6 MGI:3698435 0610009E02Rik RIKEN cDNA… Gene        O        18.9 2      2.63e7</span></span>
-<span><span class="co">#&gt;  7 MGI:1918921 0610009F21Rik RIKEN cDNA… Gene        O        NA   16     9.17e7</span></span>
-<span><span class="co">#&gt;  8 MGI:1918931 0610009K14Rik RIKEN cDNA… Gene        O        NA   4      1.36e7</span></span>
-<span><span class="co">#&gt;  9 MGI:1914088 0610009L18Rik RIKEN cDNA… Gene        O        84.1 11     1.20e8</span></span>
-<span><span class="co">#&gt; 10 MGI:1915609 0610010K14Rik RIKEN cDNA… Gene        O        43.0 11     7.01e7</span></span>
-<span><span class="co">#&gt; # ℹ 11 more variables: end &lt;int&gt;, strand &lt;fct&gt;, feature_type &lt;fct&gt;,</span></span>
-<span><span class="co">#&gt; #   genbank_id &lt;chr&gt;, refseq_trp_id &lt;chr&gt;, ensembl_trp_id &lt;chr&gt;,</span></span>
-<span><span class="co">#&gt; #   uniprot_id &lt;chr&gt;, tr_embl_id &lt;chr&gt;, ensembl_prt_id &lt;chr&gt;,</span></span>
-<span><span class="co">#&gt; #   refseq_prt_id &lt;chr&gt;, unigene_id &lt;chr&gt;</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="disclaimer">Disclaimer<a class="anchor" aria-label="anchor" href="#disclaimer"></a>
@@ -207,8 +153,8 @@
 <li>Isabel Duarte <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-0060-2936" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Ismail Gbadamosi <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-1932-7519" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Ali Jawaid <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-1932-7519" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Nencki Institute of Experimental Biology <br><small class="roles"> Copyright holder, funder </small>  </li>
-<li>University of Algarve <br><small class="roles"> Copyright holder, funder </small>  </li>
+<li>Nencki Institute of Experimental Biology <br><small class="roles"> Funder </small>  </li>
+<li>University of Algarve <br><small class="roles"> Funder </small>  </li>
 <li>Pattern Institute <br><small class="roles"> Copyright holder, funder </small>  </li>
 </ul>
 </div>
