@@ -4,23 +4,26 @@
 #'
 #' @param report_file A path or URL to an MGI report file.
 #' @param report_type Report type.
+#' @param n_max Maximum number of lines to read.
 #'
 #' @examples
-#' if (FALSE) {
 #' base_url <- "https://www.informatics.jax.org/downloads/reports"
+#' n <- 10L
 #'
 #' # Import the Mouse Genetic Markers (including withdrawn marker symbols) Report
-#' read_report(file.path(base_url, "MRK_List1.rpt"), "MRK_List1")
+#' read_report(file.path(base_url, "MRK_List1.rpt"), "MRK_List1", n_max = n)
 #'
 #' # Import Mouse Genetic Markers (excluding withdrawn marker symbols) Report
-#' read_report(file.path(base_url, "MRK_List2.rpt"), "MRK_List2")
+#' read_report(file.path(base_url, "MRK_List2.rpt"), "MRK_List2", n_max = n)
 #'
 #' # Import the MGI Marker Coordinates' Report
-#' read_report(file.path(base_url, "MGI_MRK_Coord.rpt"), "MGI_MRK_Coord")
+#' read_report(file.path(base_url, "MGI_MRK_Coord.rpt"), "MGI_MRK_Coord", n_max = n)
 #'
 #' # Import the MGI Sequence Coordinates (in GFF format)
-#' read_report(file.path(base_url, "MGI_GTGUP.gff"), "MGI_GTGUP")
-#' }
+#' read_report(file.path(base_url, "MGI_GTGUP.gff"), "MGI_GTGUP", n_max = n)
+#'
+#' # Import the MGI Marker associations to Sequence (GenBank, RefSeq,Ensembl) information
+#' read_report(file.path(base_url, "MRK_Sequence.rpt"), "MRK_Sequence", n_max = n)
 #'
 #' @returns A [tibble][tibble::tibble-package] with the report data in tidy
 #'   format.
@@ -31,21 +34,25 @@ read_report <- function(report_file,
                                         "MRK_List2",
                                         "MGI_MRK_Coord",
                                         "MGI_Gene_Model_Coord",
-                                        "MGI_GTGUP")) {
+                                        "MGI_GTGUP",
+                                        "MRK_Sequence"),
+                        n_max = Inf) {
 
   report_type <- match.arg(report_type)
   read <- list(MRK_List1 = read_mrk_list_rpt,
                MRK_List2 = read_mrk_list_rpt,
                MGI_MRK_Coord = read_mrk_coord_rpt,
-               MGI_GTGUP = read_gtgup_rpt)
+               MGI_GTGUP = read_gtgup_rpt,
+               MRK_Sequence = read_mrk_sequence_rpt)
 
-  read[[report_type]](file = report_file)
+  read[[report_type]](file = report_file, n_max = n_max)
 }
 
 read_tsv <- function(file,
                      col_names,
                      col_types = "c",
                      skip = 1L,
+                     n_max = Inf,
                      na = c("null", "NULL", "N/A", "")) {
   vroom::vroom(
     file = file,
@@ -53,6 +60,7 @@ read_tsv <- function(file,
     col_names = col_names,
     col_types = col_types,
     skip = skip,
+    n_max = n_max,
     na = na
   )
 
@@ -90,7 +98,7 @@ read_tsv <- function(file,
 #' }
 #'
 #' @keywords internal
-read_mrk_list_rpt <- function(file) {
+read_mrk_list_rpt <- function(file, n_max = Inf) {
   col_names <-
     c(
       "marker_id",
@@ -112,7 +120,8 @@ read_mrk_list_rpt <- function(file) {
   read_tsv(
     file = file,
     col_names = col_names,
-    col_types = col_types
+    col_types = col_types,
+    n_max = n_max
   ) |>
     dplyr::mutate(
       marker_id = marker_id_col(.data$marker_id),
@@ -140,7 +149,7 @@ read_mrk_list_rpt <- function(file) {
     )
 }
 
-read_mrk_coord_rpt <- function(file) {
+read_mrk_coord_rpt <- function(file, n_max = Inf) {
   col_names <-
     c(
       "marker_id",
@@ -163,7 +172,8 @@ read_mrk_coord_rpt <- function(file) {
   read_tsv(
     file = file,
     col_names = col_names,
-    col_types = col_types
+    col_types = col_types,
+    n_max = n_max
   ) |>
     dplyr::mutate(
       marker_id = marker_id_col(.data$marker_id),
@@ -171,7 +181,9 @@ read_mrk_coord_rpt <- function(file) {
       genome_assembly = genome_assembly_col(.data$genome_assembly),
       chr = chr_col(.data$chr),
       strand = strand_col(.data$strand),
-      feature_type = feature_type_col(.data$feature_type)
+      feature_type = feature_type_col(.data$feature_type),
+      provider_collection = factor(provider_collection, levels = unique(provider_collection)),
+      provider_display = factor(provider_display, levels = unique(provider_display))
     ) |>
     dplyr::relocate(
       .data$marker_id,
@@ -189,7 +201,7 @@ read_mrk_coord_rpt <- function(file) {
     )
 }
 
-read_gene_model_coord_rpt <- function(file) {
+read_gene_model_coord_rpt <- function(file, n_max = Inf) {
   col_names <-
     c(
       "marker_id",
@@ -214,7 +226,8 @@ read_gene_model_coord_rpt <- function(file) {
   read_tsv(
     file = file,
     col_names = col_names,
-    col_types = col_types
+    col_types = col_types,
+    n_max = n_max
   ) |>
     dplyr::mutate(
       marker_id = marker_id_col(.data$marker_id),
@@ -244,7 +257,7 @@ read_gene_model_coord_rpt <- function(file) {
     )
 }
 
-read_gtgup_rpt <- function(file) {
+read_gtgup_rpt <- function(file, n_max = Inf) {
   col_names <-
     c(
       "chr",
@@ -263,7 +276,8 @@ read_gtgup_rpt <- function(file) {
   read_tsv(
     file = file,
     col_names = col_names,
-    col_types = col_types
+    col_types = col_types,
+    n_max = n_max
   ) |>
     dplyr::mutate(
       chr = chr_col(stringr::str_remove(.data$chr, "^chr")),
@@ -283,5 +297,68 @@ read_gtgup_rpt <- function(file) {
       .data$strand,
       .data$feature_source,
       .data$feature_type
+    )
+}
+
+read_mrk_sequence_rpt <- function(file, n_max = Inf) {
+  col_names <-
+    c(
+      "marker_id",
+      "marker_symbol",
+      "status",
+      "marker_type",
+      "marker_name",
+      "cM_pos",
+      "chr",
+      "start",
+      "end",
+      "strand",
+      "genbank_id",
+      "refseq_trp_id",
+      "ensembl_trp_id",
+      "uniprot_id",
+      "tr_embl_id",
+      "ensembl_prt_id",
+      "refseq_prt_id",
+      "unigene_id",
+      "feature_type"
+    )
+
+  col_types <- "ccccccciicccccccccc"
+  # Import data
+  read_tsv(
+    file = file,
+    col_names = col_names,
+    col_types = col_types,
+    n_max = n_max
+  ) |>
+    dplyr::mutate(
+      cM_pos = cM_pos_col(cM_pos),
+      chr = chr_col(.data$chr),
+      status = status_col(status),
+      marker_type = marker_type_col(.data$marker_type),
+      strand = strand_col(.data$strand),
+      feature_type = factor(.data$feature_type, levels = feature_types$feature_type)
+    ) |>
+    dplyr::relocate(
+      .data$marker_id,
+      .data$marker_symbol,
+      .data$marker_name,
+      .data$marker_type,
+      .data$status,
+      .data$cM_pos,
+      .data$chr,
+      .data$start,
+      .data$end,
+      .data$strand,
+      .data$feature_type,
+      .data$genbank_id,
+      .data$refseq_trp_id,
+      .data$ensembl_trp_id,
+      .data$uniprot_id,
+      .data$tr_embl_id,
+      .data$ensembl_prt_id,
+      .data$refseq_prt_id,
+      .data$unigene_id
     )
 }

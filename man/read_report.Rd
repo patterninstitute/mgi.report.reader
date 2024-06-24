@@ -7,13 +7,16 @@
 read_report(
   report_file,
   report_type = c("MRK_List1", "MRK_List2", "MGI_MRK_Coord", "MGI_Gene_Model_Coord",
-    "MGI_GTGUP")
+    "MGI_GTGUP", "MRK_Sequence"),
+  n_max = Inf
 )
 }
 \arguments{
 \item{report_file}{A path or URL to an MGI report file.}
 
 \item{report_type}{Report type.}
+
+\item{n_max}{Maximum number of lines to read.}
 }
 \value{
 A \link[tibble:tibble-package]{tibble} with the report data in tidy
@@ -23,20 +26,22 @@ format.
 \code{\link[=read_report]{read_report()}} reads in an MGI report.
 }
 \examples{
-if (FALSE) {
 base_url <- "https://www.informatics.jax.org/downloads/reports"
+n <- 10L
 
 # Import the Mouse Genetic Markers (including withdrawn marker symbols) Report
-read_report(file.path(base_url, "MRK_List1.rpt"), "MRK_List1")
+read_report(file.path(base_url, "MRK_List1.rpt"), "MRK_List1", n_max = n)
 
 # Import Mouse Genetic Markers (excluding withdrawn marker symbols) Report
-read_report(file.path(base_url, "MRK_List2.rpt"), "MRK_List2")
+read_report(file.path(base_url, "MRK_List2.rpt"), "MRK_List2", n_max = n)
 
 # Import the MGI Marker Coordinates' Report
-read_report(file.path(base_url, "MGI_MRK_Coord.rpt"), "MGI_MRK_Coord")
+read_report(file.path(base_url, "MGI_MRK_Coord.rpt"), "MGI_MRK_Coord", n_max = n)
 
 # Import the MGI Sequence Coordinates (in GFF format)
-read_report(file.path(base_url, "MGI_GTGUP.gff"), "MGI_GTGUP")
-}
+read_report(file.path(base_url, "MGI_GTGUP.gff"), "MGI_GTGUP", n_max = n)
+
+# Import the MGI Marker associations to Sequence (GenBank, RefSeq,Ensembl) information
+read_report(file.path(base_url, "MRK_Sequence.rpt"), "MRK_Sequence", n_max = n)
 
 }

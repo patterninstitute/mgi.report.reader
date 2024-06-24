@@ -4,7 +4,7 @@
 \alias{read_mrk_list_rpt}
 \title{Read a marker list report}
 \usage{
-read_mrk_list_rpt(file)
+read_mrk_list_rpt(file, n_max = Inf)
 }
 \arguments{
 \item{file}{Path to a report file.}
