@@ -7,7 +7,7 @@
 read_report(
   report_file,
   report_type = c("MRK_List1", "MRK_List2", "MGI_MRK_Coord", "MGI_Gene_Model_Coord",
-    "MGI_GTGUP", "MRK_Sequence"),
+    "MGI_GTGUP", "MRK_Sequence", "MRK_SwissProt_TrEMBL"),
   n_max = Inf
 )
 }
@@ -33,15 +33,18 @@ n <- 10L
 read_report(file.path(base_url, "MRK_List1.rpt"), "MRK_List1", n_max = n)
 
 # Import Mouse Genetic Markers (excluding withdrawn marker symbols) Report
-read_report(file.path(base_url, "MRK_List2.rpt"), "MRK_List2", n_max = n)
+# read_report(file.path(base_url, "MRK_List2.rpt"), "MRK_List2", n_max = n)
 
 # Import the MGI Marker Coordinates' Report
-read_report(file.path(base_url, "MGI_MRK_Coord.rpt"), "MGI_MRK_Coord", n_max = n)
+# read_report(file.path(base_url, "MGI_MRK_Coord.rpt"), "MGI_MRK_Coord", n_max = n)
 
 # Import the MGI Sequence Coordinates (in GFF format)
-read_report(file.path(base_url, "MGI_GTGUP.gff"), "MGI_GTGUP", n_max = n)
+# read_report(file.path(base_url, "MGI_GTGUP.gff"), "MGI_GTGUP", n_max = n)
 
 # Import the MGI Marker associations to Sequence (GenBank, RefSeq,Ensembl) information
-read_report(file.path(base_url, "MRK_Sequence.rpt"), "MRK_Sequence", n_max = n)
+# read_report(file.path(base_url, "MRK_Sequence.rpt"), "MRK_Sequence", n_max = n)
+
+# Import MGI Marker associations to SWISS-PROT and TrEMBL protein IDs
+# read_report(file.path(base_url, "MRK_SwissProt_TrEMBL.rpt"), "MRK_SwissProt_TrEMBL")
 
 }

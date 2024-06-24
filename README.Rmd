@@ -36,6 +36,8 @@ pak::pak("patterninstitute/mgi.report.reader")
 
 ## Example
 
+To read an MGI report into R use `read_report()`:
+
 ```{r}
 library(mgi.report.reader)
 
@@ -43,14 +45,8 @@ base_url <- "https://www.informatics.jax.org/downloads/reports"
 
 # Import the Mouse Genetic Markers (including withdrawn marker symbols) Report
 read_report(file.path(base_url, "MRK_List1.rpt"), "MRK_List1", n_max = 10L)
-# Import Mouse Genetic Markers (excluding withdrawn marker symbols) Report
-read_report(file.path(base_url, "MRK_List2.rpt"), "MRK_List2", n_max = 10L)
 # Import the MGI Marker Coordinates' Report
 read_report(file.path(base_url, "MGI_MRK_Coord.rpt"), "MGI_MRK_Coord", n_max = 10L)
-# Import the MGI Sequence Coordinates (in GFF format)
-read_report(file.path(base_url, "MGI_GTGUP.gff"), "MGI_GTGUP", n_max = 10L)
-# Import the MGI Marker associations to Sequence (GenBank, RefSeq,Ensembl) information
-read_report(file.path(base_url, "MRK_Sequence.rpt"), "MRK_Sequence", n_max = 10L)
 ```
 
 

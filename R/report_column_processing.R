@@ -36,3 +36,10 @@ feature_type_col <- function(feature_type) {
 marker_type_col <- function(marker_type) {
   factor(marker_type, levels = marker_types())
 }
+
+protein_ids_col <- function(protein_ids) {
+
+  protein_ids <- strsplit(protein_ids, " ", fixed = TRUE)
+  # Convert single NA values to empty character vectors in the list-column.
+  dplyr::if_else(sapply(protein_ids, \(x) length(x) == 1L && is.na(x)), list(character()), protein_ids)
+}

@@ -14,16 +14,19 @@
 #' read_report(file.path(base_url, "MRK_List1.rpt"), "MRK_List1", n_max = n)
 #'
 #' # Import Mouse Genetic Markers (excluding withdrawn marker symbols) Report
-#' read_report(file.path(base_url, "MRK_List2.rpt"), "MRK_List2", n_max = n)
+#' # read_report(file.path(base_url, "MRK_List2.rpt"), "MRK_List2", n_max = n)
 #'
 #' # Import the MGI Marker Coordinates' Report
-#' read_report(file.path(base_url, "MGI_MRK_Coord.rpt"), "MGI_MRK_Coord", n_max = n)
+#' # read_report(file.path(base_url, "MGI_MRK_Coord.rpt"), "MGI_MRK_Coord", n_max = n)
 #'
 #' # Import the MGI Sequence Coordinates (in GFF format)
-#' read_report(file.path(base_url, "MGI_GTGUP.gff"), "MGI_GTGUP", n_max = n)
+#' # read_report(file.path(base_url, "MGI_GTGUP.gff"), "MGI_GTGUP", n_max = n)
 #'
 #' # Import the MGI Marker associations to Sequence (GenBank, RefSeq,Ensembl) information
-#' read_report(file.path(base_url, "MRK_Sequence.rpt"), "MRK_Sequence", n_max = n)
+#' # read_report(file.path(base_url, "MRK_Sequence.rpt"), "MRK_Sequence", n_max = n)
+#'
+#' # Import MGI Marker associations to SWISS-PROT and TrEMBL protein IDs
+#' # read_report(file.path(base_url, "MRK_SwissProt_TrEMBL.rpt"), "MRK_SwissProt_TrEMBL")
 #'
 #' @returns A [tibble][tibble::tibble-package] with the report data in tidy
 #'   format.
@@ -35,7 +38,8 @@ read_report <- function(report_file,
                                         "MGI_MRK_Coord",
                                         "MGI_Gene_Model_Coord",
                                         "MGI_GTGUP",
-                                        "MRK_Sequence"),
+                                        "MRK_Sequence",
+                                        "MRK_SwissProt_TrEMBL"),
                         n_max = Inf) {
 
   report_type <- match.arg(report_type)
@@ -43,7 +47,8 @@ read_report <- function(report_file,
                MRK_List2 = read_mrk_list_rpt,
                MGI_MRK_Coord = read_mrk_coord_rpt,
                MGI_GTGUP = read_gtgup_rpt,
-               MRK_Sequence = read_mrk_sequence_rpt)
+               MRK_Sequence = read_mrk_sequence_rpt,
+               MRK_SwissProt_TrEMBL = read_mrk_swissprot_tr_embl_rpt)
 
   read[[report_type]](file = report_file, n_max = n_max)
 }
@@ -360,5 +365,50 @@ read_mrk_sequence_rpt <- function(file, n_max = Inf) {
       .data$ensembl_prt_id,
       .data$refseq_prt_id,
       .data$unigene_id
+    )
+}
+
+# MGI Marker Accession ID
+# Marker Symbol
+# Status
+# Marker Name
+# cM Position
+# Chromosome
+# SWISS-PROT/TrEMBL
+# Protein Accession IDs (space-delimited)
+read_mrk_swissprot_tr_embl_rpt <- function(file, n_max = Inf) {
+  col_names <-
+    c(
+      "marker_id",
+      "marker_symbol",
+      "status",
+      "marker_name",
+      "cM_pos",
+      "chr",
+      "protein_ids"
+    )
+
+  col_types <- "ccccccc"
+  # Import data
+  read_tsv(
+    file = file,
+    col_names = col_names,
+    col_types = col_types,
+    n_max = n_max
+  ) |>
+    dplyr::mutate(
+      cM_pos = cM_pos_col(.data$cM_pos),
+      chr = chr_col(.data$chr),
+      status = status_col(.data$status),
+      protein_ids = protein_ids_col(.data$protein_ids)
+    ) |>
+    dplyr::relocate(
+      .data$marker_id,
+      .data$marker_symbol,
+      .data$marker_name,
+      .data$status,
+      .data$cM_pos,
+      .data$chr,
+      .data$protein_ids
     )
 }
