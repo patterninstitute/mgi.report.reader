@@ -7,7 +7,7 @@
 read_report(
   report_file,
   report_type = c("MRK_List1", "MRK_List2", "MGI_MRK_Coord", "MGI_Gene_Model_Coord",
-    "MGI_GTGUP", "MRK_Sequence", "MRK_SwissProt_TrEMBL"),
+    "MGI_GTGUP", "MRK_Sequence", "MRK_SwissProt_TrEMBL", "MRK_SwissProt"),
   n_max = Inf
 )
 }
@@ -46,5 +46,8 @@ read_report(file.path(base_url, "MRK_List1.rpt"), "MRK_List1", n_max = n)
 
 # Import MGI Marker associations to SWISS-PROT and TrEMBL protein IDs
 # read_report(file.path(base_url, "MRK_SwissProt_TrEMBL.rpt"), "MRK_SwissProt_TrEMBL")
+
+# Import MGI Marker associations to SWISS-PROT protein IDs
+# read_report(file.path(base_url, "MRK_SwissProt.rpt"), "MRK_SwissProt")
 
 }

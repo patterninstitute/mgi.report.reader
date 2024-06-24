@@ -28,6 +28,9 @@
 #' # Import MGI Marker associations to SWISS-PROT and TrEMBL protein IDs
 #' # read_report(file.path(base_url, "MRK_SwissProt_TrEMBL.rpt"), "MRK_SwissProt_TrEMBL")
 #'
+#' # Import MGI Marker associations to SWISS-PROT protein IDs
+#' # read_report(file.path(base_url, "MRK_SwissProt.rpt"), "MRK_SwissProt")
+#'
 #' @returns A [tibble][tibble::tibble-package] with the report data in tidy
 #'   format.
 #'
@@ -39,7 +42,8 @@ read_report <- function(report_file,
                                         "MGI_Gene_Model_Coord",
                                         "MGI_GTGUP",
                                         "MRK_Sequence",
-                                        "MRK_SwissProt_TrEMBL"),
+                                        "MRK_SwissProt_TrEMBL",
+                                        "MRK_SwissProt"),
                         n_max = Inf) {
 
   report_type <- match.arg(report_type)
@@ -48,7 +52,8 @@ read_report <- function(report_file,
                MGI_MRK_Coord = read_mrk_coord_rpt,
                MGI_GTGUP = read_gtgup_rpt,
                MRK_Sequence = read_mrk_sequence_rpt,
-               MRK_SwissProt_TrEMBL = read_mrk_swissprot_tr_embl_rpt)
+               MRK_SwissProt_TrEMBL = read_mrk_swissprot_tr_embl_rpt,
+               MRK_SwissProt = read_mrk_swissprot_rpt)
 
   read[[report_type]](file = report_file, n_max = n_max)
 }
@@ -402,5 +407,41 @@ read_mrk_swissprot_tr_embl_rpt <- function(file, n_max = Inf) {
       .data$cM_pos,
       .data$chr,
       .data$protein_ids
+    )
+}
+
+read_mrk_swissprot_rpt <- function(file, n_max = Inf) {
+  col_names <-
+    c(
+      "marker_id",
+      "marker_symbol",
+      "status",
+      "marker_name",
+      "cM_pos",
+      "chr",
+      "spp_id"
+    )
+
+  col_types <- "ccccccc"
+  # Import data
+  read_tsv(
+    file = file,
+    col_names = col_names,
+    col_types = col_types,
+    n_max = n_max
+  ) |>
+    dplyr::mutate(
+      cM_pos = cM_pos_col(.data$cM_pos),
+      chr = chr_col(.data$chr),
+      status = status_col(.data$status)
+    ) |>
+    dplyr::relocate(
+      .data$marker_id,
+      .data$marker_symbol,
+      .data$marker_name,
+      .data$status,
+      .data$cM_pos,
+      .data$chr,
+      .data$spp_id
     )
 }
