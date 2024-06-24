@@ -9,3 +9,4 @@
 ^\.github$
 ^vignettes/articles$
 ^CODE_OF_CONDUCT\.md$
+^cran-comments\.md$

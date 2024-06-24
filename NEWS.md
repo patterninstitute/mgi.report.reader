@@ -1,0 +1,3 @@
+# mgi.report.reader 0.0.1
+
+* Initial CRAN submission.
