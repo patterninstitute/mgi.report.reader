@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/mgi.report.reader)](https://CRAN.R-project.org/package=mgi.report.reader)
+[![R-CMD-check](https://github.com/patterninstitute/mgi.report.reader/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/patterninstitute/mgi.report.reader/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 `{mgi.report.reader}` provides a set of functions designed to facilitate the
@@ -41,14 +42,15 @@ library(mgi.report.reader)
 base_url <- "https://www.informatics.jax.org/downloads/reports"
 
 # Import the Mouse Genetic Markers (including withdrawn marker symbols) Report
-read_report(file.path(base_url, "MRK_List1.rpt"), "MRK_List1")
-
+read_report(file.path(base_url, "MRK_List1.rpt"), "MRK_List1", n_max = 10L)
 # Import Mouse Genetic Markers (excluding withdrawn marker symbols) Report
-read_report(file.path(base_url, "MRK_List2.rpt"), "MRK_List2")
-
+read_report(file.path(base_url, "MRK_List2.rpt"), "MRK_List2", n_max = 10L)
 # Import the MGI Marker Coordinates' Report
-read_report(file.path(base_url, "MGI_MRK_Coord.rpt"), "MGI_MRK_Coord")
-
+read_report(file.path(base_url, "MGI_MRK_Coord.rpt"), "MGI_MRK_Coord", n_max = 10L)
+# Import the MGI Sequence Coordinates (in GFF format)
+read_report(file.path(base_url, "MGI_GTGUP.gff"), "MGI_GTGUP", n_max = 10L)
+# Import the MGI Marker associations to Sequence (GenBank, RefSeq,Ensembl) information
+read_report(file.path(base_url, "MRK_Sequence.rpt"), "MRK_Sequence", n_max = 10L)
 ```
 
 
