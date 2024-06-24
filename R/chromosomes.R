@@ -11,12 +11,12 @@
 #'
 #' @examples
 #' # All chromosomes.
-#' chromosomes()
+#' mgi.report.reader:::chromosomes()
 #'
 #' # Autosomal chromosomes.
-#' chromosomes(autosomal = TRUE, sexual = FALSE, mitochondrial = FALSE)
+#' mgi.report.reader:::chromosomes(autosomal = TRUE, sexual = FALSE, mitochondrial = FALSE)
 #'
-#' @export
+#' @keywords internal
 chromosomes <- function(autosomal = TRUE, sexual = TRUE, mitochondrial = TRUE) {
 
   empty <- character()

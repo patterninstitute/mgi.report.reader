@@ -17,12 +17,8 @@ files](https://www.informatics.jax.org/downloads/reports/index.html).
 
 ## Installation
 
-You can install the development version of `{mgi.report.reader}` like
-so:
-
 ``` r
-# install.packages("pak")
-pak::pak("patterninstitute/mgi.report.reader")
+install.packages("mgi.report.reader")
 ```
 
 ## Example

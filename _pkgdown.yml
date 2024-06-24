@@ -2,3 +2,11 @@ url: https://www.pattern.institute/mgi.report.reader/
 template:
   bootstrap: 5
 
+reference:
+- title: Read MGI reports
+  contents:
+  - read_report
+
+- title: Data sets
+  contents:
+  - feature_types

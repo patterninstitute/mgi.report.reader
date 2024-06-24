@@ -22,9 +22,10 @@ or an empty character vector.
 }
 \examples{
 # All chromosomes.
-chromosomes()
+mgi.report.reader:::chromosomes()
 
 # Autosomal chromosomes.
-chromosomes(autosomal = TRUE, sexual = FALSE, mitochondrial = FALSE)
+mgi.report.reader:::chromosomes(autosomal = TRUE, sexual = FALSE, mitochondrial = FALSE)
 
 }
+\keyword{internal}
