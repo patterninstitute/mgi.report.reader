@@ -6,7 +6,8 @@
 \usage{
 read_report(
   report_file,
-  report_type = c("MRK_List1", "MRK_List2", "MGI_MRK_Coord", "MGI_Gene_Model_Coord")
+  report_type = c("MRK_List1", "MRK_List2", "MGI_MRK_Coord", "MGI_Gene_Model_Coord",
+    "MGI_GTGUP")
 )
 }
 \arguments{
@@ -33,6 +34,9 @@ read_report(file.path(base_url, "MRK_List2.rpt"), "MRK_List2")
 
 # Import the MGI Marker Coordinates' Report
 read_report(file.path(base_url, "MGI_MRK_Coord.rpt"), "MGI_MRK_Coord")
+
+# Import the MGI Sequence Coordinates (in GFF format)
+read_report(file.path(base_url, "MGI_GTGUP.gff"), "MGI_GTGUP")
 }
 
 }

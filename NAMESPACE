@@ -2,5 +2,6 @@
 
 export(chromosomes)
 export(read_report)
+importFrom(data.table,":=")
 importFrom(rlang,.data)
 importFrom(tibble,tibble)

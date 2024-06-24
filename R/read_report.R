@@ -17,6 +17,9 @@
 #'
 #' # Import the MGI Marker Coordinates' Report
 #' read_report(file.path(base_url, "MGI_MRK_Coord.rpt"), "MGI_MRK_Coord")
+#'
+#' # Import the MGI Sequence Coordinates (in GFF format)
+#' read_report(file.path(base_url, "MGI_GTGUP.gff"), "MGI_GTGUP")
 #' }
 #'
 #' @returns A [tibble][tibble::tibble-package] with the report data in tidy
@@ -27,12 +30,15 @@ read_report <- function(report_file,
                         report_type = c("MRK_List1",
                                         "MRK_List2",
                                         "MGI_MRK_Coord",
-                                        "MGI_Gene_Model_Coord")) {
+                                        "MGI_Gene_Model_Coord",
+                                        "MGI_GTGUP")) {
 
   report_type <- match.arg(report_type)
   read <- list(MRK_List1 = read_mrk_list_rpt,
                MRK_List2 = read_mrk_list_rpt,
-               MGI_MRK_Coord = read_mrk_coord_rpt)
+               MGI_MRK_Coord = read_mrk_coord_rpt,
+               MGI_GTGUP = read_gtgup_rpt)
+
   read[[report_type]](file = report_file)
 }
 
@@ -235,5 +241,47 @@ read_gene_model_coord_rpt <- function(file) {
       .data$ensembl_start,
       .data$ensembl_end,
       .data$ensembl_strand
+    )
+}
+
+read_gtgup_rpt <- function(file) {
+  col_names <-
+    c(
+      "chr",
+      "feature_source",
+      "marker_type",
+      "start",
+      "end",
+      "empty1",
+      "strand",
+      "empty2",
+      "misc"
+    )
+
+  col_types <- "cccii-c-c"
+  # Import data
+  read_tsv(
+    file = file,
+    col_names = col_names,
+    col_types = col_types
+  ) |>
+    dplyr::mutate(
+      chr = chr_col(stringr::str_remove(.data$chr, "^chr")),
+      feature_source = as.factor(.data$feature_source),
+      marker_type = marker_type_col(.data$marker_type),
+      strand = strand_col(.data$strand)
+    ) |>
+    extract_gff_attributes("misc") |>
+    dplyr::mutate(feature_type = factor(.data$feature_type, levels = feature_types$feature_type)) |>
+    dplyr::relocate(
+      .data$marker_id,
+      .data$marker_symbol,
+      .data$marker_type,
+      .data$chr,
+      .data$start,
+      .data$end,
+      .data$strand,
+      .data$feature_source,
+      .data$feature_type
     )
 }

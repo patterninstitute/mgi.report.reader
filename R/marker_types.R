@@ -1,6 +1,7 @@
 marker_types <- function() {
   c(
     "Gene",
+    "GeneModel",
     "Pseudogene",
     "DNA Segment",
     "Transgene",

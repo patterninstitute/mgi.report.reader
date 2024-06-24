@@ -29,8 +29,10 @@ Depends:
     R (>= 2.10)
 LazyData: true
 Imports: 
+    data.table,
     dplyr,
     rlang,
+    stringr,
     tibble,
     vroom
 URL: https://www.pattern.institute/mgi.report.reader, https://github.com/patterninstitute/mgi.report.reader
