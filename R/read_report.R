@@ -368,14 +368,6 @@ read_mrk_sequence_rpt <- function(file, n_max = Inf) {
     )
 }
 
-# MGI Marker Accession ID
-# Marker Symbol
-# Status
-# Marker Name
-# cM Position
-# Chromosome
-# SWISS-PROT/TrEMBL
-# Protein Accession IDs (space-delimited)
 read_mrk_swissprot_tr_embl_rpt <- function(file, n_max = Inf) {
   col_names <-
     c(
