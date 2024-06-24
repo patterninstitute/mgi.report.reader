@@ -68,7 +68,8 @@
 </h1></div>
 <!-- badges: start -->
 
-<p><a href="https://www.pattern.institute/mgi.report.reader">mgi.report.reader</a> provides a set of functions designed to facilitate the reading, parsing, and analysis of <a href="https://www.informatics.jax.org" class="external-link">MGI (Mouse Genome Informatics)</a> <a href="https://www.informatics.jax.org/downloads/reports/index.html" class="external-link">report files</a>.</p>
+<p><a href="https://www.pattern.institute/mgi.report.reader">mgi.report.reader</a> provides readers for easy and consistent importing of MGI (Mouse Genome Informatics) report files: <a href="https://www.informatics.jax.org/downloads/reports/index.html" class="external-link uri">https://www.informatics.jax.org/downloads/reports/index.html</a>.</p>
+<p>Essentially, what this package provides is a single function <code><a href="reference/read_report.html">read_report()</a></code> to import MGI reports. We try to use a consistent naming scheme for variables across reports, use appropriate variable types, e.g. factors for variables with small enumerations, convert disparate missing values to <code>NA</code>, and other time-consuming tidying steps, so that you don’t have to.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -83,9 +84,11 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://www.pattern.institute/mgi.report.reader">mgi.report.reader</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">base_url</span> <span class="op">&lt;-</span> <span class="st">"https://www.informatics.jax.org/downloads/reports"</span></span>
+<span><span class="va">marker_list1_rpt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">base_url</span>, <span class="st">"MRK_List1.rpt"</span><span class="op">)</span></span>
+<span><span class="va">coordinates_rpt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">base_url</span>, <span class="st">"MGI_MRK_Coord.rpt"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Import the Mouse Genetic Markers (including withdrawn marker symbols) Report</span></span>
-<span><span class="fu"><a href="reference/read_report.html">read_report</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">base_url</span>, <span class="st">"MRK_List1.rpt"</span><span class="op">)</span>, <span class="st">"MRK_List1"</span>, n_max <span class="op">=</span> <span class="fl">10L</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/read_report.html">read_report</a></span><span class="op">(</span><span class="va">marker_list1_rpt</span>, <span class="st">"MRK_List1"</span>, n_max <span class="op">=</span> <span class="fl">10L</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 10 × 12</span></span>
 <span><span class="co">#&gt;    marker_id   marker_symbol marker_name marker_type status cM_pos chr     start</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt;         &lt;chr&gt;       &lt;fct&gt;       &lt;fct&gt;   &lt;dbl&gt; &lt;fct&gt;   &lt;int&gt;</span></span>
@@ -103,7 +106,7 @@
 <span><span class="co">#&gt; #   synonyms &lt;list&gt;</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Import the MGI Marker Coordinates' Report</span></span>
-<span><span class="fu"><a href="reference/read_report.html">read_report</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">base_url</span>, <span class="st">"MGI_MRK_Coord.rpt"</span><span class="op">)</span>, <span class="st">"MGI_MRK_Coord"</span>, n_max <span class="op">=</span> <span class="fl">10L</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/read_report.html">read_report</a></span><span class="op">(</span><span class="va">coordinates_rpt</span>, <span class="st">"MGI_MRK_Coord"</span>, n_max <span class="op">=</span> <span class="fl">10L</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 10 × 12</span></span>
 <span><span class="co">#&gt;    marker_id marker_type marker_symbol marker_name  genome_assembly chr    start</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt;     &lt;fct&gt;       &lt;chr&gt;         &lt;chr&gt;        &lt;fct&gt;           &lt;fct&gt;  &lt;int&gt;</span></span>
@@ -118,7 +121,7 @@
 <span><span class="co">#&gt;  9 MGI:87940 Gene        Grk2          G protein-c… GRCm39          19    4.34e6</span></span>
 <span><span class="co">#&gt; 10 MGI:87886 Gene        Chrna2        cholinergic… GRCm39          14    6.64e7</span></span>
 <span><span class="co">#&gt; # ℹ 5 more variables: end &lt;int&gt;, strand &lt;fct&gt;, feature_type &lt;fct&gt;,</span></span>
-<span><span class="co">#&gt; #   provider_collection &lt;fct&gt;, provider_display &lt;fct&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt; #   provider &lt;fct&gt;, provider_display &lt;fct&gt;</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
@@ -129,6 +132,14 @@
 <h2 id="disclaimer">Disclaimer<a class="anchor" aria-label="anchor" href="#disclaimer"></a>
 </h2>
 <p>The <a href="https://www.pattern.institute/mgi.report.reader">mgi.report.reader</a> package is provided “as is” without any guarantees or warranty. Although the authors have made every effort to ensure the accuracy and reliability of the software and its documentation, they are not responsible for any errors, omissions, or misinterpretations. Users are advised to test the package thoroughly before relying on it in critical applications. The authors disclaim all liability for any damage or loss resulting from the use of this package. Use of the <a href="https://www.pattern.institute/mgi.report.reader">mgi.report.reader</a> package is at the user’s own risk.</p>
+</div>
+<div class="section level2">
+<h2 id="citing-this-package">Citing this package<a class="anchor" aria-label="anchor" href="#citing-this-package"></a>
+</h2>
+<ul>
+<li><p>Firstly, if you use this package please do not forget to start by citing the Mouse Genome Informatics (MGI) and Jackson Laboratory (JAX) as they are the original providers of the data here made accessible with these readers. For details on how to cite MGI resources, please refer to: <a href="https://www.informatics.jax.org/mgihome/other/citation.shtml" class="external-link uri">https://www.informatics.jax.org/mgihome/other/citation.shtml</a>.</p></li>
+<li><p>To cite us, see <a href="https://www.pattern.institute/mgi.report.reader/authors.html#citation" class="uri">https://www.pattern.institute/mgi.report.reader/authors.html#citation</a>.</p></li>
+</ul>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
