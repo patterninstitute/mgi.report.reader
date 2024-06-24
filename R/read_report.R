@@ -182,8 +182,8 @@ read_mrk_coord_rpt <- function(file, n_max = Inf) {
       chr = chr_col(.data$chr),
       strand = strand_col(.data$strand),
       feature_type = feature_type_col(.data$feature_type),
-      provider_collection = factor(provider_collection, levels = unique(provider_collection)),
-      provider_display = factor(provider_display, levels = unique(provider_display))
+      provider_collection = factor(.data$provider_collection, levels = unique(.data$provider_collection)),
+      provider_display = factor(.data$provider_display, levels = unique(.data$provider_display))
     ) |>
     dplyr::relocate(
       .data$marker_id,
@@ -333,9 +333,9 @@ read_mrk_sequence_rpt <- function(file, n_max = Inf) {
     n_max = n_max
   ) |>
     dplyr::mutate(
-      cM_pos = cM_pos_col(cM_pos),
+      cM_pos = cM_pos_col(.data$cM_pos),
       chr = chr_col(.data$chr),
-      status = status_col(status),
+      status = status_col(.data$status),
       marker_type = marker_type_col(.data$marker_type),
       strand = strand_col(.data$strand),
       feature_type = factor(.data$feature_type, levels = feature_types$feature_type)
