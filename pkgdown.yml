@@ -3,7 +3,7 @@ pkgdown: 2.0.9
 pkgdown_sha: ~
 articles:
   mouse-genetic-markers: mouse-genetic-markers.html
-last_built: 2024-06-24T23:18Z
+last_built: 2024-06-24T23:31Z
 urls:
   reference: https://www.pattern.institute/mgi.report.reader/reference
   article: https://www.pattern.institute/mgi.report.reader/articles
