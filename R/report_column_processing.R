@@ -43,3 +43,10 @@ protein_ids_col <- function(protein_ids) {
   # Convert single NA values to empty character vectors in the list-column.
   dplyr::if_else(sapply(protein_ids, \(x) length(x) == 1L && is.na(x)), list(character()), protein_ids)
 }
+
+cell_line_col <- function(cell_line) {
+
+  cell_line <- strsplit(cell_line, " ", fixed = TRUE)
+  # Convert single NA values to empty character vectors in the list-column.
+  dplyr::if_else(sapply(cell_line, \(x) length(x) == 1L && is.na(x)), list(character()), cell_line)
+}
