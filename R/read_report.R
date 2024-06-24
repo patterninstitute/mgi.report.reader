@@ -3,55 +3,47 @@
 #' [read_report()] reads in an MGI report.
 #'
 #' @param report_file A path or URL to an MGI report file.
-#' @param report_type Report type.
+#' @param report_type Report type, one of:
+#' - `"MRK_List1"`: Mouse Genetic Markers (including withdrawn marker symbols).
+#' - `"MRK_List2"`: Mouse Genetic Markers (excluding withdrawn marker symbols).
+#' - `"MGI_MRK_Coord"`: MGI Marker Coordinates.
+#' - `"MGI_GTGUP"`: MGI Sequence Coordinates.
+#' - `"MRK_Sequence"`: MGI Marker associations to Sequence (GenBank, RefSeq,
+#'                     Ensembl) information.
+#' - `"MRK_SwissProt_TrEMBL"`: MGI Marker associations to SWISS-PROT and TrEMBL
+#'                             protein IDs.
+#' - `"MRK_SwissProt"`: MGI Marker associations to SWISS-PROT protein IDs.
+#' - `"MRK_GeneTrap"`: MGI Marker associations to Gene Trap IDs.
+#' - `"MRK_ENSEMBL"`: MGI Marker associations to Ensembl sequence information.
+#' - `"MGI_BioTypeConflict"`: MGI Marker associations to Ensembl or NCBI gene
+#'                            models where a gene vs. pseudogene discrepancy
+#'                            exists.
 #' @param n_max Maximum number of lines to read.
 #'
 #' @examples
 #' base_url <- "https://www.informatics.jax.org/downloads/reports"
-#' n <- 10L
-#'
+#' url <- file.path(base_url, "MRK_List1.rpt")
 #' # Import the Mouse Genetic Markers (including withdrawn marker symbols) Report
-#' read_report(file.path(base_url, "MRK_List1.rpt"), "MRK_List1", n_max = n)
-#'
-#' # Import Mouse Genetic Markers (excluding withdrawn marker symbols) Report
-#' # read_report(file.path(base_url, "MRK_List2.rpt"), "MRK_List2")
-#'
-#' # Import the MGI Marker Coordinates' Report
-#' # read_report(file.path(base_url, "MGI_MRK_Coord.rpt"), "MGI_MRK_Coord")
-#'
-#' # Import the MGI Sequence Coordinates (in GFF format)
-#' # read_report(file.path(base_url, "MGI_GTGUP.gff"), "MGI_GTGUP")
-#'
-#' # Import the MGI Marker associations to Sequence (GenBank, RefSeq,Ensembl) information
-#' # read_report(file.path(base_url, "MRK_Sequence.rpt"), "MRK_Sequence")
-#'
-#' # Import MGI Marker associations to SWISS-PROT and TrEMBL protein IDs
-#' # read_report(file.path(base_url, "MRK_SwissProt_TrEMBL.rpt"), "MRK_SwissProt_TrEMBL")
-#'
-#' # Import MGI Marker associations to SWISS-PROT protein IDs
-#' # read_report(file.path(base_url, "MRK_SwissProt.rpt"), "MRK_SwissProt")
-#'
-#' # MGI Marker associations to Gene Trap IDs
-#' # read_report(file.path(base_url, "MRK_GeneTrap.rpt"), "MRK_GeneTrap")
-#'
-#' # MGI Marker associations to Ensembl sequence information
-#' # read_report(file.path(base_url, "MRK_ENSEMBL.rpt"), "MRK_ENSEMBL")
+#' read_report(url, "MRK_List1", n_max = 10L)
 #'
 #' @returns A [tibble][tibble::tibble-package] with the report data in tidy
 #'   format.
 #'
 #' @export
 read_report <- function(report_file,
-                        report_type = c("MRK_List1",
-                                        "MRK_List2",
-                                        "MGI_MRK_Coord",
-                                        "MGI_Gene_Model_Coord",
-                                        "MGI_GTGUP",
-                                        "MRK_Sequence",
-                                        "MRK_SwissProt_TrEMBL",
-                                        "MRK_SwissProt",
-                                        "MRK_GeneTrap",
-                                        "MRK_ENSEMBL"),
+                        report_type = c(
+                          "MRK_List1",
+                          "MRK_List2",
+                          "MGI_MRK_Coord",
+                          "MGI_Gene_Model_Coord",
+                          "MGI_GTGUP",
+                          "MRK_Sequence",
+                          "MRK_SwissProt_TrEMBL",
+                          "MRK_SwissProt",
+                          "MRK_GeneTrap",
+                          "MRK_ENSEMBL",
+                          "MGI_BioTypeConflict"
+                        ),
                         n_max = Inf) {
 
   report_type <- match.arg(report_type)
@@ -63,7 +55,8 @@ read_report <- function(report_file,
                MRK_SwissProt_TrEMBL = read_mrk_swissprot_tr_embl_rpt,
                MRK_SwissProt = read_mrk_swissprot_rpt,
                MRK_GeneTrap = read_mrk_genetrap_rpt,
-               MRK_ENSEMBL = read_mrk_ensembl_rpt)
+               MRK_ENSEMBL = read_mrk_ensembl_rpt,
+               MGI_BioTypeConflict = read_mgi_biotype_conflict_rpt)
 
   read[[report_type]](file = report_file, n_max = n_max)
 }
@@ -73,7 +66,8 @@ read_tsv <- function(file,
                      col_types = "c",
                      skip = 1L,
                      n_max = Inf,
-                     na = c("null", "NULL", "N/A", "")) {
+                     na = c("null", "NULL", "N/A", ""),
+                     comment = "") {
   vroom::vroom(
     file = file,
     delim = "\t",
@@ -81,7 +75,8 @@ read_tsv <- function(file,
     col_types = col_types,
     skip = skip,
     n_max = n_max,
-    na = na
+    na = na,
+    comment = comment
   )
 
 }
@@ -221,7 +216,7 @@ read_mrk_coord_rpt <- function(file, n_max = Inf) {
       "end",
       "strand",
       "genome_assembly",
-      "provider_collection",
+      "provider",
       "provider_display"
     )
 
@@ -241,7 +236,7 @@ read_mrk_coord_rpt <- function(file, n_max = Inf) {
       chr = chr_col(.data$chr),
       strand = strand_col(.data$strand),
       feature_type = feature_type_col(.data$feature_type),
-      provider_collection = factor(.data$provider_collection, levels = unique(.data$provider_collection)),
+      provider = factor(.data$provider, levels = unique(.data$provider)),
       provider_display = factor(.data$provider_display, levels = unique(.data$provider_display))
     ) |>
     dplyr::relocate(
@@ -255,7 +250,7 @@ read_mrk_coord_rpt <- function(file, n_max = Inf) {
       .data$end,
       .data$strand,
       .data$feature_type,
-      .data$provider_collection,
+      .data$provider,
       .data$provider_display
     )
 }
@@ -585,4 +580,37 @@ read_mrk_ensembl_rpt <- function(file, n_max = Inf) {
       .data$feature_type,
       .data$biotype
     )
+}
+
+read_mgi_biotype_conflict_rpt <- function(file, n_max = Inf) {
+  col_names <-
+    c(
+      "marker_id",
+      "marker_symbol",
+      "provider",
+      "gene_id",
+      "biotype",
+      "mgi_gene_model"
+    )
+
+  col_types <- "cccccc"
+  # Import data
+  vroom::vroom_lines(file = file) |>
+    # Keep only lines that contain data.
+    grep("^MGI", x = _, value = TRUE) |>
+    paste(collapse = "\n") |>
+    read_tsv(col_names = col_names,
+             col_types = col_types,
+             n_max = n_max) |>
+  dplyr::mutate(
+    provider = provider_col(.data$provider)
+  ) |>
+  dplyr::relocate(
+    .data$marker_id,
+    .data$marker_symbol,
+    .data$provider,
+    .data$gene_id,
+    .data$mgi_gene_model,
+    .data$biotype
+  )
 }

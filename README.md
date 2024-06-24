@@ -73,6 +73,13 @@ read_report(file.path(base_url, "MGI_MRK_Coord.rpt"), "MGI_MRK_Coord", n_max = 1
 #> #   provider_collection <fct>, provider_display <fct>
 ```
 
+## Code of Conduct
+
+Please note that the `{mgi.report.reader}` project is released with a
+[Contributor Code of
+Conduct](https://www.pattern.institute/mgi.report.reader/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
+
 ## Disclaimer
 
 The `{mgi.report.reader}` package is provided “as is” without any

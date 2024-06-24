@@ -49,6 +49,11 @@ read_report(file.path(base_url, "MRK_List1.rpt"), "MRK_List1", n_max = 10L)
 read_report(file.path(base_url, "MGI_MRK_Coord.rpt"), "MGI_MRK_Coord", n_max = 10L)
 ```
 
+## Code of Conduct
+  
+Please note that the `{mgi.report.reader}` project is released with a [Contributor
+Code of Conduct](https://www.pattern.institute/mgi.report.reader/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
 
 ## Disclaimer
 

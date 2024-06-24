@@ -81,3 +81,19 @@ ensembl_prt_id_col <- function(ensembl_prt_id) {
   # Convert single NA values to empty character vectors in the list-column.
   dplyr::if_else(sapply(ensembl_prt_id, \(x) length(x) == 1L && is.na(x)), list(character()), ensembl_prt_id)
 }
+
+provider_col <- function(provider) {
+  providers <- c(
+    "MGI",
+    "NCBI Gene Model",
+    "Ensembl Gene Model",
+    "Ensembl Reg Gene Model",
+    "QTL",
+    "RIKEN",
+    "gff3blat",
+    "VISTA Gene Model"
+  )
+
+  factor(provider, levels = providers)
+
+}

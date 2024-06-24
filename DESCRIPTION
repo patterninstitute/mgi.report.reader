@@ -18,8 +18,8 @@ Authors@R: c(
     person("University of Algarve", role = "fnd"),
     person("Pattern Institute", role = c("cph", "fnd"))
   )
-Description: Provides a set of functions designed to facilitate the reading,
-    parsing, and analysis of MGI (Mouse Genome Informatics) report files:
+Description: Provides readers for easy and consistent importing of MGI
+    (Mouse Genome Informatics) report files:
     <https://www.informatics.jax.org/downloads/reports/index.html>.
 License: MIT + file LICENSE
 Encoding: UTF-8

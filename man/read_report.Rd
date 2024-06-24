@@ -8,14 +8,30 @@ read_report(
   report_file,
   report_type = c("MRK_List1", "MRK_List2", "MGI_MRK_Coord", "MGI_Gene_Model_Coord",
     "MGI_GTGUP", "MRK_Sequence", "MRK_SwissProt_TrEMBL", "MRK_SwissProt", "MRK_GeneTrap",
-    "MRK_ENSEMBL"),
+    "MRK_ENSEMBL", "MGI_BioTypeConflict"),
   n_max = Inf
 )
 }
 \arguments{
 \item{report_file}{A path or URL to an MGI report file.}
 
-\item{report_type}{Report type.}
+\item{report_type}{Report type, one of:
+\itemize{
+\item \code{"MRK_List1"}: Mouse Genetic Markers (including withdrawn marker symbols).
+\item \code{"MRK_List2"}: Mouse Genetic Markers (excluding withdrawn marker symbols).
+\item \code{"MGI_MRK_Coord"}: MGI Marker Coordinates.
+\item \code{"MGI_GTGUP"}: MGI Sequence Coordinates.
+\item \code{"MRK_Sequence"}: MGI Marker associations to Sequence (GenBank, RefSeq,
+Ensembl) information.
+\item \code{"MRK_SwissProt_TrEMBL"}: MGI Marker associations to SWISS-PROT and TrEMBL
+protein IDs.
+\item \code{"MRK_SwissProt"}: MGI Marker associations to SWISS-PROT protein IDs.
+\item \code{"MRK_GeneTrap"}: MGI Marker associations to Gene Trap IDs.
+\item \code{"MRK_ENSEMBL"}: MGI Marker associations to Ensembl sequence information.
+\item \code{"MGI_BioTypeConflict"}: MGI Marker associations to Ensembl or NCBI gene
+models where a gene vs. pseudogene discrepancy
+exists.
+}}
 
 \item{n_max}{Maximum number of lines to read.}
 }
@@ -28,33 +44,8 @@ format.
 }
 \examples{
 base_url <- "https://www.informatics.jax.org/downloads/reports"
-n <- 10L
-
+url <- file.path(base_url, "MRK_List1.rpt")
 # Import the Mouse Genetic Markers (including withdrawn marker symbols) Report
-read_report(file.path(base_url, "MRK_List1.rpt"), "MRK_List1", n_max = n)
-
-# Import Mouse Genetic Markers (excluding withdrawn marker symbols) Report
-# read_report(file.path(base_url, "MRK_List2.rpt"), "MRK_List2")
-
-# Import the MGI Marker Coordinates' Report
-# read_report(file.path(base_url, "MGI_MRK_Coord.rpt"), "MGI_MRK_Coord")
-
-# Import the MGI Sequence Coordinates (in GFF format)
-# read_report(file.path(base_url, "MGI_GTGUP.gff"), "MGI_GTGUP")
-
-# Import the MGI Marker associations to Sequence (GenBank, RefSeq,Ensembl) information
-# read_report(file.path(base_url, "MRK_Sequence.rpt"), "MRK_Sequence")
-
-# Import MGI Marker associations to SWISS-PROT and TrEMBL protein IDs
-# read_report(file.path(base_url, "MRK_SwissProt_TrEMBL.rpt"), "MRK_SwissProt_TrEMBL")
-
-# Import MGI Marker associations to SWISS-PROT protein IDs
-# read_report(file.path(base_url, "MRK_SwissProt.rpt"), "MRK_SwissProt")
-
-# MGI Marker associations to Gene Trap IDs
-# read_report(file.path(base_url, "MRK_GeneTrap.rpt"), "MRK_GeneTrap")
-
-# MGI Marker associations to Ensembl sequence information
-# read_report(file.path(base_url, "MRK_ENSEMBL.rpt"), "MRK_ENSEMBL")
+read_report(url, "MRK_List1", n_max = 10L)
 
 }

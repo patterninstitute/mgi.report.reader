@@ -6,7 +6,7 @@
 \alias{mgi.report.reader-package}
 \title{mgi.report.reader: MGI Report Readers}
 \description{
-Provides a set of functions designed to facilitate the reading, parsing, and analysis of MGI (Mouse Genome Informatics) report files: \url{https://www.informatics.jax.org/downloads/reports/index.html}.
+Provides readers for easy and consistent importing of MGI (Mouse Genome Informatics) report files: \url{https://www.informatics.jax.org/downloads/reports/index.html}.
 }
 \seealso{
 Useful links:
