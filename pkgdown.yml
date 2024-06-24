@@ -1,8 +1,9 @@
 pandoc: 3.1.11
 pkgdown: 2.0.9
 pkgdown_sha: ~
-articles: {}
-last_built: 2024-06-24T17:57Z
+articles:
+  mouse-genetic-markers: mouse-genetic-markers.html
+last_built: 2024-06-24T22:10Z
 urls:
   reference: https://www.pattern.institute/mgi.report.reader/reference
   article: https://www.pattern.institute/mgi.report.reader/articles
