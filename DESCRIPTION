@@ -14,8 +14,8 @@ Authors@R: c(
       email = "a.jawaid@nencki.edu.pl",
       role = "aut",
       comment = c(ORCID = "0000-0002-1932-7519")), 
-    person("Nencki Institute of Experimental Biology", role = c("cph", "fnd")),
-    person("University of Algarve", role = c("cph", "fnd")),
+    person("Nencki Institute of Experimental Biology", role = "fnd"),
+    person("University of Algarve", role = "fnd"),
     person("Pattern Institute", role = c("cph", "fnd"))
   )
 Description: Provides a set of functions designed to facilitate the reading,

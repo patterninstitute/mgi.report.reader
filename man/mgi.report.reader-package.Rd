@@ -29,8 +29,8 @@ Authors:
 
 Other contributors:
 \itemize{
-  \item Nencki Institute of Experimental Biology [copyright holder, funder]
-  \item University of Algarve [copyright holder, funder]
+  \item Nencki Institute of Experimental Biology [funder]
+  \item University of Algarve [funder]
   \item Pattern Institute [copyright holder, funder]
 }
 
