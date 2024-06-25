@@ -18,6 +18,7 @@
 #' - `"MGI_BioTypeConflict"`: MGI Marker associations to Ensembl or NCBI gene
 #'                            models where a gene vs. pseudogene discrepancy
 #'                            exists.
+#' - `"MGI_InterProDomains"`: InterPro domain associations to MGI markers.
 #' @param n_max Maximum number of lines to read.
 #'
 #' @examples
@@ -42,7 +43,8 @@ read_report <- function(report_file,
                           "MRK_SwissProt",
                           "MRK_GeneTrap",
                           "MRK_ENSEMBL",
-                          "MGI_BioTypeConflict"
+                          "MGI_BioTypeConflict",
+                          "MGI_InterProDomains"
                         ),
                         n_max = Inf) {
 
@@ -56,7 +58,8 @@ read_report <- function(report_file,
                MRK_SwissProt = read_mrk_swissprot_rpt,
                MRK_GeneTrap = read_mrk_genetrap_rpt,
                MRK_ENSEMBL = read_mrk_ensembl_rpt,
-               MGI_BioTypeConflict = read_mgi_biotype_conflict_rpt)
+               MGI_BioTypeConflict = read_mgi_biotype_conflict_rpt,
+               MGI_InterProDomains = read_mgi_inter_pro_domains_rpt)
 
   read[[report_type]](file = report_file, n_max = n_max)
 }
@@ -613,4 +616,83 @@ read_mgi_biotype_conflict_rpt <- function(file, n_max = Inf) {
     .data$mgi_gene_model,
     .data$biotype
   )
+}
+
+# Marker Symbol
+# Marker Name
+# Primer Marker Name
+# MGI Marker Accession ID
+# MGI Primer Pair ID
+# Primer 1 Sequence
+# Primer 2 Sequence
+# Amplimer Size
+# Chromosome
+# Map Position
+
+# FIX: This function is not working at the moment because of a bad formatting
+# of PRB_PrimerSeq.rpt. Filed an issue, now waiting for feedback.
+# read_prb_primerseq_rpt <- function(file, n_max = Inf) {
+#   col_names <-
+#     c(
+#       "marker_symbol",
+#       "marker_name",
+#       "primer_marker_name",
+#       "marker_id",
+#       "primer_pair_id",
+#       "primer_one_sequence",
+#       "primer_two_sequence",
+#       "amplimer_size",
+#       "chr",
+#       "cM_pos"
+#     )
+#
+#   col_types <- "cccccccccc"
+#   # Import data
+#   read_tsv(
+#     file = file,
+#     col_names = col_names,
+#     col_types = col_types,
+#     n_max = n_max
+#   ) |>
+#     dplyr::mutate(
+#       cM_pos = cM_pos_col(.data$cM_pos),
+#       chr = chr_col(.data$chr)
+#     ) |>
+#     dplyr::relocate(
+#       .data$marker_id,
+#       .data$marker_symbol,
+#       .data$marker_name,
+#       .data$primer_pair_id,
+#       .data$primer_marker_name,
+#       .data$chr,
+#       .data$cM_pos,
+#       .data$amplimer_size,
+#       .data$primer_one_sequence,
+#       .data$primer_two_sequence
+#     )
+# }
+
+read_mgi_inter_pro_domains_rpt <- function(file, n_max = Inf) {
+  col_names <-
+    c(
+      "interpro_id",
+      "interpro_domain",
+      "marker_id",
+      "marker_symbol"
+    )
+
+  col_types <- "cccc"
+  # Import data
+  read_tsv(
+    file = file,
+    col_names = col_names,
+    col_types = col_types,
+    n_max = n_max
+  ) |>
+    dplyr::relocate(
+      .data$interpro_id,
+      .data$interpro_domain,
+      .data$marker_id,
+      .data$marker_symbol
+    )
 }
