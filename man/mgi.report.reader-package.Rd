@@ -13,7 +13,7 @@ Useful links:
 \itemize{
   \item \url{https://www.pattern.institute/mgi.report.reader/}
   \item \url{https://github.com/patterninstitute/mgi.report.reader/}
-  \item Report bugs at \url{https://www.pattern.institute/mgi.report.reader/issues}
+  \item Report bugs at \url{https://github.com/patterninstitute/mgi.report.reader/issues}
 }
 
 }

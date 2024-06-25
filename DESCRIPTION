@@ -36,5 +36,5 @@ Imports:
     tibble,
     vroom
 URL: https://www.pattern.institute/mgi.report.reader/, https://github.com/patterninstitute/mgi.report.reader/
-BugReports: https://www.pattern.institute/mgi.report.reader/issues
+BugReports: https://github.com/patterninstitute/mgi.report.reader/issues
 Config/Needs/website: rmarkdown
