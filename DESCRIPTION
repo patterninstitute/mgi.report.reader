@@ -13,7 +13,7 @@ Authors@R: c(
     person(given = "Ali", family = "Jawaid",
       email = "a.jawaid@nencki.edu.pl",
       role = "aut",
-      comment = c(ORCID = "0000-0002-1932-7519")), 
+      comment = c(ORCID = "0000-0002-5126-6744")), 
     person("Nencki Institute of Experimental Biology", role = "fnd"),
     person("University of Algarve", role = "fnd"),
     person("Pattern Institute", role = c("cph", "fnd"))

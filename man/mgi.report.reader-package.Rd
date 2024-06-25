@@ -24,7 +24,7 @@ Authors:
 \itemize{
   \item Isabel Duarte \email{iduarte@pattern.institute} (\href{https://orcid.org/0000-0003-0060-2936}{ORCID})
   \item Ismail Gbadamosi \email{i.gbadamosi@nencki.edu.pl} (\href{https://orcid.org/0000-0002-1932-7519}{ORCID})
-  \item Ali Jawaid \email{a.jawaid@nencki.edu.pl} (\href{https://orcid.org/0000-0002-1932-7519}{ORCID})
+  \item Ali Jawaid \email{a.jawaid@nencki.edu.pl} (\href{https://orcid.org/0000-0002-5126-6744}{ORCID})
 }
 
 Other contributors:
