@@ -11,7 +11,7 @@ status](https://www.r-pkg.org/badges/version/mgi.report.reader)](https://CRAN.R-
 <!-- badges: end -->
 
 `{mgi.report.reader}` provides readers for easy and consistent importing
-of MGI (Mouse Genome Informatics) report files:
+of Mouse Genome Informatics (MGI) report files:
 <https://www.informatics.jax.org/downloads/reports/index.html>.
 
 Essentially, what this package provides is a single function

@@ -4,15 +4,15 @@
 \name{mgi.report.reader-package}
 \alias{mgi.report.reader}
 \alias{mgi.report.reader-package}
-\title{mgi.report.reader: MGI Report Readers}
+\title{mgi.report.reader: Read Mouse Genome Informatics Reports}
 \description{
-Provides readers for easy and consistent importing of MGI (Mouse Genome Informatics) report files: \url{https://www.informatics.jax.org/downloads/reports/index.html}.
+Provides readers for easy and consistent importing of Mouse Genome Informatics (MGI) report files: \url{https://www.informatics.jax.org/downloads/reports/index.html}.
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://www.pattern.institute/mgi.report.reader}
-  \item \url{https://github.com/patterninstitute/mgi.report.reader}
+  \item \url{https://www.pattern.institute/mgi.report.reader/}
+  \item \url{https://github.com/patterninstitute/mgi.report.reader/}
   \item Report bugs at \url{https://www.pattern.institute/mgi.report.reader/issues}
 }
 
