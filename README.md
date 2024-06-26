@@ -65,14 +65,14 @@ read_report(coordinates_rpt, "MGI_MRK_Coord", n_max = 10L)
 #>    <chr>     <fct>       <chr>         <chr>        <fct>           <fct>  <int>
 #>  1 MGI:87853 Gene        a             nonagouti    GRCm39          2     1.55e8
 #>  2 MGI:87854 Gene        Pzp           PZP, alpha-… GRCm39          6     1.28e8
-#>  3 MGI:87937 Gene        Adrb1         adrenergic … GRCm39          19    5.67e7
-#>  4 MGI:87904 Gene        Actb          actin, beta  GRCm39          5     1.43e8
-#>  5 MGI:87938 Gene        Adrb2         adrenergic … GRCm39          18    6.23e7
+#>  3 MGI:87881 Gene        Acp1          acid phosph… GRCm39          12    3.09e7
+#>  4 MGI:87926 Gene        Adh7          alcohol deh… GRCm39          3     1.38e8
+#>  5 MGI:87929 Gene        Adh5          alcohol deh… GRCm39          3     1.38e8
 #>  6 MGI:87859 Gene        Abl1          c-abl oncog… GRCm39          2     3.16e7
-#>  7 MGI:87939 Gene        Adrb3         adrenergic … GRCm39          8     2.77e7
+#>  7 MGI:87882 Gene        Acp2          acid phosph… GRCm39          2     9.10e7
 #>  8 MGI:87862 Gene        Scgb1b27      secretoglob… GRCm39          7     3.37e7
-#>  9 MGI:87940 Gene        Grk2          G protein-c… GRCm39          19    4.34e6
-#> 10 MGI:87886 Gene        Chrna2        cholinergic… GRCm39          14    6.64e7
+#>  9 MGI:87883 Gene        Acp5          acid phosph… GRCm39          9     2.20e7
+#> 10 MGI:87930 Gene        Adk           adenosine k… GRCm39          14    2.11e7
 #> # ℹ 5 more variables: end <int>, strand <fct>, feature_type <fct>,
 #> #   provider <fct>, provider_display <fct>
 ```
