@@ -5,14 +5,14 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="Provides readers for easy and consistent importing of Mouse Genome Informatics (MGI) report files: &lt;https://www.informatics.jax.org/downloads/reports/index.html&gt;. These data are provided by Baldarelli RM, Smith CL, Ringwald M, Richardson JE, Bult CJ, Mouse Genome Informatics Group. (2024) &lt;doi:10.1093/genetics/&gt;.">
+<meta name="description" content="Provides readers for easy and consistent importing of Mouse Genome Informatics (MGI) report files: &lt;https://www.informatics.jax.org/downloads/reports/index.html&gt;. These data are provided by Baldarelli RM, Smith CL, Ringwald M, Richardson JE, Bult CJ, Mouse Genome Informatics Group. (2024) &lt;doi:10.1093/genetics/iyae031&gt;.">
 <title>Read Mouse Genome Informatics Reports • mgi.report.reader</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" integrity="sha512-7O5pXpc0oCRrxk8RUfDYFgn0nO1t+jLuIOQdOMRp4APB7uZ4vSjspzp5y6YDtDs4VzUSTbWzBFZ/LKJhnyFOKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Read Mouse Genome Informatics Reports">
-<meta property="og:description" content="Provides readers for easy and consistent importing of Mouse Genome Informatics (MGI) report files: &lt;https://www.informatics.jax.org/downloads/reports/index.html&gt;. These data are provided by Baldarelli RM, Smith CL, Ringwald M, Richardson JE, Bult CJ, Mouse Genome Informatics Group. (2024) &lt;doi:10.1093/genetics/&gt;.">
+<meta property="og:description" content="Provides readers for easy and consistent importing of Mouse Genome Informatics (MGI) report files: &lt;https://www.informatics.jax.org/downloads/reports/index.html&gt;. These data are provided by Baldarelli RM, Smith CL, Ringwald M, Richardson JE, Bult CJ, Mouse Genome Informatics Group. (2024) &lt;doi:10.1093/genetics/iyae031&gt;.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -115,14 +115,14 @@
 <span><span class="co">#&gt;    &lt;chr&gt;     &lt;fct&gt;       &lt;chr&gt;         &lt;chr&gt;        &lt;fct&gt;           &lt;fct&gt;  &lt;int&gt;</span></span>
 <span><span class="co">#&gt;  1 MGI:87853 Gene        a             nonagouti    GRCm39          2     1.55e8</span></span>
 <span><span class="co">#&gt;  2 MGI:87854 Gene        Pzp           PZP, alpha-… GRCm39          6     1.28e8</span></span>
-<span><span class="co">#&gt;  3 MGI:87937 Gene        Adrb1         adrenergic … GRCm39          19    5.67e7</span></span>
-<span><span class="co">#&gt;  4 MGI:87904 Gene        Actb          actin, beta  GRCm39          5     1.43e8</span></span>
-<span><span class="co">#&gt;  5 MGI:87938 Gene        Adrb2         adrenergic … GRCm39          18    6.23e7</span></span>
+<span><span class="co">#&gt;  3 MGI:87881 Gene        Acp1          acid phosph… GRCm39          12    3.09e7</span></span>
+<span><span class="co">#&gt;  4 MGI:87926 Gene        Adh7          alcohol deh… GRCm39          3     1.38e8</span></span>
+<span><span class="co">#&gt;  5 MGI:87929 Gene        Adh5          alcohol deh… GRCm39          3     1.38e8</span></span>
 <span><span class="co">#&gt;  6 MGI:87859 Gene        Abl1          c-abl oncog… GRCm39          2     3.16e7</span></span>
-<span><span class="co">#&gt;  7 MGI:87939 Gene        Adrb3         adrenergic … GRCm39          8     2.77e7</span></span>
+<span><span class="co">#&gt;  7 MGI:87882 Gene        Acp2          acid phosph… GRCm39          2     9.10e7</span></span>
 <span><span class="co">#&gt;  8 MGI:87862 Gene        Scgb1b27      secretoglob… GRCm39          7     3.37e7</span></span>
-<span><span class="co">#&gt;  9 MGI:87940 Gene        Grk2          G protein-c… GRCm39          19    4.34e6</span></span>
-<span><span class="co">#&gt; 10 MGI:87886 Gene        Chrna2        cholinergic… GRCm39          14    6.64e7</span></span>
+<span><span class="co">#&gt;  9 MGI:87883 Gene        Acp5          acid phosph… GRCm39          9     2.20e7</span></span>
+<span><span class="co">#&gt; 10 MGI:87930 Gene        Adk           adenosine k… GRCm39          14    2.11e7</span></span>
 <span><span class="co">#&gt; # ℹ 5 more variables: end &lt;int&gt;, strand &lt;fct&gt;, feature_type &lt;fct&gt;,</span></span>
 <span><span class="co">#&gt; #   provider &lt;fct&gt;, provider_display &lt;fct&gt;</span></span></code></pre></div>
 </div>
