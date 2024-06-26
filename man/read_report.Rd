@@ -8,7 +8,7 @@ read_report(
   report_file,
   report_type = c("MRK_List1", "MRK_List2", "MGI_MRK_Coord", "MGI_Gene_Model_Coord",
     "MGI_GTGUP", "MRK_Sequence", "MRK_SwissProt_TrEMBL", "MRK_SwissProt", "MRK_GeneTrap",
-    "MRK_ENSEMBL", "MGI_BioTypeConflict", "MGI_InterProDomains"),
+    "MRK_ENSEMBL", "MGI_BioTypeConflict", "PRB_PrimerSeq", "MGI_InterProDomains"),
   n_max = Inf
 )
 }
@@ -31,6 +31,7 @@ protein IDs.
 \item \code{"MGI_BioTypeConflict"}: MGI Marker associations to Ensembl or NCBI gene
 models where a gene vs. pseudogene discrepancy
 exists.
+\item \code{"PRB_PrimerSeq"}: MGI Marker associations with primer pairs.
 \item \code{"MGI_InterProDomains"}: InterPro domain associations to MGI markers.
 }}
 
