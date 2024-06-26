@@ -6,7 +6,7 @@
 \alias{mgi.report.reader-package}
 \title{mgi.report.reader: Read Mouse Genome Informatics Reports}
 \description{
-Provides readers for easy and consistent importing of Mouse Genome Informatics (MGI) report files: \url{https://www.informatics.jax.org/downloads/reports/index.html}.
+Provides readers for easy and consistent importing of Mouse Genome Informatics (MGI) report files: \url{https://www.informatics.jax.org/downloads/reports/index.html}. These data are provided by Baldarelli RM, Smith CL, Ringwald M, Richardson JE, Bult CJ, Mouse Genome Informatics Group. (2024) \doi{10.1093/genetics/}.
 }
 \seealso{
 Useful links:
