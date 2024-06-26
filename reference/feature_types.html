@@ -65,7 +65,8 @@ their Sequence Ontology (SO) identifiers and definitions.</p>
 
     <div class="section level2">
     <h2 id="format">Format<a class="anchor" aria-label="anchor" href="#format"></a></h2>
-    <p>A <a href="https://tibble.tidyverse.org/reference/tibble-package.html" class="external-link">tibble</a> with 71 rows and 3 variables:</p><dl><dt>feature_type</dt>
+    <p>A <a href="https://tibble.tidyverse.org/reference/tibble-package.html" class="external-link">tibble</a> with 71 rows
+and 3 variables:</p><dl><dt>feature_type</dt>
 <dd><p>Character. The type of gene or genome feature.</p></dd>
 
 <dt>so_id</dt>
@@ -78,26 +79,87 @@ their Sequence Ontology (SO) identifiers and definitions.</p>
 </dl></div>
     <div class="section level2">
     <h2 id="source">Source<a class="anchor" aria-label="anchor" href="#source"></a></h2>
-    <p><a href="https://www.informatics.jax.org/userhelp/GENE_feature_types_help.shtml" class="external-link">https://www.informatics.jax.org/userhelp/GENE_feature_types_help.shtml</a></p>
+    <p>The table in <a href="https://www.informatics.jax.org/userhelp/GENE_feature_types_help.shtml" class="external-link">https://www.informatics.jax.org/userhelp/GENE_feature_types_help.shtml</a>
+and a few other terms found in MGI reports.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">feature_types</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">feature_types</span>, n <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 71 × 3</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    feature_type                so_id      definition                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> gene                        SO:0000704 A region (or regions) that include al…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> protein coding gene         SO:0001217 A gene that produces at least one tra…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> gene segment                SO:3000000 A gene component region which acts as…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> unclassified gene           <span style="color: #BB0000;">NA</span>         A region of the genome associated wit…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> heritable phenotypic marker SO:0001500 A biological region characterized as …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> other feature types         <span style="color: #BB0000;">NA</span>         MGI markers that are not classified a…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> QTL                         SO:0000771 A quantitative trait locus (QTL) is a…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> transgene                   SO:0000902 A gene that has been transferred natu…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> non-coding RNA gene         SO:0001263 A gene that produces an RNA transcrip…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> lncRNA gene                 SO:0001877 A gene that encodes a non-coding RNA …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 61 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    feature_type                          so_id      definition                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> gene                                  SO:0000704 A region (or regions) that …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> protein coding gene                   SO:0001217 A gene that produces at lea…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> gene segment                          SO:3000000 A gene component region whi…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> unclassified gene                     <span style="color: #BB0000;">NA</span>         A region of the genome asso…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> heritable phenotypic marker           SO:0001500 A biological region charact…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> other feature types                   <span style="color: #BB0000;">NA</span>         MGI markers that are not cl…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> QTL                                   SO:0000771 A quantitative trait locus …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> transgene                             SO:0000902 A gene that has been transf…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> non-coding RNA gene                   SO:0001263 A gene that produces an RNA…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> lncRNA gene                           SO:0001877 A gene that encodes a non-c…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> antisense lncRNA gene                 SO:0002182 A gene that encodes a non-c…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> lincRNA gene                          SO:0001641 A gene that encodes large i…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> sense intronic lncRNA gene            SO:0002184 A gene that encodes a sense…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> sense overlapping lncRNA gene         SO:0002183 A gene that encodes a sense…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> bidirectional promoter lncRNA gene    SO:0002185 A non-coding locus that ori…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> rRNA gene                             SO:0001637 A gene that encodes ribosom…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">17</span> tRNA gene                             SO:0001272 A gene that encodes Transfe…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">18</span> snRNA gene                            SO:0001268 A gene that encodes a Small…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">19</span> snoRNA gene                           SO:0001267 A gene that encodes for Sma…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">20</span> miRNA gene                            SO:0001265 A gene that encodes for mic…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">21</span> scRNA gene                            SO:0001266 A gene that encodes for Sma…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">22</span> SRP RNA gene                          SO:0000590 A gene that encodes the sig…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">23</span> RNase P RNA gene                      SO:0001639 A gene that encodes RNase P…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">24</span> RNase MRP RNA gene                    SO:0001640 A gene that encodes RNase M…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">25</span> telomerase RNA gene                   SO:0001643 A non-coding RNA gene, the …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">26</span> unclassified non-coding RNA gene      <span style="color: #BB0000;">NA</span>         A non-coding RNA gene not c…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">27</span> ribozyme gene                         SO:0002181 A gene that encodes an RNA …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">28</span> complex/cluster/region                <span style="color: #BB0000;">NA</span>         A group of linked markers c…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">29</span> cytogenetic marker                    <span style="color: #BB0000;">NA</span>         A structure within a chromo…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">30</span> chromosomal deletion                  SO:1000029 An incomplete chromosome.   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">31</span> insertion                             SO:0000667 The sequence of one or more…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">32</span> chromosomal inversion                 SO:1000030 An interchromosomal mutatio…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">33</span> Robertsonian fusion                   SO:1000043 A non reciprocal translocat…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">34</span> reciprocal chromosomal translocation  SO:1000048 A chromosomal translocation…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">35</span> chromosomal translocation             SO:1000044 An interchromosomal mutatio…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">36</span> chromosomal duplication               SO:1000037 An extra chromosome.        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">37</span> chromosomal transposition             SO:0000453 A chromosome structure vari…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">38</span> unclassified cytogenetic marker       <span style="color: #BB0000;">NA</span>         A cytogenetic marker not cl…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">39</span> BAC/YAC end                           <span style="color: #BB0000;">NA</span>         A region of sequence from t…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">40</span> BAC end                               SO:0000999 A region of sequence from t…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">41</span> YAC end                               SO:0001498 A region of sequence from t…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">42</span> PAC end                               SO:0001480 A region of sequence from t…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">43</span> other genome feature                  <span style="color: #BB0000;">NA</span>         A region of the genome asso…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">44</span> retrotransposon                       SO:0000180 A transposable element that…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">45</span> telomere                              SO:0000624 A specific structure at the…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">46</span> minisatellite                         SO:0000643 A repeat region containing …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">47</span> unclassified other genome feature     <span style="color: #BB0000;">NA</span>         A genome feature that canno…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">48</span> endogenous retroviral region          SO:0000903 A region derived from viral…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">49</span> mutation defined region               <span style="color: #BB0000;">NA</span>         A genomic region, containin…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">50</span> CpG island                            SO:0000307 Regions of a few hundred to…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">51</span> promoter                              SO:0000167 A regulatory region compose…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">52</span> promoter flanking region              SO:0001952 Transcription factor bindin…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">53</span> TSS region                            SO:0001240 The region of a gene from t…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">54</span> enhancer                              SO:0000165 A cis-acting sequence that …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">55</span> CTCF binding site                     SO:0001974 A transcription factor bind…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">56</span> transcription factor binding site     SO:0000235 A DNA site where a transcri…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">57</span> open chromatin region                 SO:0001747 Regions of spaced out histo…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">58</span> DNA segment                           <span style="color: #BB0000;">NA</span>         A region of the genome asso…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">59</span> pseudogenic region                    SO:0000462 A non-functional descendant…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">60</span> pseudogene                            SO:0000336 A sequence that closely res…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">61</span> pseudogenic gene segment              SO:0001741 A recombinational unit of a…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">62</span> polymorphic pseudogene                SO:0001841 Pseudogene owing to a SNP/D…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">63</span> imprinting control region             SO:0002191 A regulatory region that co…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">64</span> intronic regulatory region            SO:0001492 A regulatory region that is…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">65</span> silencer                              SO:0000625 A regulatory region which u…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">66</span> locus control region                  SO:0000037 A DNA region that includes …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">67</span> insulator                             SO:0000627 A regulatory region that 1)…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">68</span> response element                      SO:0002205 A regulatory element that a…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">69</span> origin of replication                 SO:0000296 A region of nucleic acid fr…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">70</span> transcriptional cis regulatory region SO:0001055 A regulatory_region that mo…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">71</span> TSS cluster                           SO:0001915 A region defined by a clust…</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
