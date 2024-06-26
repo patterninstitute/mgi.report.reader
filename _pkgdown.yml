@@ -10,3 +10,7 @@ reference:
 - title: Data sets
   contents:
   - feature_types
+
+- title: Utilities
+  contents:
+  - chromosomes
