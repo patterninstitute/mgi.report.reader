@@ -5,7 +5,8 @@
 \alias{feature_types}
 \title{Genome Feature Type Definitions}
 \format{
-A \link[tibble:tibble-package]{tibble} with 71 rows and 3 variables:
+A \link[tibble:tibble-package]{tibble} with 71 rows
+and 3 variables:
 \describe{
 \item{feature_type}{Character. The type of gene or genome feature.}
 \item{so_id}{Character. The Sequence Ontology identifier associated with the feature type.}
@@ -13,7 +14,8 @@ A \link[tibble:tibble-package]{tibble} with 71 rows and 3 variables:
 }
 }
 \source{
-\url{https://www.informatics.jax.org/userhelp/GENE_feature_types_help.shtml}
+The table in \url{https://www.informatics.jax.org/userhelp/GENE_feature_types_help.shtml}
+and a few other terms found in MGI reports.
 }
 \usage{
 feature_types
@@ -23,7 +25,7 @@ A dataset containing different types of gene and genome features along with
 their Sequence Ontology (SO) identifiers and definitions.
 }
 \examples{
-feature_types
+print(feature_types, n = Inf)
 
 }
 \keyword{datasets}

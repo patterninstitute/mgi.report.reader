@@ -3,7 +3,8 @@
 #' A dataset containing different types of gene and genome features along with
 #' their Sequence Ontology (SO) identifiers and definitions.
 #'
-#' @format A [tibble][tibble::tibble-package] with 71 rows and 3 variables:
+#' @format A [tibble][tibble::tibble-package] with `r nrow(feature_types)` rows
+#'   and `r ncol(feature_types)` variables:
 #' \describe{
 #'   \item{feature_type}{Character. The type of gene or genome feature.}
 #'   \item{so_id}{Character. The Sequence Ontology identifier associated with the feature type.}
@@ -11,7 +12,9 @@
 #' }
 #'
 #' @examples
-#' feature_types
+#' print(feature_types, n = Inf)
 #'
-#' @source \url{https://www.informatics.jax.org/userhelp/GENE_feature_types_help.shtml}
+#' @source
+#'   The table in \url{https://www.informatics.jax.org/userhelp/GENE_feature_types_help.shtml}
+#'   and a few other terms found in MGI reports.
 "feature_types"
