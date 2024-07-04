@@ -2,8 +2,20 @@ pandoc: 3.1.11
 pkgdown: 2.0.9
 pkgdown_sha: ~
 articles:
-  mouse-genetic-markers: mouse-genetic-markers.html
-last_built: 2024-06-27T14:50Z
+  biotype_conflicts: biotype_conflicts.html
+  ensembl_ids: ensembl_ids.html
+  genbank_refseq_ensembl_ids: genbank_refseq_ensembl_ids.html
+  gene_model_coordinates: gene_model_coordinates.html
+  gene_trap_ids: gene_trap_ids.html
+  interpro_domains: interpro_domains.html
+  marker_coordinates: marker_coordinates.html
+  marker_list1: marker_list1.html
+  marker_list2: marker_list2.html
+  primers: primers.html
+  sequence_coordinates: sequence_coordinates.html
+  swiss_prot_ids: swiss_prot_ids.html
+  swiss_trembl_ids: swiss_trembl_ids.html
+last_built: 2024-07-04T17:26Z
 urls:
   reference: https://www.pattern.institute/mgi.report.reader/reference
   article: https://www.pattern.institute/mgi.report.reader/articles

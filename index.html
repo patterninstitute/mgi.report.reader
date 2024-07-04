@@ -5,14 +5,17 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="Provides readers for easy and consistent importing of Mouse Genome Informatics (MGI) report files: &lt;https://www.informatics.jax.org/downloads/reports/index.html&gt;. These data are provided by Baldarelli RM, Smith CL, Ringwald M, Richardson JE, Bult CJ, Mouse Genome Informatics Group. (2024) &lt;doi:10.1093/genetics/iyae031&gt;.">
+<meta name="description" content="Provides readers for easy and consistent importing of Mouse Genome Informatics (MGI) report files: &lt;https://www.informatics.jax.org/downloads/reports/index.html&gt;. These data are provided by Baldarelli RM, Smith CL, Ringwald M, Richardson JE, Bult CJ, Mouse Genome Informatics Group (2024) &lt;doi:10.1093/genetics/iyae031&gt;.">
 <title>Read Mouse Genome Informatics Reports • mgi.report.reader</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/Nunito-0.4.9/font.css" rel="stylesheet">
+<link href="deps/Inconsolata-0.4.9/font.css" rel="stylesheet">
+<link href="deps/Source_Sans_Pro-0.4.9/font.css" rel="stylesheet">
+<!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" integrity="sha512-7O5pXpc0oCRrxk8RUfDYFgn0nO1t+jLuIOQdOMRp4APB7uZ4vSjspzp5y6YDtDs4VzUSTbWzBFZ/LKJhnyFOKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Read Mouse Genome Informatics Reports">
-<meta property="og:description" content="Provides readers for easy and consistent importing of Mouse Genome Informatics (MGI) report files: &lt;https://www.informatics.jax.org/downloads/reports/index.html&gt;. These data are provided by Baldarelli RM, Smith CL, Ringwald M, Richardson JE, Bult CJ, Mouse Genome Informatics Group. (2024) &lt;doi:10.1093/genetics/iyae031&gt;.">
+<meta property="og:description" content="Provides readers for easy and consistent importing of Mouse Genome Informatics (MGI) report files: &lt;https://www.informatics.jax.org/downloads/reports/index.html&gt;. These data are provided by Baldarelli RM, Smith CL, Ringwald M, Richardson JE, Bult CJ, Mouse Genome Informatics Group (2024) &lt;doi:10.1093/genetics/iyae031&gt;.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -22,11 +25,11 @@
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light" data-bs-theme="light"><div class="container">
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-none" data-bs-theme="light"><div class="container">
     
     <a class="navbar-brand me-2" href="index.html">mgi.report.reader</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.9.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,14 +38,29 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-reports">Reports</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-reports">
+    <h6 class="dropdown-header" data-toc-skip>Mouse Genetic Markers</h6>
+    <a class="dropdown-item" href="articles/marker_list1.html">All Markers (MRK_List1.rpt)</a>
+    <a class="dropdown-item" href="articles/marker_list2.html">Official Markers (MRK_List2.rpt)</a>
+    <div class="dropdown-divider"></div>
+    <h6 class="dropdown-header" data-toc-skip>Sequence Data</h6>
+    <a class="dropdown-item" href="articles/marker_coordinates.html">Marker Coordinates (MGI_MRK_Coord.rpt)</a>
+    <a class="dropdown-item" href="articles/gene_model_coordinates.html">Gene Model Coordinates (MGI_Gene_Model_Coord.rpt)</a>
+    <a class="dropdown-item" href="articles/sequence_coordinates.html">Sequence Coordinates (MGI_GTGUP.gff)</a>
+    <a class="dropdown-item" href="articles/genbank_refseq_ensembl_ids.html">GenBank, RefSeq and Ensembl IDs (MRK_Sequence.rpt)</a>
+    <a class="dropdown-item" href="articles/swiss_trembl_ids.html">UniProtKB Swiss-Prot and TrEMBL (MRK_SwissProt_TrEMBL.rpt)</a>
+    <a class="dropdown-item" href="articles/swiss_prot_ids.html">UniProtKB Swiss-Prot (MRK_SwissProt.rpt)</a>
+    <a class="dropdown-item" href="articles/gene_trap_ids.html">Gene Traps (MRK_GeneTrap.rpt)</a>
+    <a class="dropdown-item" href="articles/ensembl_ids.html">Ensembl IDs (MRK_ENSEMBL.rpt)</a>
+    <a class="dropdown-item" href="articles/biotype_conflicts.html">Ensembl/NCBI Biotype Conflicts (MGI_BioTypeConflict.rpt)</a>
+    <a class="dropdown-item" href="articles/primers.html">Primer Pairs (PRB_PrimerSeq.rpt)</a>
+    <a class="dropdown-item" href="articles/interpro_domains.html">InterPro Domains (MGI_InterProDomains.rpt)</a>
+  </div>
+</li>
 <li class="nav-item">
   <a class="nav-link" href="reference/index.html">Reference</a>
-</li>
-<li class="nav-item dropdown">
-  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
-  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="articles/mouse-genetic-markers.html">Mouse Genetic Markers</a>
-  </div>
 </li>
 <li class="nav-item">
   <a class="nav-link" href="news/index.html">Changelog</a>
@@ -71,60 +89,68 @@
 </h1></div>
 <!-- badges: start -->
 
-<p><a href="https://www.pattern.institute/mgi.report.reader/">mgi.report.reader</a> provides readers for easy and consistent importing of Mouse Genome Informatics (MGI) report files: <a href="https://www.informatics.jax.org/downloads/reports/index.html" class="external-link uri">https://www.informatics.jax.org/downloads/reports/index.html</a>.</p>
-<p>Essentially, what this package provides is a single function <code><a href="reference/read_report.html">read_report()</a></code> to import MGI reports. We try to use a consistent naming scheme for variables across reports, use appropriate variable types, e.g. factors for variables with small enumerations, convert disparate missing values to <code>NA</code>, and other time-consuming tidying steps, so that you don’t have to.</p>
+<div class="section level2">
+<h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h2>
+<p>The goal of <a href="https://www.pattern.institute/mgi.report.reader/">mgi.report.reader</a> is to facilitate the import of <a href="https://www.informatics.jax.org/downloads/reports/index.html" class="external-link">Mouse Genome Informatics (MGI)</a> report files into R.</p>
+</div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"mgi.report.reader"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"mgi.report.reader"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Or the development version from GitHub:</span></span>
+<span><span class="co"># install.packages("pak")</span></span>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"patterninstitute/mgi.report.reader"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="supported-mgi-reports">Supported MGI reports<a class="anchor" aria-label="anchor" href="#supported-mgi-reports"></a>
+</h2>
+<p>The list of currently supported MGI reports by <a href="https://www.pattern.institute/mgi.report.reader/">mgi.report.reader</a> is provided by the dataset <code>reports</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://www.pattern.institute/mgi.report.reader/">mgi.report.reader</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">reports</span></span>
+<span><span class="co">#&gt; # A tibble: 13 × 4</span></span>
+<span><span class="co">#&gt;    report_key                 report_file              report_type   report_name</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;                      &lt;chr&gt;                    &lt;chr&gt;         &lt;chr&gt;      </span></span>
+<span><span class="co">#&gt;  1 marker_list1               MRK_List1.rpt            MRK_List1     Mouse Gene…</span></span>
+<span><span class="co">#&gt;  2 marker_list2               MRK_List2.rpt            MRK_List2     Mouse Gene…</span></span>
+<span><span class="co">#&gt;  3 marker_coordinates         MGI_MRK_Coord.rpt        MGI_MRK_Coord MGI Marker…</span></span>
+<span><span class="co">#&gt;  4 gene_model_coordinates     MGI_Gene_Model_Coord.rpt MGI_Gene_Mod… MGI Gene M…</span></span>
+<span><span class="co">#&gt;  5 sequence_coordinates       MGI_GTGUP.gff            MGI_GTGUP     MGI Sequen…</span></span>
+<span><span class="co">#&gt;  6 genbank_refseq_ensembl_ids MRK_Sequence.rpt         MRK_Sequence  MGI Marker…</span></span>
+<span><span class="co">#&gt;  7 swiss_trembl_ids           MRK_SwissProt_TrEMBL.rpt MRK_SwissPro… MGI Marker…</span></span>
+<span><span class="co">#&gt;  8 swiss_prot_ids             MRK_SwissProt.rpt        MRK_SwissProt MGI Marker…</span></span>
+<span><span class="co">#&gt;  9 gene_trap_ids              MRK_GeneTrap.rpt         MRK_GeneTrap  MGI Marker…</span></span>
+<span><span class="co">#&gt; 10 ensembl_ids                MRK_ENSEMBL.rpt          MRK_ENSEMBL   MGI Marker…</span></span>
+<span><span class="co">#&gt; 11 biotype_conflicts          MGI_BioTypeConflict.rpt  MGI_BioTypeC… MGI Marker…</span></span>
+<span><span class="co">#&gt; 12 primers                    PRB_PrimerSeq.rpt        PRB_PrimerSeq MGI Marker…</span></span>
+<span><span class="co">#&gt; 13 interpro_domains           MGI_InterProDomains.rpt  MGI_InterPro… InterPro d…</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
-<p>To read an MGI report into R use <code><a href="reference/read_report.html">read_report()</a></code>:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://www.pattern.institute/mgi.report.reader/">mgi.report.reader</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">base_url</span> <span class="op">&lt;-</span> <span class="st">"https://www.informatics.jax.org/downloads/reports"</span></span>
-<span><span class="va">marker_list1_rpt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">base_url</span>, <span class="st">"MRK_List1.rpt"</span><span class="op">)</span></span>
-<span><span class="va">coordinates_rpt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">base_url</span>, <span class="st">"MGI_MRK_Coord.rpt"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Import the Mouse Genetic Markers (including withdrawn marker symbols) Report</span></span>
-<span><span class="fu"><a href="reference/read_report.html">read_report</a></span><span class="op">(</span><span class="va">marker_list1_rpt</span>, <span class="st">"MRK_List1"</span>, n_max <span class="op">=</span> <span class="fl">10L</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 10 × 12</span></span>
-<span><span class="co">#&gt;    marker_id   marker_symbol marker_name marker_type status cM_pos chr     start</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt;         &lt;chr&gt;       &lt;fct&gt;       &lt;fct&gt;   &lt;dbl&gt; &lt;fct&gt;   &lt;int&gt;</span></span>
-<span><span class="co">#&gt;  1 MGI:1341858 03B03F        DNA segmen… BAC/YAC end O        NA   5     NA     </span></span>
-<span><span class="co">#&gt;  2 MGI:1341869 03B03R        DNA segmen… BAC/YAC end O        NA   5     NA     </span></span>
-<span><span class="co">#&gt;  3 MGI:1337005 03.MMHAP34FR… DNA segmen… DNA Segment O        NA   11    NA     </span></span>
-<span><span class="co">#&gt;  4 &lt;NA&gt;        0610005A07Rik withdrawn,… Gene        W        NA   3     NA     </span></span>
-<span><span class="co">#&gt;  5 MGI:1918911 0610005C13Rik RIKEN cDNA… Gene        O        29.4 7      4.52e7</span></span>
-<span><span class="co">#&gt;  6 &lt;NA&gt;        0610005K03Rik withdrawn,… Gene        W        NA   15    NA     </span></span>
-<span><span class="co">#&gt;  7 &lt;NA&gt;        0610005M07Rik withdrawn,… Gene        W        NA   6     NA     </span></span>
-<span><span class="co">#&gt;  8 &lt;NA&gt;        0610006A03Rik withdrawn,… Gene        W        NA   4     NA     </span></span>
-<span><span class="co">#&gt;  9 &lt;NA&gt;        0610006A11Rik withdrawn,… Gene        W        NA   &lt;NA&gt;  NA     </span></span>
-<span><span class="co">#&gt; 10 &lt;NA&gt;        0610006C01Rik withdrawn,… Gene        W        NA   &lt;NA&gt;  NA     </span></span>
-<span><span class="co">#&gt; # ℹ 4 more variables: end &lt;int&gt;, strand &lt;fct&gt;, feature_type &lt;fct&gt;,</span></span>
-<span><span class="co">#&gt; #   synonyms &lt;list&gt;</span></span></code></pre></div>
+<p>Use <code><a href="reference/read_report.html">read_report()</a></code> to read any supported MGI report into R, e.g. to read <code>MRK_List1.rpt</code>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Import the MGI Marker Coordinates' Report</span></span>
-<span><span class="fu"><a href="reference/read_report.html">read_report</a></span><span class="op">(</span><span class="va">coordinates_rpt</span>, <span class="st">"MGI_MRK_Coord"</span>, n_max <span class="op">=</span> <span class="fl">10L</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 10 × 12</span></span>
-<span><span class="co">#&gt;    marker_id marker_type marker_symbol marker_name  genome_assembly chr    start</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;     &lt;fct&gt;       &lt;chr&gt;         &lt;chr&gt;        &lt;fct&gt;           &lt;fct&gt;  &lt;int&gt;</span></span>
-<span><span class="co">#&gt;  1 MGI:87853 Gene        a             nonagouti    GRCm39          2     1.55e8</span></span>
-<span><span class="co">#&gt;  2 MGI:87854 Gene        Pzp           PZP, alpha-… GRCm39          6     1.28e8</span></span>
-<span><span class="co">#&gt;  3 MGI:87881 Gene        Acp1          acid phosph… GRCm39          12    3.09e7</span></span>
-<span><span class="co">#&gt;  4 MGI:87926 Gene        Adh7          alcohol deh… GRCm39          3     1.38e8</span></span>
-<span><span class="co">#&gt;  5 MGI:87929 Gene        Adh5          alcohol deh… GRCm39          3     1.38e8</span></span>
-<span><span class="co">#&gt;  6 MGI:87859 Gene        Abl1          c-abl oncog… GRCm39          2     3.16e7</span></span>
-<span><span class="co">#&gt;  7 MGI:87882 Gene        Acp2          acid phosph… GRCm39          2     9.10e7</span></span>
-<span><span class="co">#&gt;  8 MGI:87862 Gene        Scgb1b27      secretoglob… GRCm39          7     3.37e7</span></span>
-<span><span class="co">#&gt;  9 MGI:87883 Gene        Acp5          acid phosph… GRCm39          9     2.20e7</span></span>
-<span><span class="co">#&gt; 10 MGI:87930 Gene        Adk           adenosine k… GRCm39          14    2.11e7</span></span>
-<span><span class="co">#&gt; # ℹ 5 more variables: end &lt;int&gt;, strand &lt;fct&gt;, feature_type &lt;fct&gt;,</span></span>
-<span><span class="co">#&gt; #   provider &lt;fct&gt;, provider_display &lt;fct&gt;</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/read_report.html">read_report</a></span><span class="op">(</span><span class="st">"marker_list1"</span>, n_max <span class="op">=</span> <span class="fl">10L</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 10 × 15</span></span>
+<span><span class="co">#&gt;    marker_status marker_type marker_id   marker_symbol  marker_name feature_type</span></span>
+<span><span class="co">#&gt;    &lt;fct&gt;         &lt;fct&gt;       &lt;chr&gt;       &lt;chr&gt;          &lt;chr&gt;       &lt;fct&gt;       </span></span>
+<span><span class="co">#&gt;  1 O             BAC/YAC end MGI:1341858 03B03F         DNA segmen… BAC/YAC end </span></span>
+<span><span class="co">#&gt;  2 O             BAC/YAC end MGI:1341869 03B03R         DNA segmen… BAC/YAC end </span></span>
+<span><span class="co">#&gt;  3 O             DNA Segment MGI:1337005 03.MMHAP34FRA… DNA segmen… DNA segment </span></span>
+<span><span class="co">#&gt;  4 W             Gene        &lt;NA&gt;        0610005A07Rik  &lt;NA&gt;        &lt;NA&gt;        </span></span>
+<span><span class="co">#&gt;  5 O             Gene        MGI:1918911 0610005C13Rik  RIKEN cDNA… lncRNA gene </span></span>
+<span><span class="co">#&gt;  6 W             Gene        &lt;NA&gt;        0610005K03Rik  &lt;NA&gt;        &lt;NA&gt;        </span></span>
+<span><span class="co">#&gt;  7 W             Gene        &lt;NA&gt;        0610005M07Rik  &lt;NA&gt;        &lt;NA&gt;        </span></span>
+<span><span class="co">#&gt;  8 W             Gene        &lt;NA&gt;        0610006A03Rik  &lt;NA&gt;        &lt;NA&gt;        </span></span>
+<span><span class="co">#&gt;  9 W             Gene        &lt;NA&gt;        0610006A11Rik  &lt;NA&gt;        &lt;NA&gt;        </span></span>
+<span><span class="co">#&gt; 10 W             Gene        &lt;NA&gt;        0610006C01Rik  &lt;NA&gt;        &lt;NA&gt;        </span></span>
+<span><span class="co">#&gt; # ℹ 9 more variables: chromosome &lt;fct&gt;, start &lt;int&gt;, end &lt;int&gt;, strand &lt;fct&gt;,</span></span>
+<span><span class="co">#&gt; #   genetic_map_pos &lt;dbl&gt;, synonyms &lt;list&gt;, marker_id_now &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   marker_symbol_now &lt;chr&gt;, note &lt;chr&gt;</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
@@ -148,6 +174,7 @@
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
+<li><a href="https://cloud.r-project.org/package=mgi.report.reader" class="external-link">View on CRAN</a></li>
 <li><a href="https://github.com/patterninstitute/mgi.report.reader/" class="external-link">Browse source code</a></li>
 <li><a href="https://github.com/patterninstitute/mgi.report.reader/issues" class="external-link">Report a bug</a></li>
 </ul>
@@ -164,7 +191,9 @@
 <div class="community">
 <h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
+<li><a href="CONTRIBUTING.html">Contributing guide</a></li>
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
+<li><a href="SUPPORT.html">Getting help</a></li>
 </ul>
 </div>
 
@@ -179,11 +208,13 @@
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Ramiro Magno <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-5226-3441" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>David Shaw <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-9922-9934" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Isabel Duarte <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-0060-2936" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Ismail Gbadamosi <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-1932-7519" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Ali Jawaid <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-5126-6744" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Nencki Institute of Experimental Biology <br><small class="roles"> Funder </small>  </li>
 <li>University of Algarve <br><small class="roles"> Funder </small>  </li>
+<li>The Jackson Laboratory <br><small class="roles"> Funder </small>  </li>
 <li>Pattern Institute <br><small class="roles"> Copyright holder, funder </small>  </li>
 </ul>
 </div>
@@ -201,11 +232,11 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Ramiro Magno, Isabel Duarte, Ismail Gbadamosi, Ali Jawaid, Nencki Institute of Experimental Biology, University of Algarve, Pattern Institute.</p>
+  <p>Developed by Ramiro Magno, David Shaw, Isabel Duarte, Ismail Gbadamosi, Ali Jawaid, Nencki Institute of Experimental Biology, University of Algarve, The Jackson Laboratory, Pattern Institute.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+  
 </div>
 
     </footer>
