@@ -45,5 +45,6 @@ URL: https://www.pattern.institute/mgi.report.reader/, https://github.com/patter
 BugReports: https://github.com/patterninstitute/mgi.report.reader/issues
 Config/Needs/website: rmarkdown, patterninstitute/chic
 Suggests: 
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    tidyr
 Config/testthat/edition: 3
