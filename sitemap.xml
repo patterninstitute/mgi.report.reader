@@ -34,6 +34,9 @@
     <loc>https://www.pattern.institute/mgi.report.reader/articles/gene_trap_ids.html</loc>
   </url>
   <url>
+    <loc>https://www.pattern.institute/mgi.report.reader/articles/genetic_marker.html</loc>
+  </url>
+  <url>
     <loc>https://www.pattern.institute/mgi.report.reader/articles/index.html</loc>
   </url>
   <url>
@@ -50,6 +53,9 @@
   </url>
   <url>
     <loc>https://www.pattern.institute/mgi.report.reader/articles/primers.html</loc>
+  </url>
+  <url>
+    <loc>https://www.pattern.institute/mgi.report.reader/articles/representative_sequence.html</loc>
   </url>
   <url>
     <loc>https://www.pattern.institute/mgi.report.reader/articles/sequence_coordinates.html</loc>
@@ -76,6 +82,9 @@
     <loc>https://www.pattern.institute/mgi.report.reader/reference/common-args.html</loc>
   </url>
   <url>
+    <loc>https://www.pattern.institute/mgi.report.reader/reference/feature_type_definitions.html</loc>
+  </url>
+  <url>
     <loc>https://www.pattern.institute/mgi.report.reader/reference/feature_types.html</loc>
   </url>
   <url>
@@ -83,6 +92,9 @@
   </url>
   <url>
     <loc>https://www.pattern.institute/mgi.report.reader/reference/is_mgi_identifier.html</loc>
+  </url>
+  <url>
+    <loc>https://www.pattern.institute/mgi.report.reader/reference/marker_types.html</loc>
   </url>
   <url>
     <loc>https://www.pattern.institute/mgi.report.reader/reference/mgi.report.reader-package.html</loc>
@@ -97,7 +109,7 @@
     <loc>https://www.pattern.institute/mgi.report.reader/reference/mgi_reports_index_url.html</loc>
   </url>
   <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/open_in_mgi.html</loc>
+    <loc>https://www.pattern.institute/mgi.report.reader/reference/open_marker_in_mgi.html</loc>
   </url>
   <url>
     <loc>https://www.pattern.institute/mgi.report.reader/reference/read_report.html</loc>
@@ -106,7 +118,7 @@
     <loc>https://www.pattern.institute/mgi.report.reader/reference/report-attributes.html</loc>
   </url>
   <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/report_datetime.html</loc>
+    <loc>https://www.pattern.institute/mgi.report.reader/reference/report_last_modified.html</loc>
   </url>
   <url>
     <loc>https://www.pattern.institute/mgi.report.reader/reference/report_source.html</loc>

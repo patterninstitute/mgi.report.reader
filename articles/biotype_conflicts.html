@@ -29,7 +29,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">mgi.report.reader</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.9.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.9.9100</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,6 +38,13 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-concepts">Concepts</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-concepts">
+    <a class="dropdown-item" href="../articles/genetic_marker.html">Genetic Marker</a>
+    <a class="dropdown-item" href="../articles/representative_sequence.html">Representative Genomic Sequence</a>
+  </div>
+</li>
 <li class="active nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-reports">Reports</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-reports">
@@ -127,11 +134,12 @@ identifier that is meaningful in any of these gene models.</p>
 <div class="section level2">
 <h2 id="mgi-representative-gene-model">MGI Representative Gene Model<a class="anchor" aria-label="anchor" href="#mgi-representative-gene-model"></a>
 </h2>
-<p>The variable <code>is_mgi_rep</code> stands for <em>is MGI
-representative</em> and is encoded as a logical vector that indicates
-whether the corresponding <code>gene_id</code> and <code>biotype</code>
-values are the ones adopted by MGI as representative for the genetic
-marker.</p>
+<p>The variable <code>is_mgi_rep</code> stands for <em>is the MGI
+genomic representative sequence</em> and is encoded as a logical vector
+that indicates whether the corresponding <code>gene_id</code> and
+<code>biotype</code> values are the ones associated with MGI
+representative sequence. See
+<code><a href="../articles/representative_sequence.html">vignette("representative_sequence")</a></code> for more details.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">biotype_conflicts</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">is_mgi_rep</span><span class="op">)</span></span></code></pre></div>

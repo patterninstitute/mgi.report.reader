@@ -29,7 +29,7 @@
     
     <a class="navbar-brand me-2" href="index.html">mgi.report.reader</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.9.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.9.9100</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,6 +38,13 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-concepts">Concepts</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-concepts">
+    <a class="dropdown-item" href="articles/genetic_marker.html">Genetic Marker</a>
+    <a class="dropdown-item" href="articles/representative_sequence.html">Representative Genomic Sequence</a>
+  </div>
+</li>
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-reports">Reports</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-reports">
@@ -134,7 +141,7 @@
 </h2>
 <p>Use <code><a href="reference/read_report.html">read_report()</a></code> to read any supported MGI report into R, e.g. to read <code>MRK_List1.rpt</code>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/read_report.html">read_report</a></span><span class="op">(</span><span class="st">"marker_list1"</span>, n_max <span class="op">=</span> <span class="fl">10L</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">markers</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_report.html">read_report</a></span><span class="op">(</span><span class="st">"marker_list1"</span>, n_max <span class="op">=</span> <span class="fl">10L</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 10 × 15</span></span>
 <span><span class="co">#&gt;    marker_status marker_type marker_id   marker_symbol  marker_name feature_type</span></span>
 <span><span class="co">#&gt;    &lt;fct&gt;         &lt;fct&gt;       &lt;chr&gt;       &lt;chr&gt;          &lt;chr&gt;       &lt;fct&gt;       </span></span>
@@ -151,6 +158,14 @@
 <span><span class="co">#&gt; # ℹ 9 more variables: chromosome &lt;fct&gt;, start &lt;int&gt;, end &lt;int&gt;, strand &lt;fct&gt;,</span></span>
 <span><span class="co">#&gt; #   genetic_map_pos &lt;dbl&gt;, synonyms &lt;list&gt;, marker_id_now &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   marker_symbol_now &lt;chr&gt;, note &lt;chr&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Report file source</span></span>
+<span><span class="fu"><a href="reference/report_source.html">report_source</a></span><span class="op">(</span><span class="va">markers</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "https://www.informatics.jax.org/downloads/reports/MRK_List1.rpt"</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Report file last modification date</span></span>
+<span><span class="fu"><a href="reference/report_last_modified.html">report_last_modified</a></span><span class="op">(</span><span class="va">markers</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "2024-07-01 11:51:02 GMT"</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
@@ -161,6 +176,7 @@
 <h2 id="disclaimer">Disclaimer<a class="anchor" aria-label="anchor" href="#disclaimer"></a>
 </h2>
 <p>The <a href="https://www.pattern.institute/mgi.report.reader/">mgi.report.reader</a> package is provided “as is” without any guarantees or warranty. Although the authors have made every effort to ensure the accuracy and reliability of the software and its documentation, they are not responsible for any errors, omissions, or misinterpretations. Users are advised to test the package thoroughly before relying on it in critical applications. The authors disclaim all liability for any damage or loss resulting from the use of this package. Use of the <a href="https://www.pattern.institute/mgi.report.reader/">mgi.report.reader</a> package is at the user’s own risk.</p>
+<p>Support for reports is an ongoing process, but we welcome pull requests for quicker coverage.</p>
 </div>
 <div class="section level2">
 <h2 id="citing-this-package">Citing this package<a class="anchor" aria-label="anchor" href="#citing-this-package"></a>

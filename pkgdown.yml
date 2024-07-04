@@ -7,15 +7,17 @@ articles:
   genbank_refseq_ensembl_ids: genbank_refseq_ensembl_ids.html
   gene_model_coordinates: gene_model_coordinates.html
   gene_trap_ids: gene_trap_ids.html
+  genetic_marker: genetic_marker.html
   interpro_domains: interpro_domains.html
   marker_coordinates: marker_coordinates.html
   marker_list1: marker_list1.html
   marker_list2: marker_list2.html
   primers: primers.html
+  representative_sequence: representative_sequence.html
   sequence_coordinates: sequence_coordinates.html
   swiss_prot_ids: swiss_prot_ids.html
   swiss_trembl_ids: swiss_trembl_ids.html
-last_built: 2024-07-04T17:26Z
+last_built: 2024-07-04T22:35Z
 urls:
   reference: https://www.pattern.institute/mgi.report.reader/reference
   article: https://www.pattern.institute/mgi.report.reader/articles

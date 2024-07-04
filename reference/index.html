@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">mgi.report.reader</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.9.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.9.9100</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,6 +19,13 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-concepts">Concepts</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-concepts">
+    <a class="dropdown-item" href="../articles/genetic_marker.html">Genetic Marker</a>
+    <a class="dropdown-item" href="../articles/representative_sequence.html">Representative Genomic Sequence</a>
+  </div>
+</li>
+<li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-reports">Reports</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-reports">
     <h6 class="dropdown-header" data-toc-skip>Mouse Genetic Markers</h6>
@@ -72,28 +79,7 @@
       
     </div><div class="section level2">
       
-      <h3 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a></h3>
-      
-
-      
-    </div><div id="" class="section level2">
-      
-      
-      
-
-      <dl><dt>
-          
-          <code><a href="reports.html">reports</a></code> 
-        </dt>
-        <dd>Supported MGI reports</dd>
-      </dl><dl><dt>
-          
-          <code><a href="feature_types.html">feature_types</a></code> 
-        </dt>
-        <dd>Genome Feature Types</dd>
-      </dl></div><div class="section level2">
-      
-      <h3 id="reading">Reading<a class="anchor" aria-label="anchor" href="#reading"></a></h3>
+      <h3 id="reading-reports">Reading Reports<a class="anchor" aria-label="anchor" href="#reading-reports"></a></h3>
       
 
       
@@ -114,9 +100,61 @@
         <dd>Report source</dd>
       </dl><dl><dt>
           
-          <code><a href="report_datetime.html">report_datetime()</a></code> 
+          <code><a href="report_last_modified.html">report_last_modified()</a></code> 
         </dt>
-        <dd>Report datetime</dd>
+        <dd>Report last modification date</dd>
+      </dl><dl><dt>
+          
+          <code><a href="report-attributes.html">report_file()</a></code> <code><a href="report-attributes.html">report_name()</a></code> <code><a href="report-attributes.html">report_type()</a></code> <code><a href="report-attributes.html">report_url()</a></code> 
+        </dt>
+        <dd>Get MGI report specs by report key</dd>
+      </dl></div><div class="section level2">
+      
+      <h3 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a></h3>
+      
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="reports.html">reports</a></code> 
+        </dt>
+        <dd>Supported MGI reports</dd>
+      </dl><dl><dt>
+          
+          <code><a href="feature_type_definitions.html">feature_type_definitions</a></code> 
+        </dt>
+        <dd>Genome Feature Type Definitions</dd>
+      </dl></div><div class="section level2">
+      
+      <h3 id="enumerations">Enumerations<a class="anchor" aria-label="anchor" href="#enumerations"></a></h3>
+      
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="chromosomes.html">chromosomes()</a></code> 
+        </dt>
+        <dd>Mouse chromosomes</dd>
+      </dl><dl><dt>
+          
+          <code><a href="marker_types.html">marker_types()</a></code> 
+        </dt>
+        <dd>Genetic marker types</dd>
+      </dl><dl><dt>
+          
+          <code><a href="feature_types.html">feature_types()</a></code> 
+        </dt>
+        <dd>Genome Feature types</dd>
       </dl></div><div class="section level2">
       
       <h3 id="helpers">Helpers<a class="anchor" aria-label="anchor" href="#helpers"></a></h3>
@@ -130,19 +168,9 @@
 
       <dl><dt>
           
-          <code><a href="open_in_mgi.html">open_in_mgi()</a></code> 
+          <code><a href="open_marker_in_mgi.html">open_marker_in_mgi()</a></code> 
         </dt>
         <dd>Browse MGI markers online</dd>
-      </dl><dl><dt>
-          
-          <code><a href="chromosomes.html">chromosomes()</a></code> 
-        </dt>
-        <dd>Mouse chromosomes</dd>
-      </dl><dl><dt>
-          
-          <code><a href="report-attributes.html">report_file()</a></code> <code><a href="report-attributes.html">report_name()</a></code> <code><a href="report-attributes.html">report_type()</a></code> <code><a href="report-attributes.html">report_url()</a></code> 
-        </dt>
-        <dd>Get report attributes by report key</dd>
       </dl></div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
