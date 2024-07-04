@@ -30,7 +30,7 @@ pak::pak("patterninstitute/mgi.report.reader")
 ## Supported MGI reports
 
 The list of currently supported MGI reports by `{mgi.report.reader}` is
-provided by the dataset `reports`:
+provided by the dataset `?reports`:
 
 ``` r
 library(mgi.report.reader)
