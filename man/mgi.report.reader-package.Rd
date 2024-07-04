@@ -6,7 +6,7 @@
 \alias{mgi.report.reader-package}
 \title{mgi.report.reader: Read Mouse Genome Informatics Reports}
 \description{
-Provides readers for easy and consistent importing of Mouse Genome Informatics (MGI) report files: \url{https://www.informatics.jax.org/downloads/reports/index.html}. These data are provided by Baldarelli RM, Smith CL, Ringwald M, Richardson JE, Bult CJ, Mouse Genome Informatics Group. (2024) \doi{10.1093/genetics/iyae031}.
+Provides readers for easy and consistent importing of Mouse Genome Informatics (MGI) report files: \url{https://www.informatics.jax.org/downloads/reports/index.html}. These data are provided by Baldarelli RM, Smith CL, Ringwald M, Richardson JE, Bult CJ, Mouse Genome Informatics Group (2024) \doi{10.1093/genetics/iyae031}.
 }
 \seealso{
 Useful links:
@@ -22,6 +22,7 @@ Useful links:
 
 Authors:
 \itemize{
+  \item David Shaw \email{David.Shaw@jax.org} (\href{https://orcid.org/0000-0002-9922-9934}{ORCID})
   \item Isabel Duarte \email{iduarte@pattern.institute} (\href{https://orcid.org/0000-0003-0060-2936}{ORCID})
   \item Ismail Gbadamosi \email{i.gbadamosi@nencki.edu.pl} (\href{https://orcid.org/0000-0002-1932-7519}{ORCID})
   \item Ali Jawaid \email{a.jawaid@nencki.edu.pl} (\href{https://orcid.org/0000-0002-5126-6744}{ORCID})
@@ -31,6 +32,7 @@ Other contributors:
 \itemize{
   \item Nencki Institute of Experimental Biology [funder]
   \item University of Algarve [funder]
+  \item The Jackson Laboratory [funder]
   \item Pattern Institute [copyright holder, funder]
 }
 

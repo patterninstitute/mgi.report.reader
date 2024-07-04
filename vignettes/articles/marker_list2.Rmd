@@ -1,0 +1,71 @@
+---
+title: "Official Genetic Markers"
+---
+
+```{r setup, echo=FALSE}
+library(mgi.report.reader)
+```
+
+The MGI report `MRK_List2.rpt` provides the list of official mouse genetic
+markers, i.e. excluding withdrawn marker symbols.
+
+Read this report with key `"marker_list2"`:
+
+```{r}
+# To read all records: `read_report("marker_list2")`.
+read_report(report_key = "marker_list2", n_max = 10L)
+```
+
+Comparatively, the report `MRK_List1.rpt` is for the whole set of genetic
+markers, i.e. including withdrawn marker symbols, see `vignette("marker_list1")`
+for more details about this other report.
+
+## Variables
+
+### `marker_status`
+
+`marker_status`: `r mgi.report.reader:::desc_marker_status()`
+
+### `marker_type`
+
+`marker_type`: `r mgi.report.reader:::desc_marker_type()`
+
+### `marker_id`
+
+`marker_id`: `r mgi.report.reader:::desc_marker_id()`
+
+### `marker_symbol`
+
+`marker_symbol`: `r mgi.report.reader:::desc_marker_symbol()`
+
+### `marker_name`
+
+`marker_name`: `r mgi.report.reader:::desc_marker_name()`
+
+### `feature_type`
+
+`feature_type`: `r mgi.report.reader:::desc_feature_type()`
+
+### `chromosome`
+
+`chromosome`: `r mgi.report.reader:::desc_chromosome()`
+
+### `start`
+
+`start`: `r mgi.report.reader:::desc_start()`
+
+### `end`
+
+`end`: `r mgi.report.reader:::desc_end()`
+
+### `strand`
+
+`strand`: `r mgi.report.reader:::desc_strand()`
+
+### `genetic_map_pos`
+
+`genetic_map_pos`: `r mgi.report.reader:::desc_genetic_map_pos()`
+
+### `synonyms`
+
+`synonyms`: `r mgi.report.reader:::desc_synonyms()`

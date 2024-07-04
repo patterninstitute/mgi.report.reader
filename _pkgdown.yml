@@ -1,16 +1,64 @@
 url: https://www.pattern.institute/mgi.report.reader/
+
 template:
+  package: chic
   bootstrap: 5
 
-reference:
-- title: Read MGI reports
-  contents:
-  - read_report
+navbar:
+  structure:
+    left:  [intro, articles, reference, news]
+    right: [search, github]
+  components:
+    articles:
+      text: Reports
+      menu:
+        - text: Mouse Genetic Markers
+        - text: All Markers (MRK_List1.rpt)
+          href: articles/marker_list1.html
+        - text: Official Markers (MRK_List2.rpt)
+          href: articles/marker_list2.html
+        - text: -------
+        - text: Sequence Data
+        - text: Marker Coordinates (MGI_MRK_Coord.rpt)
+          href: articles/marker_coordinates.html
+        - text: Gene Model Coordinates (MGI_Gene_Model_Coord.rpt)
+          href: articles/gene_model_coordinates.html
+        - text: Sequence Coordinates (MGI_GTGUP.gff)
+          href: articles/sequence_coordinates.html
+        - text: GenBank, RefSeq and Ensembl IDs (MRK_Sequence.rpt)
+          href: articles/genbank_refseq_ensembl_ids.html
+        - text: UniProtKB Swiss-Prot and TrEMBL (MRK_SwissProt_TrEMBL.rpt)
+          href: articles/swiss_trembl_ids.html
+        - text: UniProtKB Swiss-Prot (MRK_SwissProt.rpt)
+          href: articles/swiss_prot_ids.html
+        - text: Gene Traps (MRK_GeneTrap.rpt)
+          href: articles/gene_trap_ids.html
+        - text: Ensembl IDs (MRK_ENSEMBL.rpt)
+          href: articles/ensembl_ids.html
+        - text: Ensembl/NCBI Biotype Conflicts (MGI_BioTypeConflict.rpt)
+          href: articles/biotype_conflicts.html
+        - text: Primer Pairs (PRB_PrimerSeq.rpt)
+          href: articles/primers.html
+        - text: InterPro Domains (MGI_InterProDomains.rpt)
+          href: articles/interpro_domains.html
 
-- title: Data sets
+reference:
+- title: MGI Reports
+
+- subtitle: Data
   contents:
+  - reports
   - feature_types
 
-- title: Utilities
+- subtitle: Reading
   contents:
+  - read_report
+  - report_source
+  - report_datetime
+
+- subtitle: Helpers
+  contents:
+  - open_in_mgi
   - chromosomes
+  - report-attributes
+

@@ -1,0 +1,63 @@
+---
+title: "Gene Traps"
+---
+
+```{r setup, echo=FALSE, message=FALSE}
+library(mgi.report.reader)
+```
+
+The MGI report `MRK_GeneTrap.rpt` provides associations between 
+MGI genetic markers and gene trap cell lines. For more details about
+gene trapping, see MGI's
+[Gene Trap Questions and Answers](http://www.informatics.jax.org/userhelp/genetrap_usecase_help.shtml).
+
+To read this report using the key `"gene_trap_ids"`, use the
+following code:
+
+```{r}
+# To read all records (~ 17,000), use `read_report("gene_trap_ids")`.
+(assoc_to_gene_trap_ids <- read_report(report_key = "gene_trap_ids", n_max = 150L))
+```
+
+## Gene Trap Cell Lines
+
+The list-column `cell_line_id` provides associated gene trap cell lines. To
+unnest `cell_line_id` use:
+
+```{r}
+assoc_to_gene_trap_ids |>
+  dplyr::select("marker_id", "marker_symbol","cell_line_id") |>
+  dplyr::filter(marker_id == "MGI:3698435") |>
+  tidyr::unnest("cell_line_id")
+```
+
+## Variables
+
+### `marker_status`
+
+`marker_status`: `r mgi.report.reader:::desc_marker_status()`
+
+### `marker_id`
+
+`marker_id`: `r mgi.report.reader:::desc_marker_id()`
+
+### `marker_symbol`
+
+`marker_symbol`: `r mgi.report.reader:::desc_marker_symbol()`
+
+### `marker_name`
+
+`marker_name`: `r mgi.report.reader:::desc_marker_name()`
+
+### `chromosome`
+
+`chromosome`: `r mgi.report.reader:::desc_chromosome()`
+
+### `genetic_map_pos`
+
+`genetic_map_pos`: `r mgi.report.reader:::desc_genetic_map_pos()`
+
+### `cell_line_id`
+
+`cell_line_id`: `r mgi.report.reader:::desc_cell_line_id()`
+

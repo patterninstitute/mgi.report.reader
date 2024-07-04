@@ -1,0 +1,14 @@
+report_key,report_file,report_type,report_name
+marker_list1,MRK_List1.rpt,MRK_List1,Mouse Genetic Markers (including withdrawn marker symbols)
+marker_list2,MRK_List2.rpt,MRK_List2,Mouse Genetic Markers (excluding withdrawn marker symbols)
+marker_coordinates,MGI_MRK_Coord.rpt,MGI_MRK_Coord,MGI Marker Coordinates
+gene_model_coordinates,MGI_Gene_Model_Coord.rpt,MGI_Gene_Model_Coord,MGI Gene Model Coordinates
+sequence_coordinates,MGI_GTGUP.gff,MGI_GTGUP,MGI Sequence Coordinates
+genbank_refseq_ensembl_ids,MRK_Sequence.rpt,MRK_Sequence,"MGI Marker associations to Sequence (GenBank, RefSeq, Ensembl) information"
+swiss_trembl_ids,MRK_SwissProt_TrEMBL.rpt,MRK_SwissProt_TrEMBL,MGI Marker associations to SWISS-PROT and TrEMBL protein IDs
+swiss_prot_ids,MRK_SwissProt.rpt,MRK_SwissProt,MGI Marker associations to SWISS-PROT protein IDs
+gene_trap_ids,MRK_GeneTrap.rpt,MRK_GeneTrap,MGI Marker associations to Gene Trap IDs
+ensembl_ids,MRK_ENSEMBL.rpt,MRK_ENSEMBL,MGI Marker associations to Ensembl sequence information
+biotype_conflicts,MGI_BioTypeConflict.rpt,MGI_BioTypeConflict,MGI Marker associations to Ensembl or NCBI gene models where a gene vs. pseudogene discrepancy exists
+primers,PRB_PrimerSeq.rpt,PRB_PrimerSeq,MGI Marker associations with primer pairs
+interpro_domains,MGI_InterProDomains.rpt,MGI_InterProDomains,InterPro domain associations to MGI markers

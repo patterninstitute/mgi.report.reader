@@ -1,0 +1,71 @@
+---
+title: "Sequence Coordinates"
+---
+
+```{r setup, echo=FALSE, message=FALSE}
+library(mgi.report.reader)
+```
+
+The MGI report `MGI_GTGUP.gff`^[GTGUP stands for Gene Trap Gene Unification
+Process. This report, however, no longer includes gene trap information. At some
+point the scope changed to just mean: Gene Unification Process.] is a
+comprehensive list of mouse genetic markers (> 2,900,000) spanning various
+marker types:
+
+- Genes: ~ 55,000 markers
+- Gene Models: ~ 2,300,000 markers
+- Pseudogenes: ~ 15,000 markers
+- Transgenes: ~ 30 markers
+- Cytogenetic Markers: ~ 130 markers
+- Complex/Cluster/Region: ~ 60 markers
+- Other Genome Feature: ~ 560,000 markers
+
+To read this report using the key `"sequence_coordinates"`, use the following
+code:
+
+```{r}
+# To read all records (more than 2,900,000), use `read_report("sequence_coordinates")`.
+(sequence_coord <- read_report(report_key = "sequence_coordinates", n_max = 300L))
+```
+
+## Variables
+
+### `marker_type`
+
+`marker_type`: `r mgi.report.reader:::desc_marker_type()`
+
+### `marker_id`
+
+`marker_id`: `r mgi.report.reader:::desc_marker_id()`
+
+### `marker_symbol`
+
+`marker_symbol`: `r mgi.report.reader:::desc_marker_symbol()`
+
+### `marker_name`
+
+`marker_name`: `r mgi.report.reader:::desc_marker_name()`
+
+### `chromosome`
+
+`chromosome`: `r mgi.report.reader:::desc_chromosome()`
+
+### `start`
+
+`start`: `r mgi.report.reader:::desc_start()`
+
+### `end`
+
+`end`: `r mgi.report.reader:::desc_end()`
+
+### `strand`
+
+`strand`: `r mgi.report.reader:::desc_strand()`
+
+### `source`
+
+`source`: `r mgi.report.reader:::desc_source()`
+
+### `feature_type`
+
+`feature_type`: `r mgi.report.reader:::desc_feature_type()`

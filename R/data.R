@@ -1,4 +1,4 @@
-#' Genome Feature Type Definitions
+#' Genome Feature Types
 #'
 #' A dataset containing different types of gene and genome features along with
 #' their Sequence Ontology (SO) identifiers and definitions.

@@ -3,7 +3,7 @@
 \docType{data}
 \name{feature_types}
 \alias{feature_types}
-\title{Genome Feature Type Definitions}
+\title{Genome Feature Types}
 \format{
 A \link[tibble:tibble-package]{tibble} with 71 rows
 and 3 variables:

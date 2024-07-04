@@ -1,0 +1,106 @@
+---
+title: "All Genetic Markers"
+---
+
+```{r setup, echo=FALSE}
+library(mgi.report.reader)
+```
+
+The MGI report `MRK_List1.rpt` provides the complete list of mouse genetic
+markers, including withdrawn marker symbols.
+
+Read this report with key `"marker_list1"`:
+
+```{r}
+# To read all records: `read_report("marker_list1")`.
+(all_markers <- read_report(report_key = "marker_list1", n_max = 10L))
+```
+
+Official, in-use symbols are indicated by the `marker_status` value `"O"`,
+whereas withdrawn symbols are indicated with `"W"`.
+
+Comparatively, the report `MRK_List2.rpt` is only for the official genetic
+markers, see `vignette("marker_list2")` for more details.
+
+## Old to new marker symbols
+
+If a symbol was withdrawn it is very likely (but not guaranteed) that it is
+now replaced by a new MGI identifier and symbol. The variables `marker_id_now`
+and `marker_symbol_now` provide these up-to-date values.
+
+```{r}
+all_markers |>
+  dplyr::select(
+    "marker_status",
+    "marker_id",
+    "marker_id_now",
+    "marker_symbol",
+    "marker_symbol_now"
+  )
+```
+
+
+## Variables
+
+### `marker_status`
+
+`marker_status`: `r mgi.report.reader:::desc_marker_status()`
+
+### `marker_type`
+
+`marker_type`: `r mgi.report.reader:::desc_marker_type()`
+
+### `marker_id`
+
+`marker_id`: `r mgi.report.reader:::desc_marker_id()`
+
+### `marker_symbol`
+
+`marker_symbol`: `r mgi.report.reader:::desc_marker_symbol()`
+
+### `marker_name`
+
+`marker_name`: `r mgi.report.reader:::desc_marker_name()`
+
+### `feature_type`
+
+`feature_type`: `r mgi.report.reader:::desc_feature_type()`
+
+### `chromosome`
+
+`chromosome`: `r mgi.report.reader:::desc_chromosome()`
+
+### `start`
+
+`start`: `r mgi.report.reader:::desc_start()`
+
+### `end`
+
+`end`: `r mgi.report.reader:::desc_end()`
+
+### `strand`
+
+`strand`: `r mgi.report.reader:::desc_strand()`
+
+### `genetic_map_pos`
+
+`genetic_map_pos`: `r mgi.report.reader:::desc_genetic_map_pos()`
+
+### `synonyms`
+
+`synonyms`: `r mgi.report.reader:::desc_synonyms()`
+
+### `marker_id_now`
+
+`marker_id_now`: `r mgi.report.reader:::desc_marker_id_now()`
+
+### `marker_symbol_now`
+
+`marker_symbol_now`: `r mgi.report.reader:::desc_marker_symbol_now()`
+
+### `note`
+
+`note`: `r mgi.report.reader:::desc_note()`
+
+
+

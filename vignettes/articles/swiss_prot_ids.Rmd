@@ -1,0 +1,61 @@
+---
+title: "UniProtKB Swiss-Prot"
+---
+
+```{r setup, echo=FALSE, message=FALSE}
+library(mgi.report.reader)
+```
+
+The MGI report `MRK_SwissProt.rpt` provides associations between 
+MGI genetic markers and UniProtKB/TrEMBL identifiers.
+
+To read this report using the key `"swiss_prot_ids"`, use the
+following code:
+
+```{r}
+# To read all records (~ 17,000), use `read_report("swiss_prot_ids")`.
+(assoc_to_swiss_ids <- read_report(report_key = "swiss_prot_ids", n_max = 150L))
+```
+
+## UniProtKB/Swiss-Prot identifiers
+
+The list-column `swiss_prt_id` provides associated ProtKB/Swiss-Prot
+identifiers. To unnest `swiss_prt_id` use:
+
+```{r}
+assoc_to_swiss_ids |>
+  dplyr::select("marker_id", "marker_symbol","swiss_prt_id") |>
+  dplyr::filter(marker_id == "MGI:1098687") |>
+  tidyr::unnest("swiss_prt_id")
+```
+
+## Variables
+
+### `marker_status`
+
+`marker_status`: `r mgi.report.reader:::desc_marker_status()`
+
+### `marker_id`
+
+`marker_id`: `r mgi.report.reader:::desc_marker_id()`
+
+### `marker_symbol`
+
+`marker_symbol`: `r mgi.report.reader:::desc_marker_symbol()`
+
+### `marker_name`
+
+`marker_name`: `r mgi.report.reader:::desc_marker_name()`
+
+### `chromosome`
+
+`chromosome`: `r mgi.report.reader:::desc_chromosome()`
+
+### `genetic_map_pos`
+
+`genetic_map_pos`: `r mgi.report.reader:::desc_genetic_map_pos()`
+
+### `swiss_prt_id`
+
+`swiss_prt_id`: `r mgi.report.reader:::desc_swiss_prt_id()`
+

@@ -1,0 +1,59 @@
+---
+title: "Ensembl, NCBI or MGI Biotype Conflicts"
+---
+
+```{r setup, echo=FALSE, message=FALSE}
+library(mgi.report.reader)
+```
+
+The MGI report `MGI_BioTypeConflict.rpt` provides markers for which
+the biotype classification differs across Ensembl, NCBI or MGI. 
+
+To read this report using the key `"biotype_conflicts"`, use the
+following code:
+
+```{r}
+# To read all records (more than 16,000), use `read_report("ensembl_ids")`.
+(biotype_conflicts <- read_report(report_key = "biotype_conflicts", n_max = 30L))
+```
+
+Each row is for the combination genetic marker / biotype classification. The
+source of the classification is indicated in the `database` variable. The
+`gene_id` can be any gene identifier that is meaningful in any of these gene models.
+
+## MGI Representative Gene Model
+
+The variable `is_mgi_rep` stands for _is MGI representative_ and is encoded as a
+logical vector that indicates whether the corresponding `gene_id` and `biotype`
+values are the ones adopted by MGI as representative for the genetic marker.
+
+```{r}
+biotype_conflicts |>
+  dplyr::filter(is_mgi_rep)
+```
+
+## Variables
+
+### `marker_id`
+
+`marker_id`: `r mgi.report.reader:::desc_marker_id()`
+
+### `marker_symbol`
+
+`marker_symbol`: `r mgi.report.reader:::desc_marker_symbol()`
+
+### `database`
+
+`database`: `r mgi.report.reader:::desc_database()`
+
+### `biotype`
+
+`biotype`: `r mgi.report.reader:::desc_biotype()`
+
+### `gene_id`
+
+`gene_id`: `r mgi.report.reader:::desc_gene_id()`
+
+### `is_mgi_rep`
+
+`is_mgi_rep`: `r mgi.report.reader:::desc_is_mgi_rep()`

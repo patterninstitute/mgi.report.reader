@@ -10,71 +10,73 @@ status](https://www.r-pkg.org/badges/version/mgi.report.reader)](https://CRAN.R-
 [![R-CMD-check](https://github.com/patterninstitute/mgi.report.reader/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/patterninstitute/mgi.report.reader/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-`{mgi.report.reader}` provides readers for easy and consistent importing
-of Mouse Genome Informatics (MGI) report files:
-<https://www.informatics.jax.org/downloads/reports/index.html>.
+## Overview
 
-Essentially, what this package provides is a single function
-`read_report()` to import MGI reports. We try to use a consistent naming
-scheme for variables across reports, use appropriate variable types,
-e.g. factors for variables with small enumerations, convert disparate
-missing values to `NA`, and other time-consuming tidying steps, so that
-you don’t have to.
+The goal of `{mgi.report.reader}` is to facilitate the import of [Mouse
+Genome Informatics
+(MGI)](https://www.informatics.jax.org/downloads/reports/index.html)
+report files into R.
 
 ## Installation
 
 ``` r
 install.packages("mgi.report.reader")
+
+# Or the development version from GitHub:
+# install.packages("pak")
+pak::pak("patterninstitute/mgi.report.reader")
 ```
 
-## Example
+## Supported MGI reports
 
-To read an MGI report into R use `read_report()`:
+The list of currently supported MGI reports by `{mgi.report.reader}` is
+provided by the dataset `reports`:
 
 ``` r
 library(mgi.report.reader)
 
-base_url <- "https://www.informatics.jax.org/downloads/reports"
-marker_list1_rpt <- file.path(base_url, "MRK_List1.rpt")
-coordinates_rpt <- file.path(base_url, "MGI_MRK_Coord.rpt")
-
-# Import the Mouse Genetic Markers (including withdrawn marker symbols) Report
-read_report(marker_list1_rpt, "MRK_List1", n_max = 10L)
-#> # A tibble: 10 × 12
-#>    marker_id   marker_symbol marker_name marker_type status cM_pos chr     start
-#>    <chr>       <chr>         <chr>       <fct>       <fct>   <dbl> <fct>   <int>
-#>  1 MGI:1341858 03B03F        DNA segmen… BAC/YAC end O        NA   5     NA     
-#>  2 MGI:1341869 03B03R        DNA segmen… BAC/YAC end O        NA   5     NA     
-#>  3 MGI:1337005 03.MMHAP34FR… DNA segmen… DNA Segment O        NA   11    NA     
-#>  4 <NA>        0610005A07Rik withdrawn,… Gene        W        NA   3     NA     
-#>  5 MGI:1918911 0610005C13Rik RIKEN cDNA… Gene        O        29.4 7      4.52e7
-#>  6 <NA>        0610005K03Rik withdrawn,… Gene        W        NA   15    NA     
-#>  7 <NA>        0610005M07Rik withdrawn,… Gene        W        NA   6     NA     
-#>  8 <NA>        0610006A03Rik withdrawn,… Gene        W        NA   4     NA     
-#>  9 <NA>        0610006A11Rik withdrawn,… Gene        W        NA   <NA>  NA     
-#> 10 <NA>        0610006C01Rik withdrawn,… Gene        W        NA   <NA>  NA     
-#> # ℹ 4 more variables: end <int>, strand <fct>, feature_type <fct>,
-#> #   synonyms <list>
+reports
+#> # A tibble: 13 × 4
+#>    report_key                 report_file              report_type   report_name
+#>    <chr>                      <chr>                    <chr>         <chr>      
+#>  1 marker_list1               MRK_List1.rpt            MRK_List1     Mouse Gene…
+#>  2 marker_list2               MRK_List2.rpt            MRK_List2     Mouse Gene…
+#>  3 marker_coordinates         MGI_MRK_Coord.rpt        MGI_MRK_Coord MGI Marker…
+#>  4 gene_model_coordinates     MGI_Gene_Model_Coord.rpt MGI_Gene_Mod… MGI Gene M…
+#>  5 sequence_coordinates       MGI_GTGUP.gff            MGI_GTGUP     MGI Sequen…
+#>  6 genbank_refseq_ensembl_ids MRK_Sequence.rpt         MRK_Sequence  MGI Marker…
+#>  7 swiss_trembl_ids           MRK_SwissProt_TrEMBL.rpt MRK_SwissPro… MGI Marker…
+#>  8 swiss_prot_ids             MRK_SwissProt.rpt        MRK_SwissProt MGI Marker…
+#>  9 gene_trap_ids              MRK_GeneTrap.rpt         MRK_GeneTrap  MGI Marker…
+#> 10 ensembl_ids                MRK_ENSEMBL.rpt          MRK_ENSEMBL   MGI Marker…
+#> 11 biotype_conflicts          MGI_BioTypeConflict.rpt  MGI_BioTypeC… MGI Marker…
+#> 12 primers                    PRB_PrimerSeq.rpt        PRB_PrimerSeq MGI Marker…
+#> 13 interpro_domains           MGI_InterProDomains.rpt  MGI_InterPro… InterPro d…
 ```
 
+## Example
+
+Use `read_report()` to read any supported MGI report into R, e.g. to
+read `MRK_List1.rpt`:
+
 ``` r
-# Import the MGI Marker Coordinates' Report
-read_report(coordinates_rpt, "MGI_MRK_Coord", n_max = 10L)
-#> # A tibble: 10 × 12
-#>    marker_id marker_type marker_symbol marker_name  genome_assembly chr    start
-#>    <chr>     <fct>       <chr>         <chr>        <fct>           <fct>  <int>
-#>  1 MGI:87853 Gene        a             nonagouti    GRCm39          2     1.55e8
-#>  2 MGI:87854 Gene        Pzp           PZP, alpha-… GRCm39          6     1.28e8
-#>  3 MGI:87881 Gene        Acp1          acid phosph… GRCm39          12    3.09e7
-#>  4 MGI:87926 Gene        Adh7          alcohol deh… GRCm39          3     1.38e8
-#>  5 MGI:87929 Gene        Adh5          alcohol deh… GRCm39          3     1.38e8
-#>  6 MGI:87859 Gene        Abl1          c-abl oncog… GRCm39          2     3.16e7
-#>  7 MGI:87882 Gene        Acp2          acid phosph… GRCm39          2     9.10e7
-#>  8 MGI:87862 Gene        Scgb1b27      secretoglob… GRCm39          7     3.37e7
-#>  9 MGI:87883 Gene        Acp5          acid phosph… GRCm39          9     2.20e7
-#> 10 MGI:87930 Gene        Adk           adenosine k… GRCm39          14    2.11e7
-#> # ℹ 5 more variables: end <int>, strand <fct>, feature_type <fct>,
-#> #   provider <fct>, provider_display <fct>
+read_report("marker_list1", n_max = 10L)
+#> # A tibble: 10 × 15
+#>    marker_status marker_type marker_id   marker_symbol  marker_name feature_type
+#>    <fct>         <fct>       <chr>       <chr>          <chr>       <fct>       
+#>  1 O             BAC/YAC end MGI:1341858 03B03F         DNA segmen… BAC/YAC end 
+#>  2 O             BAC/YAC end MGI:1341869 03B03R         DNA segmen… BAC/YAC end 
+#>  3 O             DNA Segment MGI:1337005 03.MMHAP34FRA… DNA segmen… DNA segment 
+#>  4 W             Gene        <NA>        0610005A07Rik  <NA>        <NA>        
+#>  5 O             Gene        MGI:1918911 0610005C13Rik  RIKEN cDNA… lncRNA gene 
+#>  6 W             Gene        <NA>        0610005K03Rik  <NA>        <NA>        
+#>  7 W             Gene        <NA>        0610005M07Rik  <NA>        <NA>        
+#>  8 W             Gene        <NA>        0610006A03Rik  <NA>        <NA>        
+#>  9 W             Gene        <NA>        0610006A11Rik  <NA>        <NA>        
+#> 10 W             Gene        <NA>        0610006C01Rik  <NA>        <NA>        
+#> # ℹ 9 more variables: chromosome <fct>, start <int>, end <int>, strand <fct>,
+#> #   genetic_map_pos <dbl>, synonyms <list>, marker_id_now <chr>,
+#> #   marker_symbol_now <chr>, note <chr>
 ```
 
 ## Code of Conduct

@@ -1,5 +1,65 @@
-# Genome Feature Type Definitions
+library(tibble)
+library(usethis)
 library(rvest)
+
+#
+# `reports`:
+#
+#   A tidy data set of supported reports, i.e. reports for which we
+#   provide readers.
+#
+reports <-
+  tibble::tribble(
+    ~report_key, ~report_file, ~report_type, ~report_name,
+    "marker_list1",
+    "MRK_List1.rpt","MRK_List1", "Mouse Genetic Markers (including withdrawn marker symbols)",
+
+    "marker_list2",
+    "MRK_List2.rpt","MRK_List2", "Mouse Genetic Markers (excluding withdrawn marker symbols)",
+
+    "marker_coordinates",
+    "MGI_MRK_Coord.rpt","MGI_MRK_Coord", "MGI Marker Coordinates",
+
+    "gene_model_coordinates",
+    "MGI_Gene_Model_Coord.rpt", "MGI_Gene_Model_Coord", "MGI Gene Model Coordinates",
+
+    "sequence_coordinates",
+    "MGI_GTGUP.gff","MGI_GTGUP", "MGI Sequence Coordinates",
+
+    "genbank_refseq_ensembl_ids",
+    "MRK_Sequence.rpt","MRK_Sequence", "MGI Marker associations to Sequence (GenBank, RefSeq, Ensembl) information",
+
+    "swiss_trembl_ids",
+    "MRK_SwissProt_TrEMBL.rpt","MRK_SwissProt_TrEMBL", "MGI Marker associations to SWISS-PROT and TrEMBL protein IDs",
+
+    "swiss_prot_ids",
+    "MRK_SwissProt.rpt","MRK_SwissProt", "MGI Marker associations to SWISS-PROT protein IDs",
+
+    "gene_trap_ids",
+    "MRK_GeneTrap.rpt","MRK_GeneTrap", "MGI Marker associations to Gene Trap IDs",
+
+    "ensembl_ids",
+    "MRK_ENSEMBL.rpt","MRK_ENSEMBL", "MGI Marker associations to Ensembl sequence information",
+
+    "biotype_conflicts",
+    "MGI_BioTypeConflict.rpt","MGI_BioTypeConflict", "MGI Marker associations to Ensembl or NCBI gene models where a gene vs. pseudogene discrepancy exists",
+
+    "primers",
+    "PRB_PrimerSeq.rpt","PRB_PrimerSeq", "MGI Marker associations with primer pairs",
+
+    "interpro_domains",
+    "MGI_InterProDomains.rpt","MGI_InterProDomains", "InterPro domain associations to MGI markers"
+  )
+
+
+
+
+#
+#
+# Feature types
+#
+#
+
 url <- "https://www.informatics.jax.org/userhelp/GENE_feature_types_help.shtml"
 
 html <- rvest::read_html(url)
@@ -37,99 +97,15 @@ order <-
     61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71
   )
 
-#
-# Sort the feature types in a more meaningful way:
-#
-# Gene Types:
-#
-# gene
-# protein coding gene
-# gene segment
-# unclassified gene
-# heritable phenotypic marker
-# other feature types
-# QTL
-# transgene
-#
-# Non-coding RNA Genes:
-#
-# non-coding RNA gene
-# lncRNA gene
-# antisense lncRNA gene
-# lincRNA gene
-# sense intronic lncRNA gene
-# sense overlapping lncRNA gene
-# bidirectional promoter lncRNA gene
-# rRNA gene
-# tRNA gene
-# snRNA gene
-# snoRNA gene
-# miRNA gene
-# scRNA gene
-# SRP RNA gene
-# RNase P RNA gene
-# RNase MRP RNA gene
-# telomerase RNA gene
-# unclassified non-coding RNA gene
-# ribozyme gene
-# complex/cluster/region
-#
-# Chromosomal and Cytogenetic Features:
-#
-# cytogenetic marker
-# chromosomal deletion
-# insertion
-# chromosomal inversion
-# Robertsonian fusion
-# reciprocal chromosomal translocation
-# chromosomal translocation
-# chromosomal duplication
-# chromosomal transposition
-# unclassified cytogenetic marker
-#
-# Genomic Ends and Other Features:
-#
-# BAC/YAC end
-# BAC end
-# YAC end
-# PAC end
-# other genome feature
-# retrotransposon
-# telomere
-# minisatellite
-# unclassified other genome feature
-# endogenous retroviral region
-# mutation defined region
-# CpG island
-#
-# Regulatory Elements:
-#
-# promoter
-# promoter flanking region
-# TSS region
-# enhancer
-# CTCF binding site
-# transcription factor binding site
-# open chromatin region
-# DNA segment
-# pseudogenic region
-# pseudogene
-# pseudogenic gene segment
-# polymorphic pseudogene
-# imprinting control region
-# intronic regulatory region
-# silencer
-# locus control region
-# insulator
-# response element
-# origin of replication
-# transcriptional cis regulatory region
-# TSS cluster
-
-
 feature_types <- feature_types01[order, ]
 
+# Export to file too.
 readr::write_csv(feature_types, file = "data-raw/feature_types.csv")
-usethis::use_data(feature_types, overwrite = TRUE, compress = "xz")
-usethis::use_data(feature_types, internal = TRUE, overwrite = TRUE)
+readr::write_csv(reports, file = "data-raw/reports.csv")
 
+# Export data sets
+usethis::use_data(feature_types, overwrite = TRUE, compress = "xz")
+usethis::use_data(reports, overwrite = TRUE, compress = "xz")
+
+# Internal data
+usethis::use_data(reports, feature_types, internal = TRUE, overwrite = TRUE)

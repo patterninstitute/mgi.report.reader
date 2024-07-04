@@ -1,0 +1,127 @@
+---
+title: "Ensembl IDs"
+---
+
+```{r setup, echo=FALSE, message=FALSE}
+library(mgi.report.reader)
+```
+
+The MGI report `MRK_ENSEMBL.rpt` provides associations between 
+MGI genetic markers and Ensembl identifiers.
+
+To read this report using the key `"ensembl_ids"`, use the
+following code:
+
+```{r}
+# To read all records (more than 70,000), use `read_report("ensembl_ids")`.
+(assoc_ensembl_ids <- read_report(report_key = "ensembl_ids", n_max = 30L))
+```
+
+## Ensembl identifiers
+
+These variables hold one or more identifiers associated with each genetic
+marker:
+
+- `ensembl_gen_id`: Ensembl gene identifier(s)
+- `ensembl_trp_id`: Ensembl transcript identifier(s)
+- `ensembl_prt_id`: Ensembl protein identifier(s)
+- `biotype`: Ensembl's biotype
+
+### Example: `MGI:1919458` (lncRNA)
+
+Here is the example of marker MGI:1919458, a lncRNA, with multiple Ensembl
+transcripts:
+
+```{r}
+assoc_ensembl_ids |>
+  dplyr::filter(marker_id == "MGI:1919458") |>
+  dplyr::select("marker_id", "marker_symbol", "ensembl_gen_id","ensembl_trp_id") |>
+  tidyr::unnest("ensembl_trp_id")
+```
+
+### Example: `MGI:1914330` (protein coding)
+
+And another example of a protein coding gene, MGI:1914330.
+
+Transcripts:
+
+```{r}
+# Transcripts
+assoc_ensembl_ids |>
+  dplyr::filter(marker_id == "MGI:1914330") |>
+  dplyr::select("marker_id", "marker_symbol", "ensembl_gen_id","ensembl_trp_id") |>
+  tidyr::unnest("ensembl_trp_id")
+
+```
+
+Proteins:
+
+```{r}
+# Proteins
+assoc_ensembl_ids |>
+  dplyr::filter(marker_id == "MGI:1914330") |>
+  dplyr::select("marker_id", "marker_symbol", "ensembl_gen_id","ensembl_prt_id") |>
+  tidyr::unnest("ensembl_prt_id")
+```
+
+## Variables
+
+### `marker_status`
+
+`marker_status`: `r mgi.report.reader:::desc_marker_status()`
+
+### `marker_type`
+
+`marker_type`: `r mgi.report.reader:::desc_marker_type()`
+
+### `marker_id`
+
+`marker_id`: `r mgi.report.reader:::desc_marker_id()`
+
+### `marker_symbol`
+
+`marker_symbol`: `r mgi.report.reader:::desc_marker_symbol()`
+
+### `marker_name`
+
+`marker_name`: `r mgi.report.reader:::desc_marker_name()`
+
+### `feature_type`
+
+`feature_type`: `r mgi.report.reader:::desc_feature_type()`
+
+### `chromosome`
+
+`chromosome`: `r mgi.report.reader:::desc_chromosome()`
+
+### `start`
+
+`start`: `r mgi.report.reader:::desc_start()`
+
+### `end`
+
+`end`: `r mgi.report.reader:::desc_end()`
+
+### `strand`
+
+`strand`: `r mgi.report.reader:::desc_strand()`
+
+### `genetic_map_pos`
+
+`genetic_map_pos`: `r mgi.report.reader:::desc_genetic_map_pos()`
+
+### `ensembl_gen_id`
+
+`ensembl_gen_id`: `r mgi.report.reader:::desc_ensembl_gen_id()`
+
+### `ensembl_trp_id`
+
+`ensembl_trp_id`: `r mgi.report.reader:::desc_ensembl_trp_id()`
+
+### `ensembl_prt_id`
+
+`ensembl_prt_id`: `r mgi.report.reader:::desc_ensembl_prt_id()`
+
+### `biotype`
+
+`biotype`: `r mgi.report.reader:::desc_ensembl_biotype()`

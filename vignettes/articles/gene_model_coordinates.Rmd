@@ -1,0 +1,97 @@
+---
+title: "Gene Model Coordinates"
+---
+
+```{r setup, echo=FALSE, message=FALSE}
+library(mgi.report.reader)
+library(dplyr)
+```
+
+The MGI report `MGI_Gene_Model_Coord.rpt` lists the subset of mouse genetic
+markers that correspond to NCBI and Ensembl gene models.
+
+To read this report using the key `"gene_model_coordinates"`, use the following
+code:
+
+```{r}
+# To read all records (more than 70,000), use `read_report("gene_model_coordinates")`.
+(gene_model_coord <- read_report(report_key = "gene_model_coordinates", n_max = 300L))
+```
+
+## NCBI gene model variables
+
+NCBI gene model annotation variables are prefixed with `entrez`:
+
+```{r}
+dplyr::select(gene_model_coord, "marker_symbol", dplyr::starts_with("entrez"))
+```
+
+## Ensembl gene model variables
+
+Ensembl gene model annotation variables are prefixed with `ensembl`:
+
+```{r}
+dplyr::select(gene_model_coord, "marker_symbol", dplyr::starts_with("ensembl"))
+```
+
+## Variables
+
+### `marker_type`
+
+`marker_type`: `r mgi.report.reader:::desc_marker_type()`
+
+### `marker_id`
+
+`marker_id`: `r mgi.report.reader:::desc_marker_id()`
+
+### `marker_symbol`
+
+`marker_symbol`: `r mgi.report.reader:::desc_marker_symbol()`
+
+### `marker_name`
+
+`marker_name`: `r mgi.report.reader:::desc_marker_name()`
+
+### `assembly`
+
+`assembly`: `r mgi.report.reader:::desc_assembly()`
+
+### `entrez_gen_id`
+
+`entrez_gen_id`: `r mgi.report.reader:::desc_entrez_gen_id()`
+
+### `entrez_chromosome`
+
+`entrez_chromosome`: `r mgi.report.reader:::desc_entrez_chromosome()`
+
+### `entrez_start`
+
+`entrez_start`: `r mgi.report.reader:::desc_entrez_start()`
+
+### `entrez_end`
+
+`entrez_end`: `r mgi.report.reader:::desc_entrez_end()`
+
+### `entrez_strand`
+
+`entrez_strand`: `r mgi.report.reader:::desc_entrez_strand()`
+
+### `ensembl_gen_id`
+
+`ensembl_gen_id`: `r mgi.report.reader:::desc_ensembl_gen_id()`
+
+### `ensembl_chromosome`
+
+`ensembl_chromosome`: `r mgi.report.reader:::desc_ensembl_chromosome()`
+
+### `ensembl_start`
+
+`ensembl_start`: `r mgi.report.reader:::desc_ensembl_start()`
+
+### `ensembl_end`
+
+`ensembl_end`: `r mgi.report.reader:::desc_ensembl_end()`
+
+### `ensembl_strand`
+
+`ensembl_strand`: `r mgi.report.reader:::desc_ensembl_strand()`

@@ -1,0 +1,78 @@
+---
+title: "Primer Pairs"
+---
+
+```{r setup, echo=FALSE, message=FALSE}
+library(mgi.report.reader)
+```
+
+The MGI report `PRB_PrimerSeq.rpt` provides associations between 
+MGI genetic markers and primer pairs (probes^[In MGI, the term _probe_ applies
+not only to nucleic acid probes detected, but also to primers for PCR. This
+usage is not common outside of MGI.]).
+
+To read this report using the key `"primers"`, use the
+following code:
+
+```{r}
+# To read all records (more than 45,000), use `read_report("primers")`.
+(assoc_primers <- read_report(report_key = "primers", n_max = 30L))
+```
+
+## Primer variables
+
+All primer related variables are scoped with the prefix `primer_`. The
+`primer_id` variable is the key for a primer pair, which is also a genetic
+marker, so it follows the same format as values of `marker_id`.
+
+### Example: `MGI:1923536`
+
+The primer pairs associated with marker MGI:1923536 are:
+
+```{r}
+assoc_primers |>
+  dplyr::filter(marker_id == "MGI:1923536") |>
+  dplyr::select("marker_id", dplyr::starts_with("primer_"))
+```
+
+## Variables
+
+### `marker_id`
+
+`marker_id`: `r mgi.report.reader:::desc_marker_id()`
+
+### `marker_symbol`
+
+`marker_symbol`: `r mgi.report.reader:::desc_marker_symbol()`
+
+### `marker_name`
+
+`marker_name`: `r mgi.report.reader:::desc_marker_name()`
+
+### `chromosome`
+
+`chromosome`: `r mgi.report.reader:::desc_chromosome()`
+
+### `genetic_map_pos`
+
+`genetic_map_pos`: `r mgi.report.reader:::desc_genetic_map_pos()`
+
+### `primer_id`
+
+`primer_id`: `r mgi.report.reader:::desc_primer_id()`
+
+### `primer_name`
+
+`primer_name`: `r mgi.report.reader:::desc_primer_name()`
+
+### `primer_fwd_seq`
+
+`primer_fwd_seq`: `r mgi.report.reader:::desc_primer_fwd_seq()`
+
+### `primer_rev_seq`
+
+`primer_rev_seq`: `r mgi.report.reader:::desc_primer_rev_seq()`
+
+### `primer_amplimer_size`
+
+`primer_amplimer_size`: `r mgi.report.reader:::desc_primer_amplimer_size()`

@@ -1,0 +1,60 @@
+---
+title: "InterPro Domains"
+---
+
+```{r setup, echo=FALSE, message=FALSE}
+library(mgi.report.reader)
+```
+
+The MGI report `MGI_InterProDomains.rpt` provides associations between 
+InterPro domains and MGI genetic markers.
+
+To read this report using the key `"interpro_domains"`, use the
+following code:
+
+```{r}
+# To read all records (~ 120,000), use `read_report("interpro_domains")`.
+(assoc_interpro_domains <- read_report(report_key = "interpro_domains", n_max = 10000L))
+```
+
+## Associated MGI markers
+
+To find associated genetic markers with a specific InterPro domain, simply
+filter for that domain, e.g. the Retinoid X receptor/HNF4 domain (IPR000003):
+
+```{r}
+assoc_interpro_domains |>
+  dplyr::filter(interpro_id == "IPR000003")
+```
+
+## Associated InterPro domains
+
+For the reverse operation, i.e. finding all associated domains with a genetic
+marker, e.g. the gene Rxra:
+
+```{r}
+assoc_interpro_domains |>
+  dplyr::filter(marker_symbol == "Rxra") |>
+  dplyr::select("marker_id", "marker_symbol", "interpro_id", "interpro_domain")
+```
+
+Note that these results are not exaustive because we selected the first 10,000
+records when importing the report.
+
+## Variables
+
+### `interpro_id`
+
+`interpro_id`: `r mgi.report.reader:::desc_interpro_id()`
+
+### `interpro_domain`
+
+`interpro_domain`: `r mgi.report.reader:::desc_interpro_domain()`
+
+### `marker_id`
+
+`marker_id`: `r mgi.report.reader:::desc_marker_id()`
+
+### `marker_symbol`
+
+`marker_symbol`: `r mgi.report.reader:::desc_marker_symbol()`

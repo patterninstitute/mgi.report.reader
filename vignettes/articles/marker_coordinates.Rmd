@@ -1,0 +1,87 @@
+---
+title: "MGI Marker Coordinates"
+---
+
+```{r setup, echo=FALSE, message=FALSE}
+library(mgi.report.reader)
+library(dplyr)
+```
+
+The MGI report `MGI_MRK_Coord.rpt` lists mouse genetic markers along with their
+genomic annotations, such as chromosome position, genome assembly version, and
+the source of the annotation.
+
+To read this report using the key `"marker_coordinates"`, use the following code:
+
+```{r}
+# To read all records (more than 600,000), use `read_report("marker_coordinates")`.
+(marker_coord <- read_report(report_key = "marker_coordinates", n_max = 300L))
+```
+
+For the first 300 records, here is the count by marker type:
+
+```{r}
+dplyr::count(marker_coord, marker_type)
+```
+
+By chromosome:
+
+```{r}
+dplyr::count(marker_coord, chromosome)
+```
+
+By annotation source:
+
+```{r}
+dplyr::count(marker_coord, source, database)
+```
+
+## Variables
+
+### `marker_type`
+
+`marker_type`: `r mgi.report.reader:::desc_marker_type()`
+
+### `marker_id`
+
+`marker_id`: `r mgi.report.reader:::desc_marker_id()`
+
+### `marker_symbol`
+
+`marker_symbol`: `r mgi.report.reader:::desc_marker_symbol()`
+
+### `marker_name`
+
+`marker_name`: `r mgi.report.reader:::desc_marker_name()`
+
+### `feature_type`
+
+`feature_type`: `r mgi.report.reader:::desc_feature_type()`
+
+### `chromosome`
+
+`chromosome`: `r mgi.report.reader:::desc_chromosome()`
+
+### `start`
+
+`start`: `r mgi.report.reader:::desc_start()`
+
+### `end`
+
+`end`: `r mgi.report.reader:::desc_end()`
+
+### `strand`
+
+`strand`: `r mgi.report.reader:::desc_strand()`
+
+### `assembly`
+
+`assembly`: `r mgi.report.reader:::desc_assembly()`
+
+### `source`
+
+`source`: `r mgi.report.reader:::desc_source()`
+
+### `database`
+
+`database`: `r mgi.report.reader:::desc_database()`

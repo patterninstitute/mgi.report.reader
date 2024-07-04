@@ -1,0 +1,136 @@
+---
+title: "GenBank, RefSeq and Ensembl IDs"
+---
+
+```{r setup, echo=FALSE, message=FALSE}
+library(mgi.report.reader)
+```
+
+The MGI report `MRK_Sequence.rpt` provides associations between 
+MGI genetic markers and GenBank, RefSeq, Ensembl and UniProtKB identifiers.
+
+To read this report using the key `"genbank_refseq_ensembl_ids"`, use the
+following code:
+
+```{r}
+# To read all records (more than 70,000), use `read_report("genbank_refseq_ensembl_ids")`.
+(assoc_to_seq_ids <- read_report(report_key = "genbank_refseq_ensembl_ids", n_max = 30L))
+```
+
+## GenBank, RefSeq, Ensembl and UniProtKB identifiers
+
+These variables hold one or more identifiers associated with each genetic
+marker:
+
+- `genbank_id`: GenBank identifier(s)
+- `refseq_trp_id`: RefSeq transcript identifier(s)
+- `refseq_prt_id`: RefSeq protein identifier(s)
+- `ensembl_trp_id`: Ensembl transcript identifier(s)
+- `ensembl_prt_id`: Ensembl protein identifier(s)
+- `swiss_prt_id`: UniProtKB/Swiss-Prot identifier(s)
+- `tr_embl_prt_id`: UniProtKB/TrEMBL identifier(s)
+- `unigene_id`: UniGene identifier^[All values are `NA` for this variable.]
+
+Except for `unigene_id`, all these variables are
+[list-columns](https://r4ds.hadley.nz/rectangling#list-columns), and provide,
+potentially, multiple values for the same genetic marker.
+
+Having these data nested in list-columns offers the convenience of having a
+table whose records (rows) correspond to one genetic marker. The downside is
+that these multiple identifiers are not readily accessible as they would be if
+stored in atomic columns. To unnest them you may use
+`tidyr::unnest_longer()`^[To learn more about how to rectangle your hierarchical
+(nested) data, see
+[Rectangling](https://tidyr.tidyverse.org/articles/rectangle.html).].
+
+Here is an example with marker MGI:1915609, where we unnest Ensembl transcript
+identifiers so that we have one per row:
+
+```{r}
+assoc_to_seq_ids |>
+  dplyr::filter(marker_id == "MGI:1915609") |>
+  dplyr::select("marker_id", "marker_symbol", "ensembl_trp_id") |>
+  tidyr::unnest("ensembl_trp_id") |>
+  print(n = Inf)
+```
+
+Note, however, that now the meaning of each row changed: each row is for a
+marker / Ensembl transcript combination.
+
+## Variables
+
+### `marker_status`
+
+`marker_status`: `r mgi.report.reader:::desc_marker_status()`
+
+### `marker_type`
+
+`marker_type`: `r mgi.report.reader:::desc_marker_type()`
+
+### `marker_id`
+
+`marker_id`: `r mgi.report.reader:::desc_marker_id()`
+
+### `marker_symbol`
+
+`marker_symbol`: `r mgi.report.reader:::desc_marker_symbol()`
+
+### `marker_name`
+
+`marker_name`: `r mgi.report.reader:::desc_marker_name()`
+
+### `feature_type`
+
+`feature_type`: `r mgi.report.reader:::desc_feature_type()`
+
+### `chromosome`
+
+`chromosome`: `r mgi.report.reader:::desc_chromosome()`
+
+### `start`
+
+`start`: `r mgi.report.reader:::desc_start()`
+
+### `end`
+
+`end`: `r mgi.report.reader:::desc_end()`
+
+### `strand`
+
+`strand`: `r mgi.report.reader:::desc_strand()`
+
+### `genetic_map_pos`
+
+`genetic_map_pos`: `r mgi.report.reader:::desc_genetic_map_pos()`
+
+### `genbank_id`
+
+`genbank_id`: `r mgi.report.reader:::desc_genbank_id()`
+
+### `refseq_trp_id`
+
+`refseq_trp_id`: `r mgi.report.reader:::desc_refseq_trp_id()`
+
+### `refseq_prt_id`
+
+`refseq_prt_id`: `r mgi.report.reader:::desc_refseq_prt_id()`
+
+### `ensembl_trp_id`
+
+`ensembl_trp_id`: `r mgi.report.reader:::desc_ensembl_trp_id()`
+
+### `ensembl_prt_id`
+
+`ensembl_prt_id`: `r mgi.report.reader:::desc_ensembl_prt_id()`
+
+### `swiss_prt_id`
+
+`swiss_prt_id`: `r mgi.report.reader:::desc_swiss_prt_id()`
+
+### `tr_embl_prt_id`
+
+`tr_embl_prt_id`: `r mgi.report.reader:::desc_tr_embl_prt_id()`
+
+### `unigene_id`
+
+`unigene_id`: `r mgi.report.reader:::desc_unigene_id()`
