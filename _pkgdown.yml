@@ -14,6 +14,8 @@ navbar:
       menu:
         - text: Genetic Marker
           href: articles/genetic_marker.html
+        - text: Representative Genomic Sequence
+          href: articles/representative_sequence.html
     articles:
       text: Reports
       menu:

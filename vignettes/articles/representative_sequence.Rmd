@@ -1,0 +1,48 @@
+---
+title: "Representative Genomic Sequence"
+---
+
+```{r setup, echo=FALSE}
+library(mgi.report.reader)
+```
+
+In MGI, selecting a representative genome sequence is crucial, as it influences the
+representative transcript and protein sequences. Priorities for selecting
+representative genomic sequences include gene model sequences from Ensembl,
+NCBI, and VISTA annotations. In MGI, gene model sequences define the genomic
+region using `start` and `end` coordinates from providers (`source`), including
+regions defined by regulatory feature providers.
+
+## MGI representative genomic sequence
+
+For both protein-coding and noncoding RNA genes and pseudogenes, the
+representative genomic sequence is typically chosen from Ensembl or NCBI gene
+models. If both providers (`source`) offer gene models for a feature, the
+shorter model is selected to avoid extended read-through transcripts. In the
+absence of gene models, the longest associated GenBank genomic sequence is
+chosen. For regulatory regions, the gene model from Ensembl, NCBI, or VISTA is
+selected, with NCBI models preferred for enhancers when available.
+
+Whether a sequence is considered representative is indicated by the variable
+`is_mgi_rep`. For example, in the MGI_BioTypeConflict.rpt report, this can be
+referenced by reviewing the `vignette("biotype_conflicts")`.
+
+## MGI representative transcript and protein sequences
+
+Representative transcript and protein sequences are selected algorithmically
+based on the representative genomic sequence. If the genomic sequence is from
+Ensembl, the longest Ensembl protein and corresponding transcript are chosen. If
+it is not from Ensembl, the longest transcript from the genomic gene model
+provider is selected, and, if coding, the longest associated protein from a
+provider hierarchy is chosen. If the representative genomic sequence is not a
+gene model from an annotation provider, both transcript and protein sequences
+(if coding) are selected from provider (`source`) hierarchies:
+
+- **Transcript hierarchy**: Longest of NM RefSeq > NR RefSeq > GenBank non-EST RNA >
+XM RefSeq > XR RefSeq > GenBank EST RNA.
+
+- **Protein hierarchy**: Longest of SWISS-PROT > RefSeq NP > TrEMBL > RefSeq XP.
+
+## References
+
+- Richard M Baldarelli, Cynthia L Smith, Martin Ringwald, Joel E Richardson, Carol J Bult, Mouse Genome Informatics Group , Mouse Genome Informatics: an integrated knowledgebase system for the laboratory mouse, Genetics, Volume 227, Issue 1, May 2024, iyae031. [doi:10.1093/genetics/iyae031](https://doi.org/10.1093/genetics/iyae031).

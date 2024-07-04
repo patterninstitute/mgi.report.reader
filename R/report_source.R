@@ -42,8 +42,16 @@ find_report_last_modified <- function(file) {
 
 #' Report last modification date
 #'
+#' @description
+#'
 #' [report_last_modified()] returns the last modified date and time of the
-#' report source (local file or remote file).
+#' report source: local file or remote file. If a local file, the modification
+#' date will be that indicated by the file system; if a remote file, the date
+#' of last update is that provided by HTTP header `"last-modified"`.
+#'
+#' MGI updates its reports weekly, every Thursday. However, not all reports are
+#' updated each week. The return value of this function is the closest you will
+#' get to a versioning of MGI report files.
 #'
 #' @param tbl Report data as a [tibble][tibble::tibble-package].
 #'

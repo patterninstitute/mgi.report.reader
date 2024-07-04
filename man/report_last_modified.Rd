@@ -15,7 +15,13 @@ object.
 }
 \description{
 \code{\link[=report_last_modified]{report_last_modified()}} returns the last modified date and time of the
-report source (local file or remote file).
+report source: local file or remote file. If a local file, the modification
+date will be that indicated by the file system; if a remote file, the date
+of last update is that provided by HTTP header \code{"last-modified"}.
+
+MGI updates its reports weekly, every Thursday. However, not all reports are
+updated each week. The return value of this function is the closest you will
+get to a versioning of MGI report files.
 }
 \examples{
 markers <- read_report("marker_list1", n_max = 10L)

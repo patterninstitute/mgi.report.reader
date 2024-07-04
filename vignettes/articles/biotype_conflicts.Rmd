@@ -23,9 +23,11 @@ source of the classification is indicated in the `database` variable. The
 
 ## MGI Representative Gene Model
 
-The variable `is_mgi_rep` stands for _is MGI representative_ and is encoded as a
-logical vector that indicates whether the corresponding `gene_id` and `biotype`
-values are the ones adopted by MGI as representative for the genetic marker.
+The variable `is_mgi_rep` stands for _is the MGI genomic representative
+sequence_ and is encoded as a logical vector that indicates whether the
+corresponding `gene_id` and `biotype` values are the ones associated with MGI
+representative sequence. See `vignette("representative_sequence")` for more
+details.
 
 ```{r}
 biotype_conflicts |>

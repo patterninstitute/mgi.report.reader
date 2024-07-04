@@ -60,7 +60,7 @@ Use `read_report()` to read any supported MGI report into R, e.g. to
 read `MRK_List1.rpt`:
 
 ``` r
-read_report("marker_list1", n_max = 10L)
+(markers <- read_report("marker_list1", n_max = 10L))
 #> # A tibble: 10 × 15
 #>    marker_status marker_type marker_id   marker_symbol  marker_name feature_type
 #>    <fct>         <fct>       <chr>       <chr>          <chr>       <fct>       
@@ -77,6 +77,18 @@ read_report("marker_list1", n_max = 10L)
 #> # ℹ 9 more variables: chromosome <fct>, start <int>, end <int>, strand <fct>,
 #> #   genetic_map_pos <dbl>, synonyms <list>, marker_id_now <chr>,
 #> #   marker_symbol_now <chr>, note <chr>
+```
+
+``` r
+# Report file source
+report_source(markers)
+#> [1] "https://www.informatics.jax.org/downloads/reports/MRK_List1.rpt"
+```
+
+``` r
+# Report file last modification date
+report_last_modified(markers)
+#> [1] "2024-07-01 11:51:02 GMT"
 ```
 
 ## Code of Conduct
@@ -96,6 +108,9 @@ misinterpretations. Users are advised to test the package thoroughly
 before relying on it in critical applications. The authors disclaim all
 liability for any damage or loss resulting from the use of this package.
 Use of the `{mgi.report.reader}` package is at the user’s own risk.
+
+Support for reports is an ongoing process, but we welcome pull requests
+for quicker coverage.
 
 ## Citing this package
 
