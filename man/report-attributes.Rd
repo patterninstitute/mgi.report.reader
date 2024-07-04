@@ -6,7 +6,7 @@
 \alias{report_name}
 \alias{report_type}
 \alias{report_url}
-\title{Get report attributes by report key}
+\title{Get MGI report specs by report key}
 \usage{
 report_file(report_key)
 
@@ -30,7 +30,7 @@ A character vector:
 }
 }
 \description{
-Set of functions to retrieve attributes of a MGI report.
+Set of functions to retrieve metadata details of a MGI report.
 }
 \examples{
 report_file("marker_list1")

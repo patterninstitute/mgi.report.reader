@@ -16,3 +16,10 @@ A single string with an absolute path to a file on disk or an URL.
 \code{\link[=report_source]{report_source()}} returns the source used to obtain the report data:
 a file path or an URL.
 }
+\examples{
+markers <- read_report("marker_list1", n_max = 10L)
+
+# Where did the data come from?
+report_source(markers)
+
+}

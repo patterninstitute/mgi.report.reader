@@ -1,0 +1,72 @@
+---
+title: "Genetic Marker"
+---
+
+```{r setup, echo=FALSE}
+library(mgi.report.reader)
+```
+
+The genetic marker is the central concept in all MGI reports.
+Some of the reports made accessible with this package are about characterizing a
+subset of mouse genetic markers, whereas others are about their relationships to other
+similar genetic entities in other databases.
+
+Put simply, a marker is the means by which a gene or a locus is identified.
+
+## Genetic marker definition
+
+In the context of Mouse Gene Informatics (MGI), a genetic marker is defined as
+any biological feature that can be used to identify a specific position on a
+chromosome through various mapping methods such as genetic, physical, or other
+forms of mapping. These features include genes, anonymous DNA segments,
+mutations, or phenotypes.
+
+### Defining features of genetic markers
+
+1. **Positional reference**: They serve as points of reference for locating
+other genetic features on chromosomes.
+
+2. **Assay dependence**: The identification of markers depends on specific
+assays that detect genetic variation.
+
+3. **Biological significance**: Markers can distinguish particular biological
+states, such as gene expression profiles or characteristic morphologies.
+
+### Marker types
+
+- **Gene**: A functional unit of inheritance, usually encoding a protein or RNA.
+- **DNA Segment**: Mapped anonymous DNA segments used for generating genetic maps.
+- **Cytogenetic Marker**: Identified through cytogenetic techniques, visible under a microscope.
+- **Quantitative Trait Locus (QTL)**: Polymorphic loci associated with the variation in phenotypic traits.
+- **Transgene**: Genes that have been transferred naturally or by any of a number of genetic engineering techniques.
+- **Pseudogene**: Non-functional sequences that resemble functional genes.
+- **BAC/YAC Ends**: Ends of Bacterial Artificial Chromosomes (BACs) or Yeast Artificial Chromosomes (YACs) used in mapping.
+- **Other Genome Features**: Any other identified features within the genome.
+- **Complex/Cluster/Region**: Grouped genomic entities located closely on a chromosome.
+
+These marker types are retrievable with `marker_types()`.
+
+### Markers as database entities
+
+Markers provide a framework for organizing and communicating genetic
+information, facilitating the mapping of genetic features, and helping in the
+identification of genes responsible for phenotypic traits.
+
+In Mouse Genome Informatics (MGI), a marker is an object for which unique
+official nomenclature is assigned, i.e. an accession identifier: a unique
+alphanumeric character string that is used to unambiguously identify a
+particular record in the MGI database. In report data returned by
+`read_report()` this variable is called `marker_id`. Other common accompanying
+variables include:
+
+- `marker_status`: marker status, indicating whether a currently in-use genetic marker, or if it has been withdrawn .
+- `marker_type`: the type of genetic marker, as discussed above.
+- `marker_name`: word or phrase that uniquely identifies the genetic marker, e.g. a gene or allele name.
+- `marker_symbol`:  a unique abbreviation of the marker name.
+
+## References
+
+- [Guidelines for Nomenclature of Genes, Genetic Markers, Alleles, and Mutations in Mouse and Rat](https://www.informatics.jax.org/mgihome/nomen/gene.shtml).
+- Eppig JT, Motenko H, Richardson JE, Richards-Smith B, Smith CL. 2015. The International Mouse Strain Resource (IMSR): cataloging
+worldwide mouse and ES cell line resources. Mamm Genome. 26(9–10):448–455. [doi:10.1007/s00335-015-9600-0](https://doi.org/10.1016/B978-012369454-6/50017-0).
+- MGI Glossary: [MGI Accession ID](https://www.informatics.jax.org/glossary/mgi_accession).

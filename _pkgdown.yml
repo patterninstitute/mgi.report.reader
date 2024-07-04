@@ -6,9 +6,14 @@ template:
 
 navbar:
   structure:
-    left:  [intro, articles, reference, news]
+    left:  [intro, concepts, articles, reference, news]
     right: [search, github]
   components:
+    concepts:
+      text: Concepts
+      menu:
+        - text: Genetic Marker
+          href: articles/genetic_marker.html
     articles:
       text: Reports
       menu:
@@ -45,20 +50,24 @@ navbar:
 reference:
 - title: MGI Reports
 
-- subtitle: Data
-  contents:
-  - reports
-  - feature_types
-
-- subtitle: Reading
+- subtitle: Reading Reports
   contents:
   - read_report
   - report_source
-  - report_datetime
+  - report_last_modified
+  - report-attributes
+
+- subtitle: Data
+  contents:
+  - reports
+  - feature_type_definitions
+
+- subtitle: Enumerations
+  contents:
+  - chromosomes
+  - marker_types
+  - feature_types
 
 - subtitle: Helpers
   contents:
-  - open_in_mgi
-  - chromosomes
-  - report-attributes
-
+  - open_marker_in_mgi

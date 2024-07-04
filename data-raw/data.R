@@ -97,15 +97,15 @@ order <-
     61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71
   )
 
-feature_types <- feature_types01[order, ]
+feature_type_definitions <- feature_types01[order, ]
 
 # Export to file too.
-readr::write_csv(feature_types, file = "data-raw/feature_types.csv")
+readr::write_csv(feature_type_definitions, file = "data-raw/feature_type_definitions.csv")
 readr::write_csv(reports, file = "data-raw/reports.csv")
 
 # Export data sets
-usethis::use_data(feature_types, overwrite = TRUE, compress = "xz")
+usethis::use_data(feature_type_definitions, overwrite = TRUE, compress = "xz")
 usethis::use_data(reports, overwrite = TRUE, compress = "xz")
 
 # Internal data
-usethis::use_data(reports, feature_types, internal = TRUE, overwrite = TRUE)
+usethis::use_data(reports, feature_type_definitions, internal = TRUE, overwrite = TRUE)

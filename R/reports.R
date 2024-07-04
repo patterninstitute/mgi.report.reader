@@ -33,9 +33,9 @@ get_reports_col <- function(report_key, col) {
     dplyr::pull(col)
 }
 
-#' Get report attributes by report key
+#' Get MGI report specs by report key
 #'
-#' Set of functions to retrieve attributes of a MGI report.
+#' Set of functions to retrieve metadata details of a MGI report.
 #'
 #' @inheritParams common-args
 #'

@@ -65,7 +65,7 @@ col_strand <- function(x) {
 }
 
 col_feature_type <- function(x) {
-  factor(x, levels = feature_types$feature_type) |>
+  factor(x, levels = feature_types()) |>
     add_label_to_feature_type()
 }
 

@@ -20,7 +20,7 @@ following code:
 ## Associated MGI markers
 
 To find associated genetic markers with a specific InterPro domain, simply
-filter for that domain, e.g. the Retinoid X receptor/HNF4 domain (IPR000003):
+filter for that domain, e.g. the _Retinoid X receptor/HNF4_ domain (IPR000003):
 
 ```{r}
 assoc_interpro_domains |>
@@ -30,7 +30,7 @@ assoc_interpro_domains |>
 ## Associated InterPro domains
 
 For the reverse operation, i.e. finding all associated domains with a genetic
-marker, e.g. the gene Rxra:
+marker, e.g. the gene _Rxra_:
 
 ```{r}
 assoc_interpro_domains |>
@@ -38,7 +38,7 @@ assoc_interpro_domains |>
   dplyr::select("marker_id", "marker_symbol", "interpro_id", "interpro_domain")
 ```
 
-Note that these results are not exaustive because we selected the first 10,000
+Note that these results are not exhaustive because we selected the first 10,000
 records when importing the report.
 
 ## Variables

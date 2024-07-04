@@ -37,12 +37,12 @@
 #   factor(marker_type, levels = marker_types())
 # }
 
-protein_ids_col <- function(protein_ids) {
-
-  protein_ids <- strsplit(protein_ids, " ", fixed = TRUE)
-  # Convert single NA values to empty character vectors in the list-column.
-  dplyr::if_else(sapply(protein_ids, \(x) length(x) == 1L && is.na(x)), list(character()), protein_ids)
-}
+# protein_ids_col <- function(protein_ids) {
+#
+#   protein_ids <- strsplit(protein_ids, " ", fixed = TRUE)
+#   # Convert single NA values to empty character vectors in the list-column.
+#   dplyr::if_else(sapply(protein_ids, \(x) length(x) == 1L && is.na(x)), list(character()), protein_ids)
+# }
 
 # cell_line_col <- function(cell_line) {
 #
@@ -51,16 +51,16 @@ protein_ids_col <- function(protein_ids) {
 #   dplyr::if_else(sapply(cell_line, \(x) length(x) == 1L && is.na(x)), list(character()), cell_line)
 # }
 
-special_feature_type_col <- function(feature_type) {
-
-  # In cases like:
-  # "lncRNA gene|lncRNA gene|lncRNA gene"
-  # keep only one instance. This assumes the values pipe-separated are repeated,
-  # this is the case in MRK_ENSEMBL.rpt.
-  feature_type <- sub("\\|.+", "", feature_type)
-
-  factor(feature_type, levels = feature_types$feature_type)
-}
+# special_feature_type_col <- function(feature_type) {
+#
+#   # In cases like:
+#   # "lncRNA gene|lncRNA gene|lncRNA gene"
+#   # keep only one instance. This assumes the values pipe-separated are repeated,
+#   # this is the case in MRK_ENSEMBL.rpt.
+#   feature_type <- sub("\\|.+", "", feature_type)
+#
+#   factor(feature_type, levels = feature_types$feature_type)
+# }
 
 # biotype_col <- function(biotype) {
 #   biotype <- strsplit(biotype, "|", fixed = TRUE)

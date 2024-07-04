@@ -1,6 +1,6 @@
 Package: mgi.report.reader
 Title: Read Mouse Genome Informatics Reports
-Version: 0.0.9.9000
+Version: 0.0.9.9100
 Authors@R: c(
     person("Ramiro", "Magno", , "rmagno@pattern.institute", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-5226-3441")),

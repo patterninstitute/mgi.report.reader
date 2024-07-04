@@ -74,7 +74,7 @@ read_report <- function(report_key = NULL,
   rpt_last_modified <- find_report_last_modified(report_file)
 
   attr(tbl, "report_source") <- rpt_source
-  attr(tbl, "report_datetime") <- rpt_last_modified
+  attr(tbl, "report_last_modified") <- rpt_last_modified
 
   tbl
 }

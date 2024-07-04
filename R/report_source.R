@@ -40,19 +40,25 @@ find_report_last_modified <- function(file) {
   NA_character_
 }
 
-#' Report datetime
+#' Report last modification date
 #'
-#' [report_datetime()] the last modified date and time of the report source
-#' (local file or remote file).
+#' [report_last_modified()] returns the last modified date and time of the
+#' report source (local file or remote file).
 #'
 #' @param tbl Report data as a [tibble][tibble::tibble-package].
 #'
 #' @returns A last modified date-time as a [POSIXct][base::DateTimeClasses]
 #'   object.
 #'
+#' @examples
+#' markers <- read_report("marker_list1", n_max = 10L)
+#'
+#' # When was the report file last updated?
+#' report_last_modified(markers)
+#'
 #' @export
-report_datetime <- function(tbl) {
-  attr(tbl, "report_datetime")
+report_last_modified <- function(tbl) {
+  attr(tbl, "report_last_modified")
 }
 
 
@@ -64,6 +70,12 @@ report_datetime <- function(tbl) {
 #' @param tbl Report data as a [tibble][tibble::tibble-package].
 #'
 #' @returns A single string with an absolute path to a file on disk or an URL.
+#'
+#' @examples
+#' markers <- read_report("marker_list1", n_max = 10L)
+#'
+#' # Where did the data come from?
+#' report_source(markers)
 #'
 #' @export
 report_source <- function(tbl) {

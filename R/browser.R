@@ -37,7 +37,7 @@ mgi_reports_index_md <- function() {
 
 #' Browse MGI markers online
 #'
-#' [open_in_mgi()] launches the web browser and opens a tab for each MGI
+#' [open_marker_in_mgi()] launches the web browser and opens a tab for each MGI
 #' accession identifier on the Mouse Genome Informatics web interface:
 #' \url{https://www.informatics.jax.org}.
 #'
@@ -48,14 +48,14 @@ mgi_reports_index_md <- function() {
 #'
 #' @examples
 #' # Read about Acta1 (actin alpha 1, skeletal muscle) online.
-#' open_in_mgi("MGI:87902")
+#' open_marker_in_mgi("MGI:87902")
 #'
-#' # `open_in_mgi()` is vectorized, so you can open multiple pages.
+#' # `open_marker_in_mgi()` is vectorized, so you can open multiple pages.
 #' # NB: think twice if you really need to open many tabs at once.
-#' open_in_mgi(c("MGI:87902", "MGI:87909"))
+#' open_marker_in_mgi(c("MGI:87902", "MGI:87909"))
 #'
 #' @export
-open_in_mgi <- function(marker_id) {
+open_marker_in_mgi <- function(marker_id) {
   if (!(all(is_mgi_identifier(marker_id))))
     stop("`marker_id` must be a character vector of valid MGI identifiers.")
 
