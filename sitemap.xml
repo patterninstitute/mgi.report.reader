@@ -82,6 +82,9 @@
     <loc>https://www.pattern.institute/mgi.report.reader/reference/common-args.html</loc>
   </url>
   <url>
+    <loc>https://www.pattern.institute/mgi.report.reader/reference/convert_to_marker_id.html</loc>
+  </url>
+  <url>
     <loc>https://www.pattern.institute/mgi.report.reader/reference/feature_type_definitions.html</loc>
   </url>
   <url>
@@ -128,5 +131,8 @@
   </url>
   <url>
     <loc>https://www.pattern.institute/mgi.report.reader/reference/sure.html</loc>
+  </url>
+  <url>
+    <loc>https://www.pattern.institute/mgi.report.reader/reference/update_marker_symbol.html</loc>
   </url>
 </urlset>
