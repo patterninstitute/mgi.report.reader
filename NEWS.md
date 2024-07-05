@@ -1,3 +1,9 @@
+# mgi.report.reader 0.1.1
+
+* Fix a bug in `create_symbol_mapping()` and `create_id_mapping()` regarding the
+removal of rows that appear more than once, i.e. rows that correspond to
+unresolvable mappings.
+
 # mgi.report.reader 0.1.0
 
 * Extensive documentation for supported MGI reports.
