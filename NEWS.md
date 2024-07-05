@@ -1,6 +1,6 @@
 # mgi.report.reader 0.1.0
 
-* Extensive documentation for support MGI reports.
+* Extensive documentation for supported MGI reports.
 * More flexible interface for `read_report()`.
 * Report data is now accompanied by attributes providing report last
 modification date and source: `report_last_modified()` and `report_source()`.
