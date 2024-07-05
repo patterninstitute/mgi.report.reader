@@ -59,6 +59,11 @@ reference:
   - report_last_modified
   - report-attributes
 
+- subtitle: Marker crosswalks
+  contents:
+  - update_marker_symbol
+  - convert_to_marker_id
+
 - subtitle: Data
   contents:
   - reports
