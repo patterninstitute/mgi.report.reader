@@ -41,8 +41,8 @@ map_to_marker_symbol_now <- function(x, rpt) {
 
 #' Update marker symbols
 #'
-#' [update_marker_symbol()] remaps old marker symbols to in-use most up to date
-#' symbols.
+#' [update_marker_symbol()] remaps old marker symbols to, in-use, most up to
+#' date symbols.
 #'
 #' @param x A character vector of marker symbols to be remapped.
 #' @param rpt Report data as a [tibble][tibble::tibble-package] offering the
@@ -55,9 +55,7 @@ map_to_marker_symbol_now <- function(x, rpt) {
 #'
 #' Almost always, `rpt` will take the result of `read_report("marker_list1")`.
 #'
-#' @returns A character vector of most up to date symbols. Note that for
-#' official (not withdrawn) symbols, `marker_symbol` and `marker_symbol_now`
-#' will be the same.
+#' @returns A character vector of most up to date symbols.
 #'
 #' @examples
 #' # Reading only the first 100 markers (for efficiency)
@@ -117,7 +115,7 @@ map_to_marker_id_now <- function(x, rpt) {
 
 #' Convert marker symbols to updated marker identifiers
 #'
-#' [convert_to_marker_id()] remaps old marker symbols to in-use most up to date
+#' [convert_to_marker_id()] remaps old marker symbols to, in-use, most up to date
 #' marker identifiers.
 #'
 #' @param x A character vector of marker symbols to be remapped.
@@ -131,7 +129,7 @@ map_to_marker_id_now <- function(x, rpt) {
 #'
 #' Almost always, `rpt` will take the result of `read_report("marker_list1")`.
 #'
-#' @returns A character vector of most up to date symbols.
+#' @returns A character vector of most up to date marker identifiers.
 #'
 #' @examples
 #' # Reading only the first 100 markers (for efficiency)

@@ -21,13 +21,11 @@ are required because they encode the mapping:
 Almost always, \code{rpt} will take the result of \code{read_report("marker_list1")}.}
 }
 \value{
-A character vector of most up to date symbols. Note that for
-official (not withdrawn) symbols, \code{marker_symbol} and \code{marker_symbol_now}
-will be the same.
+A character vector of most up to date symbols.
 }
 \description{
-\code{\link[=update_marker_symbol]{update_marker_symbol()}} remaps old marker symbols to in-use most up to date
-symbols.
+\code{\link[=update_marker_symbol]{update_marker_symbol()}} remaps old marker symbols to, in-use, most up to
+date symbols.
 }
 \examples{
 # Reading only the first 100 markers (for efficiency)
