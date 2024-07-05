@@ -23,7 +23,7 @@ report.}
 \value{
 A character vector:
 \itemize{
-\item \code{report_file()}: report file name as hosted in \url{https://www.informatics.jax.org/downloads/reports}.
+\item \code{report_file()}: report file name as hosted in \url{https://www.informatics.jax.org/downloads/reports/}.
 \item \code{report_name()}: report title.
 \item \code{report_type()}: report type.
 \item \code{report_url()}: report remote location.

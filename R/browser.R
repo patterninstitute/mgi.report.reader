@@ -17,7 +17,7 @@ mgi_base_url <- function() {
 #'
 #' @keywords internal
 mgi_reports_base_url <- function() {
-  file.path(mgi_base_url(), "downloads/reports")
+  file.path(mgi_base_url(), "downloads/reports/")
 }
 
 #' MGI reports index URL
