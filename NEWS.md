@@ -1,3 +1,9 @@
+# mgi.report.reader 0.1.2
+
+* Fix a bug in `create_symbol_mapping()` and `create_id_mapping()` regarding the
+removal of rows that appear more than once, but that are effectively the same
+mapping.
+
 # mgi.report.reader 0.1.1
 
 * Fix a bug in `create_symbol_mapping()` and `create_id_mapping()` regarding the

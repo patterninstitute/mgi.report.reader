@@ -18,7 +18,11 @@ create_symbol_mapping <- function(rpt) {
 
   # Retains only those rows that appear exactly once, as other rows
   # correspond to unresolvable mappings.
-  rpt_dt <- rpt_dt[, if (.N == 1) .SD, by = marker_symbol]
+  # rpt_dt <- rpt_dt[marker_symbol != marker_symbol_now, if (.N == 1) .SD, by = marker_symbol]
+  rpt_dt <- rpt_dt[, if (!((.N > 1) & (any(marker_symbol != marker_symbol_now)))) .SD, by = marker_symbol]
+
+  # Remove duplicated rows
+  rpt_dt <- rpt_dt[!duplicated(rpt_dt)]
 
   # Key the marker_symbol column for performance in joins
   data.table::setkey(rpt_dt, marker_symbol)
@@ -92,6 +96,9 @@ create_id_mapping <- function(rpt) {
 
   # Remove rows with any NA values
   rpt_dt <- stats::na.omit(rpt_dt, cols = c("marker_symbol", "marker_id_now"))
+
+  # Remove duplicated rows
+  rpt_dt <- rpt_dt[!duplicated(rpt_dt)]
 
   # Retains only those rows that appear exactly once, as other rows
   # correspond to unresolvable mappings.
