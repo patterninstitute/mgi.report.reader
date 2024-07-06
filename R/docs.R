@@ -116,7 +116,7 @@ desc_marker_name <- function() {
 
 desc_feature_type <- function() {
   paste("an attribute of a portion of a genomic sequence. See the dataset",
-        "`?feature_types` for details.")
+        "`?feature_type_definitions` for details.")
 }
 
 desc_chromosome <- function() {
