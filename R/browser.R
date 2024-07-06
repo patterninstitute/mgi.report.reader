@@ -28,7 +28,7 @@ mgi_reports_base_url <- function() {
 #'
 #' @keywords internal
 mgi_reports_index_url <- function() {
-  file.path(mgi_reports_base_url(), "index.html")
+  paste0(mgi_reports_base_url(), "index.html")
 }
 
 mgi_reports_index_md <- function() {

@@ -11,7 +11,7 @@ A \link[tibble:tibble-package]{tibble} of 4 variables:
 \item{\code{report_key}}{A string key used to uniquely refer to an MGI report, which is only meaningful within the context of the \code{{mgi.report.reader}}.}
 \item{\code{report_file}}{MGI report file name as hosted at \url{ https://www.informatics.jax.org/downloads/reports/ }.}
 \item{\code{report_type}}{MGI report type. The type is used internally to find the appropriate reader for parsing, and is only meaningful within the context of \code{{mgi.report.reader}}.}
-\item{\code{report_name}}{MGI report name. Report names are taken from \url{ https://www.informatics.jax.org/downloads/reports//index.html }.}
+\item{\code{report_name}}{MGI report name. Report names are taken from \url{https://www.informatics.jax.org/downloads/reports/index.html}.}
 }
 }
 \usage{

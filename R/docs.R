@@ -42,7 +42,7 @@ desc_report_type <- function() {
 desc_report_name <- function() {
   paste(
     "MGI report name. Report names are taken from",
-    "\\url{", file.path(mgi_reports_base_url(), "index.html"), "}."
+    paste0("\\url{", mgi_reports_base_url(), "index.html", "}.")
   )
 }
 
