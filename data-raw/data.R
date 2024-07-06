@@ -99,13 +99,38 @@ order <-
 
 feature_type_definitions <- feature_types01[order, ]
 
-# Export to file too.
+
+#
+#
+# Marker types
+#
+#
+
+marker_type_definitions <-
+  tibble::tribble(
+    ~marker_type, ~definition,
+    "Gene", "A locus in the cytoplasmic or nuclear genome that is necessary and sufficient to express the complete complement of functional products derived from a unit of transcription.",
+    "GeneModel", "A representation of an mRNA transcript of a gene that contains information about features of the transcript such as exon-intron boundaries, splice sites, UTRs, etc.. Due to alternative splicing of mRNA transcripts, there may be more than one gene model for any given gene.",
+    "Pseudogene", "A non-functional locus derived from a functional locus either by: 1. replicative transfer, such as transposition, retrotransposition or duplication, 2. mutation, where the non-functional locus is not considered an allele of an existing functional locus in the mouse.",
+    "DNA Segment", "A genomic feature recognized by anonymous DNA probes: a segment of DNA not known to correspond to a named gene that can be used as a marker in the construction of genetic maps.",
+    "Transgene", "Any DNA sequence or combination of sequences that has been introduced via a construct into the germ line of the animal by random integration.",
+    "QTL", "Quantitative Trait Locus (QTL): the type of marker described by statistical association to quantitative variation in a particular phenotypic trait that is thought to be controlled by the cumulative action of alleles at multiple loci.",
+    "Cytogenetic Marker", "A structure within a chromosome that is visible by microscopic examination, possibly after special staining methods are used.",
+    "BAC/YAC end", "BAC/YAC end refers to sequences at the end of foreign DNA inserts in a BAC or YAC. These sequences are a source of Sequence Tagged Sites (STSs) to determine the extent of overlap between Bacterial Artificial Chromosomes (BACs) or Yeast Artificial Chromosome (YACs) and to aid in the alignment of sequence contigs.",
+    "Complex/Cluster/Region", "Refers to any of the following: 1. Gene complex; a group of genes closely linked together that are related evolutionarily or functionally. Interspersed unrelated genes located within the group are included. 2. A segment of the mouse genome defined by comparison to an orthologous segment in the genome of another species, or by some specific characteristic, such as loss of heterozygosity. 3. A marker repository for information pertaining to a specific gene family, where such information lacks precise family member resolution.",
+    "Other Genome Feature", "Refers to any feature of the genome that is considered to have biological significance but that cannot be classified with defined marker types. Major classes of other genome features include Endogenous Viruses and Retrotransposons, Integration Sites, and Repetitive Elements. An additional class of such features includes genomic segments that function or are biologically significant as DNA elements."
+  )
+
+
+# Export to file.
 readr::write_csv(feature_type_definitions, file = "data-raw/feature_type_definitions.csv")
+readr::write_csv(marker_type_definitions, file = "data-raw/marker_type_definitions.csv")
 readr::write_csv(reports, file = "data-raw/reports.csv")
 
 # Export data sets
 usethis::use_data(feature_type_definitions, overwrite = TRUE, compress = "xz")
 usethis::use_data(reports, overwrite = TRUE, compress = "xz")
+usethis::use_data(marker_type_definitions, overwrite = TRUE, compress = "xz")
 
 # Internal data
-usethis::use_data(reports, feature_type_definitions, internal = TRUE, overwrite = TRUE)
+usethis::use_data(reports, feature_type_definitions, marker_type_definitions, internal = TRUE, overwrite = TRUE)

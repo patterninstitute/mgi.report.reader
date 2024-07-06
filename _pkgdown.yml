@@ -68,6 +68,7 @@ reference:
   contents:
   - reports
   - feature_type_definitions
+  - marker_type_definitions
 
 - subtitle: Enumerations
   contents:

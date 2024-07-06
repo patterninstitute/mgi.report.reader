@@ -10,7 +10,8 @@ marker_types()
 A character vector.
 }
 \description{
-\code{\link[=marker_types]{marker_types()}} returns MGI marker types.
+\code{\link[=marker_types]{marker_types()}} returns MGI marker types. See \link{marker_type_definitions} for
+the meaning of each type.
 }
 \examples{
 marker_types()
