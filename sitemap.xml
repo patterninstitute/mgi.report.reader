@@ -82,9 +82,6 @@
     <loc>https://www.pattern.institute/mgi.report.reader/reference/common-args.html</loc>
   </url>
   <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/convert_to_marker_id.html</loc>
-  </url>
-  <url>
     <loc>https://www.pattern.institute/mgi.report.reader/reference/feature_type_definitions.html</loc>
   </url>
   <url>
@@ -95,6 +92,9 @@
   </url>
   <url>
     <loc>https://www.pattern.institute/mgi.report.reader/reference/is_mgi_identifier.html</loc>
+  </url>
+  <url>
+    <loc>https://www.pattern.institute/mgi.report.reader/reference/marker_type_definitions.html</loc>
   </url>
   <url>
     <loc>https://www.pattern.institute/mgi.report.reader/reference/marker_types.html</loc>
@@ -112,13 +112,25 @@
     <loc>https://www.pattern.institute/mgi.report.reader/reference/mgi_reports_index_url.html</loc>
   </url>
   <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/open_marker_in_mgi.html</loc>
+    <loc>https://www.pattern.institute/mgi.report.reader/reference/open_marker_id_in_mgi.html</loc>
+  </url>
+  <url>
+    <loc>https://www.pattern.institute/mgi.report.reader/reference/open_marker_symbol_in_mgi.html</loc>
   </url>
   <url>
     <loc>https://www.pattern.institute/mgi.report.reader/reference/read_report.html</loc>
   </url>
   <url>
+    <loc>https://www.pattern.institute/mgi.report.reader/reference/read_symbol_map.html</loc>
+  </url>
+  <url>
+    <loc>https://www.pattern.institute/mgi.report.reader/reference/read_symbol_to_id_map.html</loc>
+  </url>
+  <url>
     <loc>https://www.pattern.institute/mgi.report.reader/reference/report-attributes.html</loc>
+  </url>
+  <url>
+    <loc>https://www.pattern.institute/mgi.report.reader/reference/report_example.html</loc>
   </url>
   <url>
     <loc>https://www.pattern.institute/mgi.report.reader/reference/report_last_modified.html</loc>
@@ -133,6 +145,9 @@
     <loc>https://www.pattern.institute/mgi.report.reader/reference/sure.html</loc>
   </url>
   <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/update_marker_symbol.html</loc>
+    <loc>https://www.pattern.institute/mgi.report.reader/reference/symbol_to_identifier.html</loc>
+  </url>
+  <url>
+    <loc>https://www.pattern.institute/mgi.report.reader/reference/symbol_to_symbol.html</loc>
   </url>
 </urlset>

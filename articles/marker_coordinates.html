@@ -29,7 +29,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">mgi.report.reader</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.3</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -181,69 +181,10 @@ use the following code:</p>
 <code>marker_type</code><a class="anchor" aria-label="anchor" href="#marker_type"></a>
 </h3>
 <p><code>marker_type</code>: genetic marker type is a factor of 10
-levels:</p>
-<ul>
-<li><p><code>"Gene"</code>: A locus in the cytoplasmic or nuclear genome
-that is necessary and sufficient to express the complete complement of
-functional products derived from a unit of transcription.</p></li>
-<li><p><code>"GeneModel"</code>: A representation of an mRNA transcript
-of a gene that contains information about features of the transcript
-such as exon-intron boundaries, splice sites, UTRs, etc.. Due to
-alternative splicing of mRNA transcripts, there may be more than one
-gene model for any given gene.</p></li>
-<li>
-<p><code>"Pseudogene"</code>: A non-functional locus derived from a
-functional locus either by:</p>
-<ol style="list-style-type: decimal">
-<li>replicative transfer, such as transposition, retrotransposition or
-duplication,</li>
-<li>mutation, where the non-functional locus is not considered an allele
-of an existing functional locus in the mouse.</li>
-</ol>
-</li>
-<li><p><code>"DNA Segment"</code>: A genomic feature recognized by
-anonymous DNA probes: a segment of DNA not known to correspond to a
-named gene that can be used as a marker in the construction of genetic
-maps.</p></li>
-<li><p><code>"Transgene"</code>: Any DNA sequence or combination of
-sequences that has been introduced via a construct into the germ line of
-the animal by random integration.</p></li>
-<li><p><code>"QTL"</code>: Quantitative Trait Locus (QTL): the type of
-marker described by statistical association to quantitative variation in
-a particular phenotypic trait that is thought to be controlled by the
-cumulative action of alleles at multiple loci.</p></li>
-<li><p><code>"Cytogenetic Marker"</code>: A structure within a
-chromosome that is visible by microscopic examination, possibly after
-special staining methods are used.</p></li>
-<li><p><code>"BAC/YAC end"</code>: BAC/YAC end refers to sequences at
-the end of foreign DNA inserts in a BAC or YAC. These sequences are a
-source of Sequence Tagged Sites (STSs) to determine the extent of
-overlap between Bacterial Artificial Chromosomes (BACs) or Yeast
-Artificial Chromosome (YACs) and to aid in the alignment of sequence
-contigs.</p></li>
-<li>
-<p><code>"Complex/Cluster/Region"</code>: Refers to any of the
-following:</p>
-<ol style="list-style-type: decimal">
-<li>Gene complex; a group of genes closely linked together that are
-related evolutionarily or functionally. Interspersed unrelated genes
-located within the group are included.</li>
-<li>A segment of the mouse genome defined by comparison to an
-orthologous segment in the genome of another species, or by some
-specific characteristic, such as loss of heterozygosity.</li>
-<li>A marker repository for information pertaining to a specific gene
-family, where such information lacks precise family member
-resolution.</li>
-</ol>
-</li>
-<li><p><code>"Other Genome Feature"</code>: Refers to any feature of the
-genome that is considered to have biological significance but that
-cannot be classified with defined marker types. Major classes of other
-genome features include Endogenous Viruses and Retrotransposons,
-Integration Sites, and Repetitive Elements. An additional class of such
-features includes genomic segments that function or are biologically
-significant as DNA elements.</p></li>
-</ul>
+levels: Gene, GeneModel, Pseudogene, DNA Segment, Transgene, QTL,
+Cytogenetic Marker, BAC/YAC end, Complex/Cluster/Region, Other Genome
+Feature. See <code><a href="../reference/marker_type_definitions.html">?marker_type_definitions</a></code> for the meaning of
+each type.</p>
 </div>
 <div class="section level3">
 <h3 id="marker_id">
@@ -273,7 +214,8 @@ uniquely identifies the genetic marker, e.g. a gene or allele name.</p>
 <code>feature_type</code><a class="anchor" aria-label="anchor" href="#feature_type"></a>
 </h3>
 <p><code>feature_type</code>: an attribute of a portion of a genomic
-sequence. See the dataset <code><a href="../reference/feature_types.html">?feature_types</a></code> for details.</p>
+sequence. See the dataset <code><a href="../reference/feature_type_definitions.html">?feature_type_definitions</a></code> for
+details.</p>
 </div>
 <div class="section level3">
 <h3 id="chromosome">

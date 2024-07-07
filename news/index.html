@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">mgi.report.reader</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.3</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,7 +73,18 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.1.2" id="mgireportreader-012">mgi.report.reader 0.1.2<a class="anchor" aria-label="anchor" href="#mgireportreader-012"></a></h2>
+<h2 class="pkg-version" data-toc-text="0.1.3" id="mgireportreader-013">mgi.report.reader 0.1.3<a class="anchor" aria-label="anchor" href="#mgireportreader-013"></a></h2>
+<ul><li>Added <code>marker_type_definitions</code> data set.</li>
+<li>Renamed <code>update_marker_symbol()</code> to <code><a href="../reference/symbol_to_symbol.html">symbol_to_symbol()</a></code>.</li>
+<li>Renamed <code>convert_to_marker_id()</code> to <code><a href="../reference/symbol_to_identifier.html">symbol_to_identifier()</a></code>.</li>
+<li>
+<code><a href="../reference/symbol_to_symbol.html">symbol_to_symbol()</a></code> and <code><a href="../reference/symbol_to_identifier.html">symbol_to_identifier()</a></code> use data table backend with keyed column for improved look-up performance.</li>
+<li>Mappings from symbols to symbols/identifiers is backed up by memoised functions making interactive experience a bit nicer.</li>
+<li>Added bundled tiny examples of MRK_List1.rpt, accessible with <code><a href="../reference/report_example.html">report_example()</a></code>, for examples and unit tests.</li>
+<li>Renamed <code>open_marker_in_mgi()</code> to <code><a href="../reference/open_marker_id_in_mgi.html">open_marker_id_in_mgi()</a></code>, and added <code><a href="../reference/open_marker_symbol_in_mgi.html">open_marker_symbol_in_mgi()</a></code>.</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.1.2" id="mgireportreader-012">mgi.report.reader 0.1.2<a class="anchor" aria-label="anchor" href="#mgireportreader-012"></a></h2><p class="text-muted">CRAN release: 2024-07-05</p>
 <ul><li>Fix a bug in <code>create_symbol_mapping()</code> and <code>create_id_mapping()</code> regarding the removal of rows that appear more than once, but that are effectively the same mapping.</li>
 </ul></div>
     <div class="section level2">
@@ -85,8 +96,8 @@
 <ul><li>Extensive documentation for supported MGI reports.</li>
 <li>More flexible interface for <code><a href="../reference/read_report.html">read_report()</a></code>.</li>
 <li>Report data is now accompanied by attributes providing report last modification date and source: <code><a href="../reference/report_last_modified.html">report_last_modified()</a></code> and <code><a href="../reference/report_source.html">report_source()</a></code>.</li>
-<li>Marker crosswalks from old symbols: <code><a href="../reference/update_marker_symbol.html">update_marker_symbol()</a></code> and <code><a href="../reference/convert_to_marker_id.html">convert_to_marker_id()</a></code>.</li>
-<li>New helper to quickly browse information about an MGI marker: <code><a href="../reference/open_marker_in_mgi.html">open_marker_in_mgi()</a></code>.</li>
+<li>Marker crosswalks from old symbols: <code>update_marker_symbol()</code> and <code>convert_to_marker_id()</code>.</li>
+<li>New helper to quickly browse information about an MGI marker: <code>open_marker_in_mgi()</code>.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.0.1" id="mgireportreader-001">mgi.report.reader 0.0.1<a class="anchor" aria-label="anchor" href="#mgireportreader-001"></a></h2><p class="text-muted">CRAN release: 2024-06-28</p>
