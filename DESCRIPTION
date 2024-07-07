@@ -37,6 +37,7 @@ Imports:
     data.table,
     dplyr,
     httr2,
+    memoise,
     rlang,
     stringr,
     tibble,

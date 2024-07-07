@@ -1,0 +1,17 @@
+MGI Accession ID	Chr	cM Position	genome coordinate start	genome coordinate end	strand	Marker Symbol	Status	Marker Name	Marker Type	Feature Type	Marker Synonyms (pipe-separated)	Current MGI Accession ID (if withdrawn)	Current Marker Symbol (if withdrawn)
+NULL	3	       N/A				Adh-3	W	withdrawn, = Adh3	Gene			MGI:87926	Adh7
+NULL	3	       N/A				Adh3	W	withdrawn, = Adh7	Gene			MGI:87926	Adh7
+NULL	3	       N/A				Adh3-e	W	withdrawn, = Adh7	Gene			MGI:87926	Adh7
+NULL	3	       N/A				Adh-3e	W	withdrawn, = Adh3-e	Gene			MGI:87926	Adh7
+NULL	3	       N/A				Adh3-t	W	withdrawn, = Adh7	Gene			MGI:87926	Adh7
+NULL	3	       N/A				Adh-3t	W	withdrawn, = Adh3-t	Gene			MGI:87926	Adh7
+MGI:87926	3	  64.13	137923521	137939143	+	Adh7	O	alcohol dehydrogenase 7 (class IV), mu or sigma polypeptide	Gene	protein coding gene	Adt-1|Adh3-e|Adh-3|Adh-3e|Adh3|Adh3-t|Adh-3t|IV ADH|Adh4		
+NULL	3	       N/A				Adh7	W	withdrawn, = Adh3	Gene			MGI:87926	Adh7
+NULL	3	       N/A				Adt-1	W	withdrawn, = Adh-3t	Gene			MGI:87926	Adh7
+NULL	3	       N/A				AI325182	W	withdrawn, = Adh3	Gene			MGI:87926	Adh7
+MGI:104853	16	  21.09	29883259	29886614	+	Hes1	O	hes family bHLH transcription factor 1	Gene	protein coding gene	bHLHb39|Hry		
+NULL	16	       N/A				Hry	W	withdrawn, = Hes1	Gene			MGI:104853	Hes1
+NULL	2	       N/A				Mir466f-3	W	withdrawn, = Mir466f-4	Gene			MGI:3718535	Mir466f-3
+NULL	2	       N/A				Mir466f-3	W	withdrawn, = Mir466f-4	Gene			MGI:3718535	Mir466f-3
+MGI:3718535	2	   8.22	10476764	10476857	+	Mir466f-3	O	microRNA 466f-3	Gene	miRNA gene	Mirn466f-3|mmu-mir-466f-3		
+NULL	2	       N/A				Mirn466f-3	W	withdrawn, = Mir466f-3	Gene			MGI:3718535	Mir466f-3

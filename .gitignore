@@ -4,3 +4,4 @@
 .Ruserdata
 docs
 vignettes/articles/*_cache
+inst/extdata/report_examples/MRK_List1.rpt

@@ -1,0 +1,8 @@
+MGI Accession ID	Chr	cM Position	genome coordinate start	genome coordinate end	strand	Marker Symbol	Status	Marker Name	Marker Type	Feature Type	Marker Synonyms (pipe-separated)	Current MGI Accession ID (if withdrawn)	Current Marker Symbol (if withdrawn)
+NULL	8	       N/A				1700024N20Rik	W	withdrawn, = Proscos	Gene			MGI:3704307	Proscos
+NULL	8	       N/A				1700024N20Rik	W	withdrawn, = Prosc	Gene			MGI:1891207	Plpbp
+NULL	UN	       N/A				2200002F22Rik	W	withdrawn, = Prosc	Gene			MGI:1891207	Plpbp
+NULL	8	       N/A				ENSMUSG00000045549	W	withdrawn, = 1700024N20Rik	Gene			MGI:3704307	Proscos
+MGI:1891207	8	  15.91	27532583	27546160	+	Plpbp	O	pyridoxal phosphate binding protein	Gene	protein coding gene	Prosc|2200002F22Rik		
+NULL	8	  syntenic				Prosc	W	withdrawn, = Plpbp	Gene			MGI:1891207	Plpbp
+MGI:3704307	8	  15.91	27532402	27533122	-	Proscos	O	proline synthetase co-transcribed, opposite strand	Gene	antisense lncRNA gene			

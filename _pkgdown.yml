@@ -58,11 +58,12 @@ reference:
   - report_source
   - report_last_modified
   - report-attributes
+  - report_example
 
-- subtitle: Marker crosswalks
+- subtitle: Marker mappings
   contents:
-  - update_marker_symbol
-  - convert_to_marker_id
+  - symbol_to_symbol
+  - symbol_to_identifier
 
 - subtitle: Data
   contents:

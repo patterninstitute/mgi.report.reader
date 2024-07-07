@@ -1,0 +1,18 @@
+MGI Accession ID	Chr	cM Position	genome coordinate start	genome coordinate end	strand	Marker Symbol	Status	Marker Name	Marker Type	Feature Type	Marker Synonyms (pipe-separated)	Current MGI Accession ID (if withdrawn)	Current Marker Symbol (if withdrawn)
+NULL	1	       N/A				2610109B12Rik	W	withdrawn, = Prei3	Gene			MGI:104899	Mob4
+NULL	1	       N/A				2700010E02Rik	W	withdrawn, = 3222401M22Rik	Gene			MGI:1921263	Rftn2
+NULL	1	       N/A				3222401M22Rik	W	withdrawn, = Rftn2	Gene			MGI:1921263	Rftn2
+NULL	1	       N/A				Cmpt	W	withdrawn, allele of Mstn	Gene			MGI:95691	Mstn
+NULL	1	       N/A				EG627998	W	withdrawn, = Gm6822	Gene			MGI:3644721	Gm6822
+NULL	1	       N/A				Gdf8	W	withdrawn, = Mstn	Gene			MGI:95691	Mstn
+MGI:3644721	1	  28.05	55199906	55200212	-	Gm6822	O	predicted pseudogene 6822	Pseudogene	pseudogene			
+MGI:104899	1	  28.03	55170404	55194058	+	Mob4	O	MOB family member 4, phocein	Gene	protein coding gene	Prei3|2610109B12Rik|Mobkl3		
+NULL	15	       N/A				Mob4	W	withdrawn, = Mobq4	QTL			MGI:105950	Mobq4
+NULL	1	       N/A				Mobkl3	W	withdrawn, = Mob4	Gene			MGI:104899	Mob4
+MGI:95691	1	  26.99	53100799	53107238	+	Mstn	O	myostatin	Gene	protein coding gene	Gdf8		
+NULL	1	       N/A				Mstn	W	withdrawn, = Gdf8	Gene			MGI:95691	Mstn
+NULL	1	       N/A				Prei3	W	withdrawn, = Mobkl3	Gene			MGI:104899	Mob4
+MGI:1921263	1	  28.05	55209318	55265941	-	Rftn2	O	raftlin family member 2	Gene	protein coding gene	2700010E02Rik|3222401M22Rik		
+NULL	1	       N/A				Rnu87	W	withdrawn, = Snord87	Gene			MGI:2387894	Snord87
+MGI:2387894	1	   2.22	10012695	10012768	-	Snord87	O	small nucleolar RNA, C/D box 87	Gene	snoRNA gene	U87|MBII-276|Rnu87		
+NULL	1	       N/A				Snord87	W	withdrawn	Gene			MGI:3819559	Snord87

@@ -87,3 +87,53 @@ read_mrk_list1_rpt <- function(file, sort = FALSE, n_max = Inf) {
 
   list1_rpt
 }
+
+read_mrk_list1_symbols_rpt <- function(file, n_max = Inf) {
+  symbols_dt <-
+    read_tsv(
+      file = file,
+      col_names = mrk_list1_colnames(),
+      col_types = "------cc-----c",
+      n_max = n_max
+    ) |>
+    dplyr::mutate(
+      marker_symbol = col_marker_symbol(.data$marker_symbol),
+      marker_symbol_now = col_marker_symbol_now(.data$marker_symbol_now),
+      marker_status = col_marker_status(.data$marker_status)
+    ) |>
+    dplyr::mutate(
+      marker_symbol_now = col_marker_symbol_now(
+        dplyr::if_else(.data$marker_status == "O", .data$marker_symbol, .data$marker_symbol_now))
+    ) |>
+    dplyr::select(-"marker_status") |>
+    dplyr::relocate(dplyr::all_of(c("marker_symbol", "marker_symbol_now"))) |>
+    data.table::as.data.table() |>
+    data.table::setkeyv("marker_symbol")
+
+  symbols_dt
+}
+
+read_mrk_list1_symbol_to_id_rpt <- function(file, n_max = Inf) {
+  symbol_to_id_dt <-
+    read_tsv(
+      file = file,
+      col_names = mrk_list1_colnames(),
+      col_types = "c-----cc----c-",
+      n_max = n_max
+    ) |>
+    dplyr::mutate(
+      marker_status = col_marker_status(.data$marker_status),
+      marker_symbol = col_marker_symbol(.data$marker_symbol),
+      marker_id = col_marker_id(.data$marker_id),
+      marker_id_now = col_marker_id_now(.data$marker_id_now)
+    ) |>
+    dplyr::mutate(
+      marker_id_now = col_marker_id_now(
+        dplyr::if_else(.data$marker_status == "O", .data$marker_id, .data$marker_id_now))
+    ) |>
+    dplyr::select("marker_symbol", "marker_id_now") |>
+    data.table::as.data.table() |>
+    data.table::setkeyv("marker_symbol")
+
+  symbol_to_id_dt
+}

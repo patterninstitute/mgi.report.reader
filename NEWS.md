@@ -1,3 +1,14 @@
+# mgi.report.reader 0.1.3
+
+* Added `marker_type_definitions` data set.
+* Renamed `update_marker_symbol()` to `symbol_to_symbol()`.
+* Renamed `convert_to_marker_id()` to `symbol_to_identifier()`.
+* `symbol_to_symbol()` and `symbol_to_identifier()` use data table backend with
+keyed column for improved look-up performance.
+* Mappings from symbols to symbols/identifiers is backed up by memoised functions
+making interactive experience a bit nicer.
+* Added bundled tiny examples of MRK_List1.rpt, accessible with `report_example()`.
+
 # mgi.report.reader 0.1.2
 
 * Fix a bug in `create_symbol_mapping()` and `create_id_mapping()` regarding the

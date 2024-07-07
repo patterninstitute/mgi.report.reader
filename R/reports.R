@@ -79,5 +79,5 @@ report_type <- function(report_key) {
 #' @rdname report-attributes
 #' @export
 report_url <- function(report_key) {
-  file.path(mgi_reports_base_url(), report_file(report_key))
+  paste0(mgi_reports_base_url(), report_file(report_key))
 }

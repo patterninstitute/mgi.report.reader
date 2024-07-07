@@ -1,160 +1,180 @@
-create_symbol_mapping <- function(rpt) {
+#' Read marker symbol mappings
+#'
+#' @description
+#' [read_symbol_map()] reads MRK_List1.rpt data and returns an efficient
+#' data table to be used for marker symbol remapping.
+#'
+#' This function is memoised.
+#'
+#' @param report_file The path to a MRK_List1.rpt file. Leave this as `NULL`
+#' and the function will automatically download the report from
+#' \url{`r report_url("marker_list1")`}.
+#' @param n_max Maximum number of lines to read.
+#'
+#' @returns A [data.table][data.table::data.table] where each row is a mapping,
+#'   from `marker_symbol` to `marker_symbol_now`:
+#'
+#' - `marker_symbol` (set as key): `r desc_marker_symbol()`
+#' - `marker_symbol_now`: `r desc_marker_symbol_now()`
+#'
+#' @keywords internal
+read_symbol_map <- function(report_file = NULL, n_max = Inf) {
 
-  # Convert tibble to data.table
-  rpt_dt <- data.table::as.data.table(rpt)
+  if (is.null(report_file)) {
+    report_key <- "marker_list1"
+    report_file <- report_url(report_key)
+    report_type <- report_type(report_key)
+  }
 
   # Hack to fix "no visible binding for global variable".
-  marker_symbol <- NULL
-  marker_symbol_now <- NULL
-  . <- NULL
-  .N <- NULL
-  .SD <- NULL
+  marker_symbol <- NULL; marker_symbol_now <- NULL; . <- NULL; .N <- NULL
+  N <- NULL; .SD <- NULL
 
-  # Select relevant columns and perform in-place operations
-  rpt_dt <- rpt_dt[, .(marker_symbol, marker_symbol_now)]
+  # Read in MRK_List1.rpt with only columns:
+  #   - marker_symbol
+  #   - marker_symbol_now
+  dt <- read_mrk_list1_symbols_rpt(file = report_file, n_max = n_max)
 
-  # Remove rows with any NA values
-  rpt_dt <- stats::na.omit(rpt_dt, cols = c("marker_symbol", "marker_symbol_now"))
+  cols <- c("marker_symbol", "marker_symbol_now")
+  # Remove mapping involving NA values.
+  dt <- stats::na.omit(dt, cols = cols)
 
-  # Retains only those rows that appear exactly once, as other rows
-  # correspond to unresolvable mappings.
-  # rpt_dt <- rpt_dt[marker_symbol != marker_symbol_now, if (.N == 1) .SD, by = marker_symbol]
-  rpt_dt <- rpt_dt[, if (!((.N > 1) & (any(marker_symbol != marker_symbol_now)))) .SD, by = marker_symbol]
+  # Remove redundant mappings, keep only non-ambiguous mappings
+  dt <- dt[!duplicated(dt)][, .(marker_symbol_now, .N), by = marker_symbol][N == 1L][, N := NULL][, .SD, .SDcols = cols]
 
-  # Remove duplicated rows
-  rpt_dt <- rpt_dt[!duplicated(rpt_dt)]
+  rpt_source <- find_report_source(report_file)
+  rpt_last_modified <- find_report_last_modified(report_file)
 
-  # Key the marker_symbol column for performance in joins
-  data.table::setkey(rpt_dt, marker_symbol)
+  attr(dt, "report_source") <- rpt_source
+  attr(dt, "report_last_modified") <- rpt_last_modified
+
+  dt
 
 }
 
-map_to_marker_symbol_now <- function(x, rpt) {
+#' Read marker symbol to identifier mappings
+#'
+#' @description
+#' [read_symbol_to_id_map()] reads MRK_List1.rpt data and returns an efficient
+#' data table to be used for marker symbol remapping to marker identifiers. Note
+#' that old symbols will be remapped to new symbols' ids, if applicable.
+#'
+#' This function is memoised.
+#'
+#' @param report_file The path to a MRK_List1.rpt file. Leave this as `NULL`
+#' and the function will automatically download the report from
+#' \url{`r report_url("marker_list1")`}.
+#' @param n_max Maximum number of lines to read.
+#'
+#' @returns A [data.table][data.table::data.table] where each row is a mapping,
+#'   from `marker_symbol` to `marker_id_now`:
+#'
+#' - `marker_symbol` (set as key): `r desc_marker_symbol()`
+#' - `marker_id_now`: `r desc_marker_id_now()`
+#'
+#' @keywords internal
+read_symbol_to_id_map <- function(report_file = NULL, n_max = Inf) {
 
-  required_columns <- c("marker_symbol", "marker_symbol_now")
-  if (!all(required_columns %in% colnames(rpt))) {
-    missing_cols <- required_columns[!required_columns %in% colnames(rpt)]
-    rlang::abort(paste("The following required columns are missing in rpt:", paste(missing_cols, collapse = ", ")))
+  if (is.null(report_file)) {
+    report_key <- "marker_list1"
+    report_file <- report_url(report_key)
+    report_type <- report_type(report_key)
   }
 
-  symbol_mapping <- create_symbol_mapping(rpt)
-
   # Hack to fix "no visible binding for global variable".
-  marker_symbol_now <- NULL
+  marker_symbol <- NULL; marker_id_now <- NULL; . <- NULL; .N <- NULL
+  N <- NULL; .SD <- NULL
 
-  attr(symbol_mapping$marker_symbol_now, "label") <- NULL
-  symbol_mapping[data.table::data.table(marker_symbol = x), marker_symbol_now, on = "marker_symbol"]
+  # Read in MRK_List1.rpt with only columns:
+  #   - marker_symbol
+  #   - marker_id_now
+  dt <- read_mrk_list1_symbol_to_id_rpt(file = report_file, n_max = n_max)
+
+  cols <- c("marker_symbol", "marker_id_now")
+  # Remove mapping involving NA values.
+  dt <- stats::na.omit(dt, cols = cols)
+
+  # Remove redundant mappings, keep only non-ambiguous mappings
+  dt <- dt[!duplicated(dt)][, .(marker_id_now, .N), by = marker_symbol][N == 1L][, N := NULL][, .SD, .SDcols = cols]
+
+  rpt_source <- find_report_source(report_file)
+  rpt_last_modified <- find_report_last_modified(report_file)
+
+  attr(dt, "report_source") <- rpt_source
+  attr(dt, "report_last_modified") <- rpt_last_modified
+
+  dt
+
 }
 
 #' Update marker symbols
 #'
-#' [update_marker_symbol()] remaps old marker symbols to, in-use, most up to
+#' [symbol_to_symbol()] remaps old marker symbols to, in-use, most up to
 #' date symbols.
 #'
 #' @param x A character vector of marker symbols to be remapped.
-#' @param rpt Report data as a [tibble][tibble::tibble-package] offering the
-#'   translation table between old (`marker_symbol`) and new
-#'   (`marker_symbol_now`) symbols. Hence, at least, the following two columns
-#'   are required because they encode the mapping:
-#'
-#' - `marker_symbol`: The symbols to matched against the values of `x`.
-#' - `marker_symbol_now`: The new symbols to be returned in case of a match.
-#'
-#' Almost always, `rpt` will take the result of `read_report("marker_list1")`.
+#' @param report_file The path to a MRK_List1.rpt file. Leave this as `NULL`
+#' and the function will automatically download the report from
+#' \url{`r report_url("marker_list1")`}.
+#' @param n_max Maximum number of lines to read from the `report_file`.
 #'
 #' @returns A character vector of most up to date symbols.
 #'
 #' @examples
-#' # Reading only the first 100 markers (for efficiency)
-#' rpt <- read_report("marker_list1", n_max = 100)
-#' head(rpt)
+#' rpt_ex01 <- report_example("MRK_List1-EX01.rpt")
+#' read_report(report_file = rpt_ex01, report_type = "MRK_List1") |>
+#'   dplyr::select("marker_status", "marker_symbol", "marker_symbol_now")
 #'
-#' # Note that:
-#' #   - "0610005A07Rik" is a withdrawn symbol, so gets remapped to Gstm7.
-#' #   - "0610005C13Rik" is an official symbol, so stays the same.
-#' #   - "not a symbol" is not an existing symbol in `rpt`, so gets mapped to `NA`.
-#' symbols <- c("0610005A07Rik", "0610005C13Rik", "not a symbol")
-#' update_marker_symbol(x = symbols, rpt = rpt)
+#' # NB:
+#' #   - "1700024N20Rik" has two conflicting mappings, so maps to `NA`.
+#' #   - "Hes1" is not present in MRK_List1-EX01.rpt, so maps to `NA`.
+#' #   - "Plpbp" (official) and "Prosc" (withdrawn) both map to "Plpbp"
+#'
+#' marker_symbols <- c("2200002F22Rik", "Plpbp", "Prosc", "1700024N20Rik", "Hes1")
+#' symbol_to_symbol(x = marker_symbols, report_file = rpt_ex01)
 #'
 #' @export
-update_marker_symbol <- map_to_marker_symbol_now
+symbol_to_symbol <- function(x, report_file = NULL, n_max = Inf) {
 
-create_id_mapping <- function(rpt) {
+  symbol_map <- read_symbol_map(report_file = report_file, n_max = n_max)
+  x_dt <- data.table::data.table(marker_symbol = x)
+  marker_symbol_now <- symbol_map[x_dt, "marker_symbol_now", on = "marker_symbol"]$marker_symbol_now
 
-  # Convert tibble to data.table
-  rpt_dt <- data.table::as.data.table(rpt)
-
-  # Hack to fix "no visible binding for global variable".
-  marker_symbol <- NULL
-  marker_id_now <- NULL
-  . <- NULL
-  .N <- NULL
-  .SD <- NULL
-
-  # Select relevant columns and perform in-place operations
-  rpt_dt <- rpt_dt[, .(marker_symbol, marker_id_now)]
-
-  # Remove rows with any NA values
-  rpt_dt <- stats::na.omit(rpt_dt, cols = c("marker_symbol", "marker_id_now"))
-
-  # Remove duplicated rows
-  rpt_dt <- rpt_dt[!duplicated(rpt_dt)]
-
-  # Retains only those rows that appear exactly once, as other rows
-  # correspond to unresolvable mappings.
-  rpt_dt <- rpt_dt[, if (.N == 1) .SD, by = marker_symbol]
-
-  # Key the marker_symbol column for performance in joins
-  data.table::setkey(rpt_dt, marker_symbol)
-
-}
-
-map_to_marker_id_now <- function(x, rpt) {
-
-  required_columns <- c("marker_symbol", "marker_id_now")
-  if (!all(required_columns %in% colnames(rpt))) {
-    missing_cols <- required_columns[!required_columns %in% colnames(rpt)]
-    rlang::abort(paste("The following required columns are missing in rpt:", paste(missing_cols, collapse = ", ")))
-  }
-
-  id_mapping <- create_id_mapping(rpt)
-
-  # Hack to fix "no visible binding for global variable".
-  marker_id_now <- NULL
-
-  attr(id_mapping$marker_id_now, "label") <- NULL
-  id_mapping[data.table::data.table(marker_symbol = x), marker_id_now, on = "marker_symbol"]
+  attr(marker_symbol_now, "label") <- NULL
+  marker_symbol_now
 }
 
 #' Convert marker symbols to updated marker identifiers
 #'
-#' [convert_to_marker_id()] remaps old marker symbols to, in-use, most up to date
-#' marker identifiers.
+#' [symbol_to_identifier()] remaps old marker symbols to, in-use, most up
+#' to date marker identifiers.
 #'
 #' @param x A character vector of marker symbols to be remapped.
-#' @param rpt Report data as a [tibble][tibble::tibble-package] offering the
-#'   translation table between old (`marker_symbol`) symbols and new
-#'   (`marker_id_now`) marker identifiers. Hence, at least, the following two columns
-#'   are required because they encode the mapping:
-#'
-#' - `marker_symbol`: The symbols to matched against the values of `x`.
-#' - `marker_id_now`: The new marker identifiers to be returned in case of a match.
-#'
-#' Almost always, `rpt` will take the result of `read_report("marker_list1")`.
-#'
-#' @returns A character vector of most up to date marker identifiers.
+#' @param report_file The path to a MRK_List1.rpt file. Leave this as `NULL`
+#' and the function will automatically download the report from
+#' \url{`r report_url("marker_list1")`}.
+#' @param n_max Maximum number of lines to read from the `report_file`.
 #'
 #' @examples
-#' # Reading only the first 100 markers (for efficiency)
-#' rpt <- read_report("marker_list1", n_max = 100)
-#' head(rpt)
+#' rpt_ex01 <- report_example("MRK_List1-EX01.rpt")
+#' read_report(report_file = rpt_ex01, report_type = "MRK_List1") |>
+#'   dplyr::select("marker_status", "marker_symbol", "marker_id_now")
 #'
-#' # Note that:
-#' #   - "0610005A07Rik" is a withdrawn symbol, so gets remapped to Gstm7.
-#' #   - "0610005C13Rik" is an official symbol, so stays the same.
-#' #   - "not a symbol" is not an existing symbol in `rpt`, so gets mapped to `NA`.
-#' symbols <- c("0610005A07Rik", "0610005C13Rik", "not a symbol")
-#' convert_to_marker_id(x = symbols, rpt = rpt)
+#' # NB:
+#' #   - "1700024N20Rik" has two conflicting mappings, so maps to `NA`.
+#' #   - "Hes1" is not present in MRK_List1-EX01.rpt, so maps to `NA`.
+#' #   - "Plpbp" (official) and "Prosc" (withdrawn) both map to "MGI:1891207"
+#'
+#' marker_symbols <- c("2200002F22Rik", "Plpbp", "Prosc", "1700024N20Rik", "Hes1")
+#' symbol_to_identifier(x = marker_symbols, report_file = rpt_ex01)
 #'
 #' @export
-convert_to_marker_id <- map_to_marker_id_now
+symbol_to_identifier <- function(x, report_file = NULL, n_max = Inf) {
+
+  symbol_to_id_map <- read_symbol_to_id_map(report_file = report_file, n_max = n_max)
+  x_dt <- data.table::data.table(marker_symbol = x)
+  marker_id_now <- symbol_to_id_map[x_dt, "marker_id_now", on = "marker_symbol"]$marker_id_now
+
+  attr(marker_id_now, "label") <- NULL
+  marker_id_now
+}
