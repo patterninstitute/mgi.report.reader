@@ -4,6 +4,7 @@
 #' `r desc_package_name()`.
 #'
 #' @param marker_id A character vector. MGI accession identifiers.
+#' @param marker_symbol A character vector. MGI marker symbols.
 #'
 #' @param report_key A character vector. A key used to uniquely refer to an MGI
 #'   report.

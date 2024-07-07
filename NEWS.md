@@ -7,7 +7,10 @@
 keyed column for improved look-up performance.
 * Mappings from symbols to symbols/identifiers is backed up by memoised functions
 making interactive experience a bit nicer.
-* Added bundled tiny examples of MRK_List1.rpt, accessible with `report_example()`.
+* Added bundled tiny examples of MRK_List1.rpt, accessible with
+`report_example()`, for examples and unit tests.
+* Renamed `open_marker_in_mgi()` to `open_marker_id_in_mgi()`, and added
+`open_marker_symbol_in_mgi()`.
 
 # mgi.report.reader 0.1.2
 

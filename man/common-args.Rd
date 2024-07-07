@@ -6,6 +6,8 @@
 \arguments{
 \item{marker_id}{A character vector. MGI accession identifiers.}
 
+\item{marker_symbol}{A character vector. MGI marker symbols.}
+
 \item{report_key}{A character vector. A key used to uniquely refer to an MGI
 report.}
 
