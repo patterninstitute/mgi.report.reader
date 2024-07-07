@@ -24,9 +24,11 @@ updated each week. The return value of this function is the closest you will
 get to a versioning of MGI report files.
 }
 \examples{
-markers <- read_report("marker_list1", n_max = 10L)
+if (FALSE) {
+  markers <- read_report("marker_list1", n_max = 10L)
 
-# When was the report file last updated?
-report_last_modified(markers)
+  # When was the report file last updated?
+  report_last_modified(markers)
+}
 
 }

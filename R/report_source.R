@@ -59,10 +59,12 @@ find_report_last_modified <- function(file) {
 #'   object.
 #'
 #' @examples
-#' markers <- read_report("marker_list1", n_max = 10L)
+#' if (FALSE) {
+#'   markers <- read_report("marker_list1", n_max = 10L)
 #'
-#' # When was the report file last updated?
-#' report_last_modified(markers)
+#'   # When was the report file last updated?
+#'   report_last_modified(markers)
+#' }
 #'
 #' @export
 report_last_modified <- function(tbl) {
@@ -80,11 +82,12 @@ report_last_modified <- function(tbl) {
 #' @returns A single string with an absolute path to a file on disk or an URL.
 #'
 #' @examples
-#' markers <- read_report("marker_list1", n_max = 10L)
+#' if (FALSE) {
+#'   markers <- read_report("marker_list1", n_max = 10L)
 #'
-#' # Where did the data come from?
-#' report_source(markers)
-#'
+#'   # Where did the data come from?
+#'   report_source(markers)
+#' }
 #' @export
 report_source <- function(tbl) {
   attr(tbl, "report_source")
