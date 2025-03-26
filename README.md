@@ -1,15 +1,13 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# mgi.report.reader
+# mgi.report.reader <a href="https://www.pattern.institute/mgi.report.reader/"><img src="man/figures/logo.svg" align="right" height="139" alt="mgi.report.reader website" /></a>
 
 <!-- badges: start -->
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/mgi.report.reader)](https://CRAN.R-project.org/package=mgi.report.reader)
 [![R-CMD-check](https://github.com/patterninstitute/mgi.report.reader/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/patterninstitute/mgi.report.reader/actions/workflows/R-CMD-check.yaml)
-[![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
 ## Overview
@@ -90,7 +88,7 @@ report_source(markers)
 ``` r
 # Report file last modification date
 report_last_modified(markers)
-#> [1] "2024-07-01 11:51:02 GMT"
+#> [1] "2025-03-24 12:01:34 GMT"
 ```
 
 ## Code of Conduct
