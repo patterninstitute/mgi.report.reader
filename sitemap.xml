@@ -1,153 +1,53 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/404.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/CODE_OF_CONDUCT.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/CONTRIBUTING.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/SUPPORT.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/articles/biotype_conflicts.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/articles/ensembl_ids.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/articles/genbank_refseq_ensembl_ids.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/articles/gene_model_coordinates.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/articles/gene_trap_ids.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/articles/genetic_marker.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/articles/interpro_domains.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/articles/marker_coordinates.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/articles/marker_list1.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/articles/marker_list2.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/articles/primers.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/articles/representative_sequence.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/articles/sequence_coordinates.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/articles/swiss_prot_ids.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/articles/swiss_trembl_ids.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/index.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/chromosomes.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/common-args.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/feature_type_definitions.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/feature_types.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/is_mgi_identifier.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/marker_type_definitions.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/marker_types.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/mgi.report.reader-package.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/mgi_base_url.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/mgi_reports_base_url.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/mgi_reports_index_url.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/open_marker_id_in_mgi.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/open_marker_symbol_in_mgi.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/read_report.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/read_symbol_map.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/read_symbol_to_id_map.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/report-attributes.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/report_example.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/report_last_modified.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/report_source.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/reports.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/sure.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/symbol_to_identifier.html</loc>
-  </url>
-  <url>
-    <loc>https://www.pattern.institute/mgi.report.reader/reference/symbol_to_symbol.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://www.pattern.institute/mgi.report.reader/404.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/CODE_OF_CONDUCT.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/CONTRIBUTING.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/LICENSE-text.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/LICENSE.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/SUPPORT.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/articles/biotype_conflicts.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/articles/ensembl_ids.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/articles/genbank_refseq_ensembl_ids.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/articles/gene_model_coordinates.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/articles/gene_trap_ids.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/articles/genetic_marker.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/articles/index.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/articles/interpro_domains.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/articles/marker_coordinates.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/articles/marker_list1.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/articles/marker_list2.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/articles/primers.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/articles/representative_sequence.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/articles/sequence_coordinates.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/articles/swiss_prot_ids.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/articles/swiss_trembl_ids.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/authors.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/index.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/news/index.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/reference/chromosomes.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/reference/common-args.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/reference/feature_type_definitions.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/reference/feature_types.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/reference/index.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/reference/is_mgi_identifier.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/reference/marker_type_definitions.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/reference/marker_types.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/reference/mgi.report.reader-package.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/reference/mgi_base_url.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/reference/mgi_reports_base_url.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/reference/mgi_reports_index_url.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/reference/open_marker_id_in_mgi.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/reference/open_marker_symbol_in_mgi.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/reference/read_report.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/reference/read_symbol_map.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/reference/read_symbol_to_id_map.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/reference/report-attributes.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/reference/report_example.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/reference/report_last_modified.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/reference/report_source.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/reference/reports.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/reference/sure.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/reference/symbol_to_identifier.html</loc></url>
+<url><loc>https://www.pattern.institute/mgi.report.reader/reference/symbol_to_symbol.html</loc></url>
 </urlset>
+

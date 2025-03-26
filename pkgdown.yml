@@ -1,24 +1,23 @@
 pandoc: 3.1.11
-pkgdown: 2.0.9
+pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
-  biotype_conflicts: biotype_conflicts.html
-  ensembl_ids: ensembl_ids.html
-  genbank_refseq_ensembl_ids: genbank_refseq_ensembl_ids.html
-  gene_model_coordinates: gene_model_coordinates.html
-  gene_trap_ids: gene_trap_ids.html
-  genetic_marker: genetic_marker.html
-  interpro_domains: interpro_domains.html
-  marker_coordinates: marker_coordinates.html
-  marker_list1: marker_list1.html
-  marker_list2: marker_list2.html
-  primers: primers.html
-  representative_sequence: representative_sequence.html
-  sequence_coordinates: sequence_coordinates.html
-  swiss_prot_ids: swiss_prot_ids.html
-  swiss_trembl_ids: swiss_trembl_ids.html
-last_built: 2024-07-07T01:10Z
+  articles/biotype_conflicts: biotype_conflicts.html
+  articles/ensembl_ids: ensembl_ids.html
+  articles/genbank_refseq_ensembl_ids: genbank_refseq_ensembl_ids.html
+  articles/gene_model_coordinates: gene_model_coordinates.html
+  articles/gene_trap_ids: gene_trap_ids.html
+  articles/genetic_marker: genetic_marker.html
+  articles/interpro_domains: interpro_domains.html
+  articles/marker_coordinates: marker_coordinates.html
+  articles/marker_list1: marker_list1.html
+  articles/marker_list2: marker_list2.html
+  articles/primers: primers.html
+  articles/representative_sequence: representative_sequence.html
+  articles/sequence_coordinates: sequence_coordinates.html
+  articles/swiss_prot_ids: swiss_prot_ids.html
+  articles/swiss_trembl_ids: swiss_trembl_ids.html
+last_built: 2025-03-26T22:46Z
 urls:
   reference: https://www.pattern.institute/mgi.report.reader/reference
   article: https://www.pattern.institute/mgi.report.reader/articles
-
